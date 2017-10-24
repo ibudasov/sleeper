@@ -1,3 +1,4 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+sleeper:
+    resource: "@SleeperBundle/Controller/"
+    type:     annotation
+    prefix:   /

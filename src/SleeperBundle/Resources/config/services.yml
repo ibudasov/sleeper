@@ -1,0 +1,4 @@
+services:
+#    sleeper.example:
+#        class: SleeperBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
