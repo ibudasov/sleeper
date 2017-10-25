@@ -4,7 +4,7 @@ namespace SleeperBundle\Repository;
 
 use SleeperBundle\Model\Sleep;
 
-class DummySleepRepository implements RepositoryInterface
+class DummySleepRepository implements SleepRepositoryInterface
 {
     /** {@inheritdoc} */
     public function getSleepOnDate(\DateTime $date): Sleep

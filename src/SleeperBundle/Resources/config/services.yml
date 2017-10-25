@@ -1,7 +1,7 @@
 services:
-#    sleeper.example:
-#        class: SleeperBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
-    SleeperBundle\Controller\AnalyzerController:
-        arguments:
-            $logger: "@logger"
+    _defaults:
+        autowire: true
+
+    SleeperBundle\:
+        resource: '../../../../src/SleeperBundle/*'
+        exclude: '../../../../src/SleeperBundle/{Model}'

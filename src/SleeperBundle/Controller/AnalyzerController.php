@@ -2,20 +2,18 @@
 
 namespace SleeperBundle\Controller;
 
-use Psr\Log\LoggerInterface;
+use SleeperBundle\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class AnalyzerController
 {
-    /** @var LoggerInterface */
-    private $logger;
+    /** @var  SleepService */
+    private $sleepService;
 
-    /** @param LoggerInterface $logger */
-    public function __construct(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
+    /** @param SleepService $sleepService */
+    public function __construct(SleepService $sleepService) {
+        $this->sleepService = $sleepService;
     }
 
     /**
@@ -24,6 +22,8 @@ class AnalyzerController
      */
     public function indexAction(): JsonResponse
     {
-        return new JsonResponse('ok');
+        $sleepResponse = $this->sleepService->getSleepOnDate(new \DateTime());
+
+        return new JsonResponse('banaan');
     }
 }

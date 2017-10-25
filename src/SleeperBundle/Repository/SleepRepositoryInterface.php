@@ -5,7 +5,7 @@ namespace SleeperBundle\Repository;
 use SleeperBundle\Exceptions\SleepOnDateNotFoundException;
 use SleeperBundle\Model\Sleep;
 
-interface RepositoryInterface
+interface SleepRepositoryInterface
 {
     /**
      * @param \DateTime $date
