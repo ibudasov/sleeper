@@ -9,14 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AnalyzerController
 {
-    /**
-     * @var LoggerInterface
-     */
+    /** @var LoggerInterface */
     private $logger;
 
-    /**
-     * @param LoggerInterface $logger
-     */
+    /** @param LoggerInterface $logger */
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
@@ -28,7 +24,6 @@ class AnalyzerController
      */
     public function indexAction(): JsonResponse
     {
-
         return new JsonResponse('ok');
     }
 }
