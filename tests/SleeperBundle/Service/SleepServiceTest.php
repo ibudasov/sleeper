@@ -2,8 +2,8 @@
 
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use SleeperBundle\Controller\Response\SleepResponse;
 use SleeperBundle\Model\Sleep;
-use SleeperBundle\Model\SleepResponse;
 use SleeperBundle\Repository\SleepRepositoryInterface;
 use SleeperBundle\Service\SleepService;
 

@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace SleeperBundle\Model;
+namespace SleeperBundle\Controller\Response;
 
 use JMS\Serializer\Annotation as Serializer;
+use SleeperBundle\Model\Sleep;
 
 /**
  * @Serializer\ExclusionPolicy("all")

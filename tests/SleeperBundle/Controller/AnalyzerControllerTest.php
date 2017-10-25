@@ -4,7 +4,7 @@ use JMS\Serializer\Serializer;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Controller\AnalyzerController;
-use SleeperBundle\Model\SleepResponse;
+use SleeperBundle\Controller\Response\SleepResponse;
 use SleeperBundle\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

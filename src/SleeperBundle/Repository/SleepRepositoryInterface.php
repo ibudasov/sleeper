@@ -2,7 +2,7 @@
 
 namespace SleeperBundle\Repository;
 
-use SleeperBundle\Exceptions\SleepOnDateNotFoundException;
+use SleeperBundle\Exception\SleepOnDateNotFoundException;
 use SleeperBundle\Model\Sleep;
 
 interface SleepRepositoryInterface

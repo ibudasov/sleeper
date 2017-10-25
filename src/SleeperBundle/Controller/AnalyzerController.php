@@ -30,10 +30,9 @@ class AnalyzerController
      */
     public function indexAction(): JsonResponse
     {
-        $sleepResponse = $this->serializer->serialize(
-            $this->sleepService->getSleepOnDate(new \DateTime()),
-            'json'
-        );
+        $sleepModel = $this->sleepService->getSleepOnDate(new \DateTime());
+
+        $sleepResponse = $this->serializer->serialize($sleepModel, 'json');
 
         return new JsonResponse($sleepResponse, 200, [], true);
     }

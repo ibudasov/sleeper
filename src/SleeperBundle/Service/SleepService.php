@@ -2,7 +2,7 @@
 
 namespace SleeperBundle\Service;
 
-use SleeperBundle\Model\SleepResponse;
+use SleeperBundle\Controller\Response\SleepResponse;
 use SleeperBundle\Repository\SleepRepositoryInterface;
 
 class SleepService
