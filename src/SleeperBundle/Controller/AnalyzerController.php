@@ -2,6 +2,7 @@
 
 namespace SleeperBundle\Controller;
 
+use JMS\Serializer\Serializer;
 use SleeperBundle\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,9 +12,16 @@ class AnalyzerController
     /** @var  SleepService */
     private $sleepService;
 
-    /** @param SleepService $sleepService */
-    public function __construct(SleepService $sleepService) {
+    /** @var  Serializer */
+    private $serializer;
+
+    /**
+     * @param SleepService $sleepService
+     * @param Serializer $serializer
+     */
+    public function __construct(SleepService $sleepService, Serializer $serializer) {
         $this->sleepService = $sleepService;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -22,8 +30,11 @@ class AnalyzerController
      */
     public function indexAction(): JsonResponse
     {
-        $sleepResponse = $this->sleepService->getSleepOnDate(new \DateTime());
+        $sleepResponse = $this->serializer->serialize(
+            $this->sleepService->getSleepOnDate(new \DateTime()),
+            'json'
+        );
 
-        return new JsonResponse('banaan');
+        return new JsonResponse($sleepResponse, 200, [], true);
     }
 }

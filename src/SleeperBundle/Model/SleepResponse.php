@@ -2,15 +2,35 @@
 
 namespace SleeperBundle\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+
+/**
+ * @Serializer\ExclusionPolicy("all")
+ */
 class SleepResponse
 {
-    /** @var \DateTime */
+    /**
+     * @Serializer\Expose()
+     * @Serializer\Type("DateTime")
+     * @Serializer\SerializedName("startTime")
+     * @var \DateTime
+     */
     private $startTime;
 
-    /** @var \DateTime */
+    /**
+     * @Serializer\Expose()
+     * @Serializer\Type("DateTime")
+     * @Serializer\SerializedName("endTime")
+     * @var \DateTime
+     */
     private $endTime;
 
-    /** @var int */
+    /**
+     * @Serializer\Expose()
+     * @Serializer\Type("integer")
+     * @Serializer\SerializedName("deepSleepSeconds")
+     * @var int
+     */
     private $deepSleepSeconds;
 
     /** @var int */
