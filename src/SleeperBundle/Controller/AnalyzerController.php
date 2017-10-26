@@ -6,6 +6,7 @@ use JMS\Serializer\Serializer;
 use SleeperBundle\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class AnalyzerController
 {
@@ -25,12 +26,16 @@ class AnalyzerController
     }
 
     /**
-     * @Route("/")
+     * @Route("/sleep/{date}")
+     *
+     * @ParamConverter("date", options={"format": "Y-m-d"})
+     *
+     * @param \DateTime $date
      * @return JsonResponse
      */
-    public function indexAction(): JsonResponse
+    public function indexAction(\DateTime $date): JsonResponse
     {
-        $sleepModel = $this->sleepService->getSleepOnDate(new \DateTime());
+        $sleepModel = $this->sleepService->getSleepOnDate($date);
 
         $sleepResponse = $this->serializer->serialize($sleepModel, 'json');
 

@@ -41,7 +41,7 @@ class AnalyzerControllerTest extends TestCase
 
         self::assertInstanceOf(
             JsonResponse::class,
-            $sleepAnalyzerController->indexAction()
+            $sleepAnalyzerController->indexAction(new \DateTime())
         );
     }
 }
