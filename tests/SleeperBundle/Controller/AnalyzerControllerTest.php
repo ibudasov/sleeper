@@ -7,29 +7,37 @@ use SleeperBundle\Controller\AnalyzerController;
 use SleeperBundle\Controller\Response\SleepResponse;
 use SleeperBundle\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use SleeperBundle\Model\Sleep;
 
 class AnalyzerControllerTest extends TestCase
 {
     /** @var  SleepService|MockInterface */
     private $sleepServiceMock;
     /** @var  SleepResponse|MockInterface */
-    private $sleepResponseMock;
+    private $sleepMock;
     /** @var  Serializer|MockInterface */
     private $serializerMock;
 
     protected function setUp()
     {
         $this->sleepServiceMock = \Mockery::mock(SleepService::class);
-        $this->sleepResponseMock = \Mockery::mock(SleepResponse::class);
+        $this->sleepMock = \Mockery::mock(Sleep::class);
         $this->serializerMock = \Mockery::mock(Serializer::class);
     }
 
     public function testThatCorrectResponseIsReturned()
     {
-        $sleepAnalyzerController = new AnalyzerController(
+        $analyzerController = new AnalyzerController(
             $this->sleepServiceMock,
             $this->serializerMock
         );
+
+        $this->sleepMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTime());
+        $this->sleepMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTime());
+        $this->sleepMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn(11);
+        $this->sleepMock->shouldReceive('getLightSleepSeconds')->once()->andReturn(22);
+        $this->sleepMock->shouldReceive('getAwakeSeconds')->once()->andReturn(33);
+        $this->sleepMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn(44);
 
         $this->serializerMock->shouldReceive('serialize')
             ->once()
@@ -37,11 +45,11 @@ class AnalyzerControllerTest extends TestCase
 
         $this->sleepServiceMock->shouldReceive('getSleepOnDate')
             ->once()
-            ->andReturn($this->sleepResponseMock);
+            ->andReturn($this->sleepMock);
 
         self::assertInstanceOf(
             JsonResponse::class,
-            $sleepAnalyzerController->indexAction(new \DateTime())
+            $analyzerController->indexAction(new \DateTime())
         );
     }
 }

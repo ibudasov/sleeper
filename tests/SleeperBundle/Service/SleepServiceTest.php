@@ -2,7 +2,6 @@
 
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use SleeperBundle\Controller\Response\SleepResponse;
 use SleeperBundle\Model\Sleep;
 use SleeperBundle\Repository\SleepRepositoryInterface;
 use SleeperBundle\Service\SleepService;
@@ -39,6 +38,6 @@ class SleepServiceTest extends TestCase
             ->with($date)
             ->andReturn($this->sleepMock);
 
-        self::assertInstanceOf(SleepResponse::class, $this->service->getSleepOnDate($date));
+        self::assertInstanceOf(Sleep::class, $this->service->getSleepOnDate($date));
     }
 }

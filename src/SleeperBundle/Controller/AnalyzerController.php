@@ -7,6 +7,7 @@ use SleeperBundle\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use SleeperBundle\Controller\Response\SleepResponse;
 
 class AnalyzerController
 {
@@ -31,14 +32,17 @@ class AnalyzerController
      * @ParamConverter("date", options={"format": "Y-m-d"})
      *
      * @param \DateTime $date
+     * 
      * @return JsonResponse
      */
     public function indexAction(\DateTime $date): JsonResponse
     {
-        $sleepModel = $this->sleepService->getSleepOnDate($date);
+        $sleep = $this->sleepService->getSleepOnDate($date);
 
-        $sleepResponse = $this->serializer->serialize($sleepModel, 'json');
+        $sleepResponse = new SleepResponse($sleep);
 
-        return new JsonResponse($sleepResponse, 200, [], true);
+        $serializedResponse = $this->serializer->serialize($sleepResponse, 'json');
+
+        return new JsonResponse($serializedResponse, 200, [], true);
     }
 }

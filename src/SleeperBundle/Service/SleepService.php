@@ -2,8 +2,8 @@
 
 namespace SleeperBundle\Service;
 
-use SleeperBundle\Controller\Response\SleepResponse;
 use SleeperBundle\Repository\SleepRepositoryInterface;
+use SleeperBundle\Model\Sleep;
 
 class SleepService
 {
@@ -18,12 +18,11 @@ class SleepService
 
     /**
      * @param \DateTime $date
+     * 
      * @return SleepResponse
      */
-    public function getSleepOnDate(\DateTime $date): SleepResponse
+    public function getSleepOnDate(\DateTime $date): Sleep
     {
-        $sleepModel = $this->repository->getSleepOnDate($date);
-
-        return new SleepResponse($sleepModel);
+        return $this->repository->getSleepOnDate($date);
     }
 }
