@@ -4,4 +4,4 @@ services:
 
     SleeperBundle\:
         resource: '../../../../src/SleeperBundle/*'
-        exclude: '../../../../src/SleeperBundle/{Model,Exceptions,Controller/Response}'
+        exclude: '../../../../src/SleeperBundle/{Entity,Model,Exceptions,Controller/Response}'
