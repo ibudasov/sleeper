@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SleeperBundle\Repository\DatabaseSleepRepository")
  */
 class SleepEntity
 {
@@ -78,33 +79,33 @@ class SleepEntity
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getStartTime(): DateTime
+    public function getStartTime(): \DateTime
     {
         return $this->startTime;
     }
 
     /**
-     * @param DateTime $startTime
+     * @param \DateTime $startTime
      */
-    public function setStartTime(DateTime $startTime)
+    public function setStartTime(\DateTime $startTime)
     {
         $this->startTime = $startTime;
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getEndTime(): DateTime
+    public function getEndTime(): \DateTime
     {
         return $this->endTime;
     }
 
     /**
-     * @param DateTime $endTime
+     * @param \DateTime $endTime
      */
-    public function setEndTime(DateTime $endTime)
+    public function setEndTime(\DateTime $endTime)
     {
         $this->endTime = $endTime;
     }

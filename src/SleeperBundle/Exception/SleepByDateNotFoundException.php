@@ -2,5 +2,5 @@
 
 namespace SleeperBundle\Exception;
 
-class SleepOnDateNotFoundException extends \Exception
+class SleepByDateNotFoundException extends \Exception
 {}

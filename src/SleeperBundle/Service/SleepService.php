@@ -2,6 +2,7 @@
 
 namespace SleeperBundle\Service;
 
+use SleeperBundle\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Repository\SleepRepositoryInterface;
 use SleeperBundle\Model\Sleep;
 
@@ -18,11 +19,12 @@ class SleepService
 
     /**
      * @param \DateTime $date
-     * 
-     * @return SleepResponse
+     *
+     * @return Sleep
+     * @throws SleepByDateNotFoundException
      */
-    public function getSleepOnDate(\DateTime $date): Sleep
+    public function getSleepByDate(\DateTime $date): Sleep
     {
-        return $this->repository->getSleepOnDate($date);
+        return $this->repository->getSleepByDate($date);
     }
 }

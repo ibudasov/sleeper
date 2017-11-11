@@ -33,11 +33,11 @@ class SleepServiceTest extends TestCase
         $this->sleepMock->shouldReceive('getAwakeSeconds')->once()->andReturn(33);
         $this->sleepMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn(44);
 
-        $this->repositoryMock->shouldReceive('getSleepOnDate')
+        $this->repositoryMock->shouldReceive('getSleepByDate')
             ->once()
             ->with($date)
             ->andReturn($this->sleepMock);
 
-        self::assertInstanceOf(Sleep::class, $this->service->getSleepOnDate($date));
+        self::assertInstanceOf(Sleep::class, $this->service->getSleepByDate($date));
     }
 }

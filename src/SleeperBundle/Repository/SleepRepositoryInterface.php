@@ -2,7 +2,7 @@
 
 namespace SleeperBundle\Repository;
 
-use SleeperBundle\Exception\SleepOnDateNotFoundException;
+use SleeperBundle\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Model\Sleep;
 
 interface SleepRepositoryInterface
@@ -10,7 +10,7 @@ interface SleepRepositoryInterface
     /**
      * @param \DateTime $date
      * @return Sleep
-     * @throws SleepOnDateNotFoundException
+     * @throws SleepByDateNotFoundException
      */
-    public function getSleepOnDate(\DateTime $date): Sleep;
+    public function getSleepByDate(\DateTime $date): Sleep;
 }
