@@ -5,6 +5,7 @@ namespace SleeperBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use SleeperBundle\Entity\SleepEntity;
 use SleeperBundle\Exception\SleepByDateNotFoundException;
+use SleeperBundle\Mapper\SleepEntityToModelMapper;
 use SleeperBundle\Model\Sleep;
 
 class DatabaseSleepRepository extends EntityRepository implements SleepRepositoryInterface
@@ -38,13 +39,6 @@ class DatabaseSleepRepository extends EntityRepository implements SleepRepositor
             ));
         }
 
-        return new Sleep(
-            $sleepEntity->getStartTime(),
-            $sleepEntity->getEndTime(),
-            $sleepEntity->getDeepSleepSeconds(),
-            $sleepEntity->getLightSleepSeconds(),
-            $sleepEntity->getAwakeSeconds(),
-            $sleepEntity->getTotalSleepSeconds()
-        );
+        return SleepEntityToModelMapper::map($sleepEntity);
     }
 }
