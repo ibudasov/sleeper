@@ -3,10 +3,10 @@
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Entity\SleepEntity;
-use SleeperBundle\Mapper\SleepEntityToModelMapper;
+use SleeperBundle\Mapper\SleepEntityToSleepModelMapper;
 use SleeperBundle\Model\Sleep;
 
-class SleepEntityToModelTest extends TestCase
+class SleepEntityToSleepModelMapperTest extends TestCase
 {
     /** @var SleepEntity|MockInterface */
     private $sleepEntityMock;
@@ -35,7 +35,7 @@ class SleepEntityToModelTest extends TestCase
         $this->sleepEntityMock->shouldReceive('getAwakeSeconds')->once()->andReturn($awakeSeconds);
         $this->sleepEntityMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn($totalSleepSeconds);
 
-        $mappingResult = SleepEntityToModelMapper::map($this->sleepEntityMock);
+        $mappingResult = SleepEntityToSleepModelMapper::map($this->sleepEntityMock);
 
         self::assertInstanceOf(Sleep::class, $mappingResult);
         self::assertEquals($startTime, $mappingResult->getStartTime());

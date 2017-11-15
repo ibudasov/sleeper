@@ -4,11 +4,11 @@ namespace SleeperBundle\Controller;
 
 use JMS\Serializer\Serializer;
 use SleeperBundle\Exception\SleepByDateNotFoundException;
+use SleeperBundle\Mapper\SleepModelToSleepResponseMapper;
 use SleeperBundle\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use SleeperBundle\Controller\Response\SleepResponse;
 
 class AnalyzerController
 {
@@ -41,7 +41,7 @@ class AnalyzerController
     {
         $sleep = $this->sleepService->getSleepByDate($date);
 
-        $sleepResponse = new SleepResponse($sleep);
+        $sleepResponse = SleepModelToSleepResponseMapper::map($sleep);
 
         $serializedResponse = $this->serializer->serialize($sleepResponse, 'json');
 
