@@ -53,4 +53,52 @@ class SleepOutput
         $this->awakeSeconds = $sleep->getAwakeSeconds();
         $this->totalSleepSeconds = $sleep->getTotalSleepSeconds();
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartTime(): \DateTime
+    {
+        return $this->startTime;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndTime(): \DateTime
+    {
+        return $this->endTime;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDeepSleepSeconds(): int
+    {
+        return $this->deepSleepSeconds;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLightSleepSeconds(): int
+    {
+        return $this->lightSleepSeconds;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAwakeSeconds(): int
+    {
+        return $this->awakeSeconds;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalSleepSeconds(): int
+    {
+        return $this->totalSleepSeconds;
+    }
 }
