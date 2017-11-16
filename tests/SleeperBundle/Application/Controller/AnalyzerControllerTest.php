@@ -51,20 +51,21 @@ class AnalyzerControllerTest extends TestCase
             ->once()
             ->andReturn($this->sleepMock);
 
-        self::assertInstanceOf(
-            JsonResponse::class,
-            $this->controller->indexAction(new \DateTime())
-        );
+        $response = $this->controller->indexAction(new \DateTime());
+
+        self::assertInstanceOf(JsonResponse::class, $response);
+        self::assertEquals(200, $response->getStatusCode());
     }
 
     public function testThatExceptionIsThrownWhenSleepNotFound()
     {
-        self::expectException(SleepByDateNotFoundException::class);
-
         $this->sleepServiceMock->shouldReceive('getSleepByDate')
             ->once()
             ->andThrow(SleepByDateNotFoundException::class);
 
-        $this->controller->indexAction(new \DateTime());
+        $response = $this->controller->indexAction(new \DateTime());
+
+        self::assertInstanceOf(JsonResponse::class, $response);
+        self::assertEquals(404, $response->getStatusCode());
     }
 }

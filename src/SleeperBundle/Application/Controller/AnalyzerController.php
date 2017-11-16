@@ -3,7 +3,6 @@
 namespace SleeperBundle\Application\Controller;
 
 use JMS\Serializer\Serializer;
-use SleeperBundle\Application\Mapper\SleepModelToSleepResponseMapper;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Domain\Service\SleepService;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,16 +34,19 @@ class AnalyzerController
      * @param \DateTime $date
      *
      * @return JsonResponse
-     * @throws SleepByDateNotFoundException
      */
     public function indexAction(\DateTime $date): JsonResponse
     {
-        $sleep = $this->sleepService->getSleepByDate($date);
+        try {
+            $sleepOutput = $this->sleepService->getSleepByDate($date);
 
-        $sleepResponse = SleepModelToSleepResponseMapper::map($sleep);
+            $serializedResponse = $this->serializer->serialize($sleepOutput, 'json');
 
-        $serializedResponse = $this->serializer->serialize($sleepResponse, 'json');
+            return new JsonResponse($serializedResponse, 200, [], true);
 
-        return new JsonResponse($serializedResponse, 200, [], true);
+        } catch (SleepByDateNotFoundException $exception) {
+
+            return new JsonResponse('Sleep not found, sorry', 404);
+        }
     }
 }
