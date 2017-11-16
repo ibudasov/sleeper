@@ -4,7 +4,7 @@ services:
 
     SleeperBundle\:
         resource: '../../../../src/SleeperBundle/*'
-        exclude: '../../../../src/SleeperBundle/{Entity,Model,Exceptions,Controller/Response}'
+        exclude: '../../../../src/SleeperBundle/{Entity,Model,Exceptions,Controller/Output}'
 
     SleeperBundle\Repository\DatabaseSleepRepository:
         factory: ["@doctrine", getRepository]
