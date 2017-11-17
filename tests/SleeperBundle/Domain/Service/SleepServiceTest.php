@@ -22,7 +22,7 @@ class SleepServiceTest extends TestCase
         $this->service = new SleepService($this->repositoryMock);
     }
 
-    public function testThatItRetrievesDataFromRepository()
+    public function testThatItRetrievesDataFromRepository(): void
     {
         $date = new \DateTime();
 

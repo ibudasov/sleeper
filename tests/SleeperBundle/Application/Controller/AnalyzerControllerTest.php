@@ -33,7 +33,7 @@ class AnalyzerControllerTest extends TestCase
         );
     }
 
-    public function testThatCorrectResponseIsReturned()
+    public function testThatCorrectResponseIsReturned(): void
     {
 
         $this->sleepMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTime());
@@ -57,7 +57,7 @@ class AnalyzerControllerTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
     }
 
-    public function testThatExceptionIsThrownWhenSleepNotFound()
+    public function testThatExceptionIsThrownWhenSleepNotFound(): void
     {
         $this->sleepServiceMock->shouldReceive('getSleepByDate')
             ->once()

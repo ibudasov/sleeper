@@ -19,7 +19,7 @@ class SleepEntityToSleepModelMapperTest extends TestCase
         $this->sleepMock = \Mockery::mock(Sleep::class);
     }
 
-    public function testThatSleepEntityCanBeMappedToModel()
+    public function testThatSleepEntityCanBeMappedToModel(): void
     {
         $startTime = new \DateTime();
         $endTime = new \DateTime();

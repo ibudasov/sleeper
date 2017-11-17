@@ -5,7 +5,7 @@ use SleeperBundle\Domain\Model\Sleep;
 
 class SleepTest extends TestCase
 {
-    public function testThatModelCanBeCreatedWithCorrectInput()
+    public function testThatModelCanBeCreatedWithCorrectInput(): void
     {
         $expectedStartTime = new \DateTime();
         $expectedEndTime = new \DateTime();

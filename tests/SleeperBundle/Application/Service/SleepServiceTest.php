@@ -27,7 +27,7 @@ class SleepServiceTest extends TestCase
         $this->service = new SleepService($this->repositoryMock);
     }
 
-    public function testThatServiceReturnsMappedOutput()
+    public function testThatServiceReturnsMappedOutput(): void
     {
         $startTime = new \DateTime();
         $endTime = new \DateTime();

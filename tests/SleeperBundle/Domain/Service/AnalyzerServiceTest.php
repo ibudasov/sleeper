@@ -18,7 +18,7 @@ class AnalyzerServiceTest extends TestCase
         $this->analyzerService = new AnalyzerService();
     }
 
-    public function testThatSuccessOfSleepCanBeAnalyzedAndNumberOfPercentIsReturned()
+    public function testThatSuccessOfSleepCanBeAnalyzedAndNumberOfPercentIsReturned(): void
     {
         $this->sleepMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn('8000');
         $this->sleepMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn('4000');
@@ -27,7 +27,7 @@ class AnalyzerServiceTest extends TestCase
         self::assertInternalType('float', $this->analyzerService->getSuccessResultInPercent($this->sleepMock));
     }
 
-    public function testThatSleepIsConsideredUnsuccessfulGivenSuccessPercentageLessThan50()
+    public function testThatSleepIsConsideredUnsuccessfulGivenSuccessPercentageLessThan50(): void
     {
         $this->sleepMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn('10000');
         $this->sleepMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn('3000');

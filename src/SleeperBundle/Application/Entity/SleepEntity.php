@@ -73,7 +73,7 @@ class SleepEntity
     /**
      * @param int $id
      */
-    public function setId(int $id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -89,7 +89,7 @@ class SleepEntity
     /**
      * @param \DateTime $startTime
      */
-    public function setStartTime(\DateTime $startTime)
+    public function setStartTime(\DateTime $startTime): void
     {
         $this->startTime = $startTime;
     }
@@ -105,7 +105,7 @@ class SleepEntity
     /**
      * @param \DateTime $endTime
      */
-    public function setEndTime(\DateTime $endTime)
+    public function setEndTime(\DateTime $endTime): void
     {
         $this->endTime = $endTime;
     }
@@ -121,7 +121,7 @@ class SleepEntity
     /**
      * @param int $deepSleepSeconds
      */
-    public function setDeepSleepSeconds(int $deepSleepSeconds)
+    public function setDeepSleepSeconds(int $deepSleepSeconds): void
     {
         $this->deepSleepSeconds = $deepSleepSeconds;
     }
@@ -137,7 +137,7 @@ class SleepEntity
     /**
      * @param int $lightSleepSeconds
      */
-    public function setLightSleepSeconds(int $lightSleepSeconds)
+    public function setLightSleepSeconds(int $lightSleepSeconds): void
     {
         $this->lightSleepSeconds = $lightSleepSeconds;
     }
@@ -153,7 +153,7 @@ class SleepEntity
     /**
      * @param int $awakeSeconds
      */
-    public function setAwakeSeconds(int $awakeSeconds)
+    public function setAwakeSeconds(int $awakeSeconds): void
     {
         $this->awakeSeconds = $awakeSeconds;
     }
@@ -169,7 +169,7 @@ class SleepEntity
     /**
      * @param int $totalSleepSeconds
      */
-    public function setTotalSleepSeconds(int $totalSleepSeconds)
+    public function setTotalSleepSeconds(int $totalSleepSeconds): void
     {
         $this->totalSleepSeconds = $totalSleepSeconds;
     }

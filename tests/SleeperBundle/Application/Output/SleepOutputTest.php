@@ -15,7 +15,7 @@ class SleepOutputTest extends TestCase
         $this->sleepMock = \Mockery::mock(Sleep::class);
     }
 
-    public function testThatSleepResponseModelCanBeCreatedGivenSleepModel()
+    public function testThatSleepResponseModelCanBeCreatedGivenSleepModel(): void
     {
         $this->sleepMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTime());
         $this->sleepMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTime());
