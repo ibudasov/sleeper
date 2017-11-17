@@ -25,5 +25,7 @@ Commands:
 - `bin/console server:start` -- start the server
 
 - `vendor/bin/phpunit` -- run the tests
+
+- `fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpuni` -- watch unit tests
    
 - `src/SleeperBundle/Resources/source.csv` -- source data
