@@ -4,22 +4,22 @@ use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
-use SleeperBundle\Domain\Service\SleepService;
+use SleeperBundle\Domain\Service\SleepDomainService;
 
-class SleepServiceTest extends TestCase
+class SleepDomainServiceTest extends TestCase
 {
     /** @var  SleepRepositoryInterface|MockInterface */
     private $repositoryMock;
     /** @var  Sleep|MockInterface */
     private $sleepMock;
-    /** @var  SleepService */
-    private $service;
+    /** @var  SleepDomainService */
+    private $domainService;
 
     protected function setUp()
     {
         $this->repositoryMock = \Mockery::mock(SleepRepositoryInterface::class);
         $this->sleepMock = \Mockery::mock(Sleep::class);
-        $this->service = new SleepService($this->repositoryMock);
+        $this->domainService = new SleepDomainService($this->repositoryMock);
     }
 
     public function testThatItRetrievesDataFromRepository(): void
@@ -38,6 +38,6 @@ class SleepServiceTest extends TestCase
             ->with($date)
             ->andReturn($this->sleepMock);
 
-        self::assertInstanceOf(Sleep::class, $this->service->getSleepByDate($date));
+        self::assertInstanceOf(Sleep::class, $this->domainService->getSleepByDate($date));
     }
 }

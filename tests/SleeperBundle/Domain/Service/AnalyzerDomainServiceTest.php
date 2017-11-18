@@ -3,19 +3,19 @@
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Domain\Model\Sleep;
-use SleeperBundle\Domain\Service\AnalyzerService;
+use SleeperBundle\Domain\Service\AnalyzerDomainService;
 
-class AnalyzerServiceTest extends TestCase
+class AnalyzerDomainServiceTest extends TestCase
 {
     /** @var  Sleep|MockInterface */
     private $sleepMock;
-    /** @var  AnalyzerService */
+    /** @var  AnalyzerDomainService */
     private $analyzerService;
 
     protected function setUp()
     {
         $this->sleepMock = \Mockery::mock(Sleep::class);
-        $this->analyzerService = new AnalyzerService();
+        $this->analyzerService = new AnalyzerDomainService();
     }
 
     public function testThatSuccessOfSleepCanBeAnalyzedAndNumberOfPercentIsReturned(): void

@@ -4,7 +4,7 @@ namespace SleeperBundle\Domain\Service;
 
 use SleeperBundle\Domain\Model\Sleep;
 
-class AnalyzerService
+class AnalyzerDomainService
 {
     /**
      * @param Sleep $sleep

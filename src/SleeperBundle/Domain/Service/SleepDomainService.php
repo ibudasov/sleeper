@@ -6,7 +6,7 @@ use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 
-class SleepService
+class SleepDomainService
 {
     /** @var SleepRepositoryInterface */
     private $repository;

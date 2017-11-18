@@ -17,14 +17,14 @@ class SleepServiceTest extends TestCase
     /** @var Sleep|MockInterface */
     private $modelMock;
     /** @var SleepService|MockInterface */
-    private $service;
+    private $applicationService;
 
     protected function setUp()
     {
         $this->repositoryMock = \Mockery::mock(SleepRepositoryInterface::class);
         $this->modelMock = \Mockery::mock(Sleep::class);
 
-        $this->service = new SleepService($this->repositoryMock);
+        $this->applicationService = new SleepService($this->repositoryMock);
     }
 
     public function testThatServiceReturnsMappedOutput(): void
@@ -45,7 +45,7 @@ class SleepServiceTest extends TestCase
         $this->modelMock->shouldReceive('getAwakeSeconds')->once()->andReturn($awakeSeconds);
         $this->modelMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn($totalSleepSeconds);
 
-        $output = $this->service->getSleepByDate(new \DateTime());
+        $output = $this->applicationService->getSleepByDate(new \DateTime());
 
         self::assertInstanceOf(SleepOutput::class, $output);
         self::assertEquals($startTime, $output->getStartTime());

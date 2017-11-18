@@ -3,32 +3,32 @@
 use JMS\Serializer\Serializer;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use SleeperBundle\Application\Controller\AnalyzerController;
+use SleeperBundle\Application\Controller\SleepController;
 use SleeperBundle\Application\Output\SleepOutput;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Domain\Model\Sleep;
-use SleeperBundle\Domain\Service\SleepService;
+use SleeperBundle\Domain\Service\SleepDomainService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class AnalyzerControllerTest extends TestCase
+class SleepControllerTest extends TestCase
 {
-    /** @var  SleepService|MockInterface */
-    private $sleepServiceMock;
+    /** @var  SleepDomainService|MockInterface */
+    private $sleepDomainServiceMock;
     /** @var  SleepOutput|MockInterface */
     private $sleepMock;
     /** @var  Serializer|MockInterface */
     private $serializerMock;
-    /** @var AnalyzerController */
+    /** @var SleepController */
     private $controller;
 
     protected function setUp()
     {
-        $this->sleepServiceMock = \Mockery::mock(SleepService::class);
+        $this->sleepDomainServiceMock = \Mockery::mock(SleepDomainService::class);
         $this->sleepMock = \Mockery::mock(Sleep::class);
         $this->serializerMock = \Mockery::mock(Serializer::class);
 
-        $this->controller = new AnalyzerController(
-            $this->sleepServiceMock,
+        $this->controller = new SleepController(
+            $this->sleepDomainServiceMock,
             $this->serializerMock
         );
     }
@@ -47,11 +47,11 @@ class AnalyzerControllerTest extends TestCase
             ->once()
             ->andReturn('{"startTime":"2017-09-24 22:06:30","endTime":"2017-09-25 07:37:53","deepSleepSeconds":18779}');
 
-        $this->sleepServiceMock->shouldReceive('getSleepByDate')
+        $this->sleepDomainServiceMock->shouldReceive('getSleepByDate')
             ->once()
             ->andReturn($this->sleepMock);
 
-        $response = $this->controller->indexAction(new \DateTime());
+        $response = $this->controller->sleepByDateAction(new \DateTime());
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals(200, $response->getStatusCode());
@@ -59,11 +59,11 @@ class AnalyzerControllerTest extends TestCase
 
     public function testThatExceptionIsThrownWhenSleepNotFound(): void
     {
-        $this->sleepServiceMock->shouldReceive('getSleepByDate')
+        $this->sleepDomainServiceMock->shouldReceive('getSleepByDate')
             ->once()
             ->andThrow(SleepByDateNotFoundException::class);
 
-        $response = $this->controller->indexAction(new \DateTime());
+        $response = $this->controller->sleepByDateAction(new \DateTime());
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals(404, $response->getStatusCode());
