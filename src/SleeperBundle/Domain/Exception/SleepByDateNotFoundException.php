@@ -3,4 +3,5 @@
 namespace SleeperBundle\Domain\Exception;
 
 class SleepByDateNotFoundException extends \Exception
-{}
+{
+}

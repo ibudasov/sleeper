@@ -29,5 +29,4 @@ class SleepService
 
         return new SleepOutput($sleepModel);
     }
-
 }

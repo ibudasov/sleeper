@@ -21,7 +21,8 @@ class SleepController
      * @param SleepDomainService $sleepService
      * @param Serializer $serializer
      */
-    public function __construct(SleepDomainService $sleepService, Serializer $serializer) {
+    public function __construct(SleepDomainService $sleepService, Serializer $serializer)
+    {
         $this->sleepService = $sleepService;
         $this->serializer = $serializer;
     }
@@ -43,7 +44,6 @@ class SleepController
             $serializedResponse = $this->serializer->serialize($sleepOutput, 'json');
 
             return new JsonResponse($serializedResponse, 200, [], true);
-
         } catch (SleepByDateNotFoundException $exception) {
 
             return new JsonResponse('Sleep not found, sorry', 404);

@@ -32,7 +32,7 @@ class DatabaseSleepRepository extends EntityRepository implements SleepRepositor
             ->getQuery()
             ->getResult());
 
-        if(empty($sleepEntity)) {
+        if (empty($sleepEntity)) {
             throw new SleepByDateNotFoundException(\sprintf(
                 'No sleep found between "%s" and "%s"',
                 $startTime->format('Y-m-d'),
