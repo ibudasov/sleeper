@@ -45,7 +45,6 @@ class SleepController
 
             return new JsonResponse($serializedResponse, 200, [], true);
         } catch (SleepByDateNotFoundException $exception) {
-
             return new JsonResponse('Sleep not found, sorry', 404);
         }
     }
