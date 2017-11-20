@@ -22,10 +22,12 @@ Commands:
 
 - `composer install` -- install the API
 
-- `bin/console server:start` -- start the server
+- `composer run` -- start the server
 
-- `vendor/bin/phpunit` -- run the tests
+- `composer stop` -- stop the server
 
-- `fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpuni` -- watch unit tests
+- `composer test` -- run the tests
+
+- `composer test-watch` -- watch unit tests (sorry, OSX + fswatch only)
    
 - `src/SleeperBundle/Resources/source.csv` -- source data

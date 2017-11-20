@@ -40,6 +40,10 @@
         "symfony/phpunit-bridge": "^3.0"
     },
     "scripts": {
+        "test": "./vendor/bin/phpunit",
+        "test-watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
+        "run": "bin/console server:start",
+        "stop": "bin/console server:stop",
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
