@@ -1,7 +1,4 @@
 services:
-    _defaults:
-        autowire: true
-
     SleeperBundle\:
         resource: '../../../../src/SleeperBundle/*'
         exclude: '../../../../src/SleeperBundle/Domain/Model'
