@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace SleeperBundle\Repository;
+namespace SleeperBundle\Infrastructure\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use SleeperBundle\Application\Entity\SleepEntity;
