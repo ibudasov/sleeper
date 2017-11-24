@@ -1139,16 +1139,16 @@
         },
         {
             "name": "jms/serializer",
-            "version": "1.9.1",
+            "version": "1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "e708d6ef549044974b60a57fdcec2fa165436d57"
+                "reference": "995270cddce65b9c14a58c11cf77116d28d9336c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/e708d6ef549044974b60a57fdcec2fa165436d57",
-                "reference": "e708d6ef549044974b60a57fdcec2fa165436d57",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/995270cddce65b9c14a58c11cf77116d28d9336c",
+                "reference": "995270cddce65b9c14a58c11cf77116d28d9336c",
                 "shasum": ""
             },
             "require": {
@@ -1218,7 +1218,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2017-10-27 07:15:54"
+            "time": "2017-11-22 16:45:19"
         },
         {
             "name": "jms/serializer-bundle",
