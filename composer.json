@@ -41,7 +41,8 @@
     },
     "scripts": {
         "test": "./vendor/bin/phpunit",
-        "test-watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
+        "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
+        "test:coverage": "vendor/bin/phpunit --coverage-html var/test-coverage;  echo \"\nReport is located: var/test-coverage/index.html\"",
         "run": "bin/console server:start",
         "stop": "bin/console server:stop",
         "symfony-scripts": [

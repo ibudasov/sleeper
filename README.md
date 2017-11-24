@@ -28,6 +28,14 @@ Commands:
 
 - `composer test` -- run the tests
 
-- `composer test-watch` -- watch unit tests (sorry, OSX + fswatch only)
+- `composer test:coverage` -- test coverage (requires XDebug installed)
+
+- `composer test:watch` -- watch unit tests (sorry, OSX + fswatch only)
+
+
+Prerequisites
+-
+
+- `apt install php7.1-xdebug` -- XDebug needed for test coverage, that's how to install it for Ubuntu
    
 - `src/SleeperBundle/Resources/source.csv` -- source data
