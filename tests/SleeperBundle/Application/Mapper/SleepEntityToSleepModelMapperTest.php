@@ -26,7 +26,7 @@ class SleepEntityToSleepModelMapperTest extends TestCase
         $deepSleepSeconds = 1;
         $lightSleepSeconds = 1;
         $awakeSeconds = 1;
-        $totalSleepSeconds = 1;
+        $totalSleepSeconds = 5;
 
         $this->sleepEntityMock->shouldReceive('getStartTime')->once()->andReturn($startTime);
         $this->sleepEntityMock->shouldReceive('getEndTime')->once()->andReturn($endTime);

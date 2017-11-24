@@ -2,6 +2,8 @@
 
 namespace SleeperBundle\Domain\Model;
 
+use Assert\Assertion;
+
 class Sleep
 {
     /** @var \DateTimeImmutable */
@@ -38,6 +40,10 @@ class Sleep
         int $awakeSeconds,
         int $totalSleepSeconds
     ) {
+        Assertion::greaterThan($endTime, $startTime);
+        Assertion::greaterThan($totalSleepSeconds, $deepSleepInSeconds);
+        Assertion::greaterThan($totalSleepSeconds, $lightSleepInSeconds);
+
         $this->startTime = $startTime;
         $this->endTime = $endTime;
         $this->deepSleepSeconds = $deepSleepInSeconds;
