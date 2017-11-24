@@ -36,8 +36,8 @@ class SleepControllerTest extends TestCase
     public function testThatCorrectResponseIsReturned(): void
     {
 
-        $this->sleepMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTime());
-        $this->sleepMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTime());
+        $this->sleepMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTimeImmutable());
+        $this->sleepMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTimeImmutable());
         $this->sleepMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn(11);
         $this->sleepMock->shouldReceive('getLightSleepSeconds')->once()->andReturn(22);
         $this->sleepMock->shouldReceive('getAwakeSeconds')->once()->andReturn(33);
@@ -51,7 +51,7 @@ class SleepControllerTest extends TestCase
             ->once()
             ->andReturn($this->sleepMock);
 
-        $response = $this->controller->sleepByDateAction(new \DateTime());
+        $response = $this->controller->sleepByDateAction(new \DateTimeImmutable());
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals(200, $response->getStatusCode());
@@ -63,7 +63,7 @@ class SleepControllerTest extends TestCase
             ->once()
             ->andThrow(SleepByDateNotFoundException::class);
 
-        $response = $this->controller->sleepByDateAction(new \DateTime());
+        $response = $this->controller->sleepByDateAction(new \DateTimeImmutable());
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals(404, $response->getStatusCode());

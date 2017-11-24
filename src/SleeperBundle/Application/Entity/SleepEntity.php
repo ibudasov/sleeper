@@ -23,14 +23,14 @@ class SleepEntity
     /**
      * @ORM\Column(type="datetime")
      *
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $startTime;
 
     /**
      * @ORM\Column(type="datetime")
      *
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $endTime;
 
@@ -79,33 +79,33 @@ class SleepEntity
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
-    public function getStartTime(): \DateTime
+    public function getStartTime(): \DateTimeImmutable
     {
         return $this->startTime;
     }
 
     /**
-     * @param \DateTime $startTime
+     * @param \DateTimeImmutable $startTime
      */
-    public function setStartTime(\DateTime $startTime): void
+    public function setStartTime(\DateTimeImmutable $startTime): void
     {
         $this->startTime = $startTime;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
-    public function getEndTime(): \DateTime
+    public function getEndTime(): \DateTimeImmutable
     {
         return $this->endTime;
     }
 
     /**
-     * @param \DateTime $endTime
+     * @param \DateTimeImmutable $endTime
      */
-    public function setEndTime(\DateTime $endTime): void
+    public function setEndTime(\DateTimeImmutable $endTime): void
     {
         $this->endTime = $endTime;
     }

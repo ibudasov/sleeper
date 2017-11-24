@@ -7,8 +7,8 @@ class SleepTest extends TestCase
 {
     public function testThatModelCanBeCreatedWithCorrectInput(): void
     {
-        $expectedStartTime = new \DateTime();
-        $expectedEndTime = new \DateTime();
+        $expectedStartTime = new \DateTimeImmutable();
+        $expectedEndTime = new \DateTimeImmutable();
         $expectedDeepSleep = 90;
         $expectedLightSleep = 45;
         $expectedAwake = 234;

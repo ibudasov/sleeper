@@ -12,17 +12,17 @@ class SleepOutput
 {
     /**
      * @Serializer\Expose()
-     * @Serializer\Type("DateTime")
+     * @Serializer\Type("DateTimeImmutable")
      * @Serializer\SerializedName("startTime")
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $startTime;
 
     /**
      * @Serializer\Expose()
-     * @Serializer\Type("DateTime")
+     * @Serializer\Type("DateTimeImmutable")
      * @Serializer\SerializedName("endTime")
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $endTime;
 
@@ -55,17 +55,17 @@ class SleepOutput
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
-    public function getStartTime(): \DateTime
+    public function getStartTime(): \DateTimeImmutable
     {
         return $this->startTime;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
-    public function getEndTime(): \DateTime
+    public function getEndTime(): \DateTimeImmutable
     {
         return $this->endTime;
     }

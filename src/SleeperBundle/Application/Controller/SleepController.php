@@ -32,11 +32,11 @@ class SleepController
      *
      * @ParamConverter("date", options={"format": "Y-m-d"})
      *
-     * @param \DateTime $date
+     * @param \DateTimeImmutable $date
      *
      * @return JsonResponse
      */
-    public function sleepByDateAction(\DateTime $date): JsonResponse
+    public function sleepByDateAction(\DateTimeImmutable $date): JsonResponse
     {
         try {
             $sleepOutput = $this->sleepService->getSleepByDate($date);

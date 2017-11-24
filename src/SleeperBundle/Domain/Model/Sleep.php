@@ -4,10 +4,10 @@ namespace SleeperBundle\Domain\Model;
 
 class Sleep
 {
-    /** @var \DateTime */
+    /** @var \DateTimeImmutable */
     private $startTime;
 
-    /** @var \DateTime */
+    /** @var \DateTimeImmutable */
     private $endTime;
 
     /** @var int */
@@ -23,16 +23,16 @@ class Sleep
     private $totalSleepSeconds;
 
     /**
-     * @param \DateTime $startTime
-     * @param \DateTime $endTime
+     * @param \DateTimeImmutable $startTime
+     * @param \DateTimeImmutable $endTime
      * @param int $deepSleepInSeconds
      * @param int $lightSleepInSeconds
      * @param int $awakeSeconds
      * @param int $totalSleepSeconds
      */
     public function __construct(
-        \DateTime $startTime,
-        \DateTime $endTime,
+        \DateTimeImmutable $startTime,
+        \DateTimeImmutable $endTime,
         int $deepSleepInSeconds,
         int $lightSleepInSeconds,
         int $awakeSeconds,
@@ -46,14 +46,14 @@ class Sleep
         $this->totalSleepSeconds = $totalSleepSeconds;
     }
 
-    /** @return \DateTime */
-    public function getStartTime(): \DateTime
+    /** @return \DateTimeImmutable */
+    public function getStartTime(): \DateTimeImmutable
     {
         return $this->startTime;
     }
 
-    /** @return \DateTime */
-    public function getEndTime(): \DateTime
+    /** @return \DateTimeImmutable */
+    public function getEndTime(): \DateTimeImmutable
     {
         return $this->endTime;
     }

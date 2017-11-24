@@ -12,11 +12,11 @@ use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 class DatabaseSleepRepository extends EntityRepository implements SleepRepositoryInterface
 {
     /**
-     * @param \DateTime $date
+     * @param \DateTimeImmutable $date
      * @return Sleep
      * @throws SleepByDateNotFoundException
      */
-    public function getSleepByDate(\DateTime $date): Sleep
+    public function getSleepByDate(\DateTimeImmutable $date): Sleep
     {
         $startTime = $date->modify('midnight');
         $endOfPeriod = clone($date);
