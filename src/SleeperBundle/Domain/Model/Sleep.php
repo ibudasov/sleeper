@@ -3,9 +3,12 @@
 namespace SleeperBundle\Domain\Model;
 
 use Assert\Assertion;
+use SleeperBundle\Domain\ValueObject\SleepId;
 
 class Sleep
 {
+    /** @var SleepId */
+    private $id;
     /** @var \DateTimeImmutable */
     private $startTime;
 
@@ -25,6 +28,7 @@ class Sleep
     private $totalSleepSeconds;
 
     /**
+     * @param SleepId $id
      * @param \DateTimeImmutable $startTime
      * @param \DateTimeImmutable $endTime
      * @param int $deepSleepInSeconds
@@ -33,6 +37,7 @@ class Sleep
      * @param int $totalSleepSeconds
      */
     public function __construct(
+        SleepId $id,
         \DateTimeImmutable $startTime,
         \DateTimeImmutable $endTime,
         int $deepSleepInSeconds,
@@ -44,6 +49,7 @@ class Sleep
         Assertion::greaterThan($totalSleepSeconds, $deepSleepInSeconds);
         Assertion::greaterThan($totalSleepSeconds, $lightSleepInSeconds);
 
+        $this->id = $id;
         $this->startTime = $startTime;
         $this->endTime = $endTime;
         $this->deepSleepSeconds = $deepSleepInSeconds;

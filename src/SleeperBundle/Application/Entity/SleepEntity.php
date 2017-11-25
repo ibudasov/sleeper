@@ -3,20 +3,20 @@
 namespace SleeperBundle\Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SleeperBundle\Domain\ValueObject\SleepId;
 
 /**
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="SleeperBundle\Repository\DatabaseSleepRepository")
+ * @ORM\Entity(repositoryClass="SleeperBundle\Infrastructure\Repository\DatabaseSleepRepository")
  */
 class SleepEntity
 {
 
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      *
-     * @var int
+     * @var string
      */
     private $id;
 
@@ -63,19 +63,19 @@ class SleepEntity
     private $totalSleepSeconds;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param SleepId $id
      */
-    public function setId(int $id): void
+    public function setId(SleepId $id): void
     {
-        $this->id = $id;
+        $this->id = (string) $id;
     }
 
     /**

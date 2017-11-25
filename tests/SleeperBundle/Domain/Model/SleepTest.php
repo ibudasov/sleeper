@@ -2,11 +2,13 @@
 
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\ValueObject\SleepId;
 
 class SleepTest extends TestCase
 {
     public function testThatModelCanBeCreatedWithCorrectInput(): void
     {
+        $sleepId = SleepId::generate();
         $expectedStartTime = new \DateTimeImmutable();
         $expectedEndTime = new \DateTimeImmutable();
         $expectedDeepSleep = 90;
@@ -15,6 +17,7 @@ class SleepTest extends TestCase
         $expectedTotalSleep = 234;
 
         $sleep = new Sleep(
+            $sleepId,
             $expectedStartTime,
             $expectedEndTime,
             $expectedDeepSleep,

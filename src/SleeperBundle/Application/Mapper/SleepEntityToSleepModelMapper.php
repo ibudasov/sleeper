@@ -4,6 +4,7 @@ namespace SleeperBundle\Application\Mapper;
 
 use SleeperBundle\Application\Entity\SleepEntity;
 use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\ValueObject\SleepId;
 
 class SleepEntityToSleepModelMapper
 {
@@ -14,6 +15,7 @@ class SleepEntityToSleepModelMapper
     public static function map(SleepEntity $entity): Sleep
     {
         return new Sleep(
+            SleepId::generate(),
             $entity->getStartTime(),
             $entity->getEndTime(),
             $entity->getDeepSleepSeconds(),
