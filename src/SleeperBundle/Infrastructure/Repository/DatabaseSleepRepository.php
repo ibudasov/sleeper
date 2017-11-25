@@ -8,7 +8,11 @@ use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
 use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
+use PHPUnit\Framework\TestCase;
 
+/**
+ * @codeCoverageIgnore
+ */
 class DatabaseSleepRepository extends EntityRepository implements SleepRepositoryInterface
 {
     /**
