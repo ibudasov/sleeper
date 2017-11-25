@@ -17,7 +17,7 @@ What's used?
 - Symfony3 
 
 
-Commands:
+Commands
 -
 
 - `composer install` -- install the API
@@ -37,5 +37,7 @@ Prerequisites
 -
 
 - `apt install php7.1-xdebug` -- XDebug needed for test coverage, that's how to install it for Ubuntu
-   
-- `src/SleeperBundle/Resources/source.csv` -- source data
+
+- `brew install php71-xdebug` -- XDebug install for OSX
+
+- `brew install fswatch` -- file system watcher for OSX
