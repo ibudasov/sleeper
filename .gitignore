@@ -6,6 +6,7 @@
 !/var/cache
 /var/cache/*
 !var/cache/.gitkeep
+!var/data/.gitkeep
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep
@@ -16,3 +17,4 @@
 /vendor/
 /web/bundles/
 .idea
+.DS_Store
