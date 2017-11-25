@@ -32,14 +32,16 @@ class SleepController
      *
      * @ParamConverter("date", options={"format": "Y-m-d"})
      *
-     * @param \DateTimeImmutable $date
+     * @param \DateTime $date
      *
      * @return JsonResponse
      */
-    public function sleepByDateAction(\DateTimeImmutable $date): JsonResponse
+    public function sleepByDateAction(\DateTime $date): JsonResponse
     {
         try {
-            $sleepOutput = $this->sleepService->getSleepByDate($date);
+            $sleepOutput = $this->sleepService->getSleepByDate(
+                \DateTimeImmutable::createFromMutable($date)
+            );
 
             $serializedResponse = $this->serializer->serialize($sleepOutput, 'json');
 

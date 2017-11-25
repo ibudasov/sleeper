@@ -1,0 +1,11 @@
+doctrine:
+    orm:
+        mappings:
+
+            # Custom mapping is specified because of by default Symfony+Doctrine looks at SleeperBundle/Entity folder
+            SomeEntityNamespace:
+                type: annotation
+                dir: '%kernel.project_dir%/src/SleeperBundle/Application/Entity'
+                is_bundle: false
+                prefix: SleeperBundle\Application\Entity
+                alias: SleeperBundle
