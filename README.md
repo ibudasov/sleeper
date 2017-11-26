@@ -6,7 +6,15 @@ sleeper
 
 What is it?
 -
-This API suppose to analyze sleep data which has been retrieved by sleep tracking device
+This API suppose to analyze sleep data which has been retrieved by sleep tracking device.
+
+the idea behind this project is to master TDD skill and learn modern approaches like DDD & Hexagonal architecture.
+These 2 approaches are intentended to reduce code coupling and make sure dependencies go only in one direction - in direction of domain.
+
+
+Theory
+-
+
 
 
 What's used?
