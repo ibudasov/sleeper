@@ -30,18 +30,20 @@ class DatabaseSleepRepository extends EntityRepository implements SleepRepositor
         $sleepEntity = current($this
             ->createQueryBuilder('sleep')
             ->where('sleep.startTime > :startOfTheDay')
-            ->andWhere('sleep.endTime < :endOfTheDay')
+            ->andWhere('sleep.startTime < :endOfTheDay')
             ->setParameter('startOfTheDay', $startTime)
             ->setParameter('endOfTheDay', $endOfPeriod)
             ->getQuery()
             ->getResult());
 
         if (empty($sleepEntity)) {
-            throw new SleepByDateNotFoundException(\sprintf(
+            $message = \sprintf(
                 'No sleep found between "%s" and "%s"',
                 $startTime->format('Y-m-d'),
                 $endOfPeriod->format('Y-m-d')
-            ));
+            );
+
+            throw new SleepByDateNotFoundException($message);
         }
 
         return SleepEntityToSleepModelMapper::map($sleepEntity);

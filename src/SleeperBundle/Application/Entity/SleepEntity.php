@@ -85,7 +85,7 @@ class SleepEntity
      */
     public function getStartTime(): \DateTimeImmutable
     {
-        return $this->startTime;
+        return \DateTimeImmutable::createFromMutable($this->startTime);
     }
 
     /**
@@ -101,7 +101,7 @@ class SleepEntity
      */
     public function getEndTime(): \DateTimeImmutable
     {
-        return $this->endTime;
+        return \DateTimeImmutable::createFromMutable($this->endTime);
     }
 
     /**
