@@ -5,17 +5,16 @@ use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Controller\SleepController;
 use SleeperBundle\Application\Output\SleepOutput;
+use SleeperBundle\Application\Service\SleepService;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
-use SleeperBundle\Domain\Model\Sleep;
-use SleeperBundle\Domain\Service\SleepDomainService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SleepControllerTest extends TestCase
 {
-    /** @var  SleepDomainService|MockInterface */
-    private $sleepDomainServiceMock;
+    /** @var  SleepService|MockInterface */
+    private $sleepService;
     /** @var  SleepOutput|MockInterface */
-    private $sleepMock;
+    private $sleepOutputMock;
     /** @var  Serializer|MockInterface */
     private $serializerMock;
     /** @var SleepController */
@@ -23,12 +22,12 @@ class SleepControllerTest extends TestCase
 
     protected function setUp()
     {
-        $this->sleepDomainServiceMock = \Mockery::mock(SleepDomainService::class);
-        $this->sleepMock = \Mockery::mock(Sleep::class);
+        $this->sleepService = \Mockery::mock(SleepService::class);
+        $this->sleepOutputMock = \Mockery::mock(SleepOutput::class);
         $this->serializerMock = \Mockery::mock(Serializer::class);
 
         $this->controller = new SleepController(
-            $this->sleepDomainServiceMock,
+            $this->sleepService,
             $this->serializerMock
         );
     }
@@ -36,20 +35,20 @@ class SleepControllerTest extends TestCase
     public function testThatCorrectResponseIsReturned(): void
     {
 
-        $this->sleepMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTimeImmutable());
-        $this->sleepMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTimeImmutable());
-        $this->sleepMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn(11);
-        $this->sleepMock->shouldReceive('getLightSleepSeconds')->once()->andReturn(22);
-        $this->sleepMock->shouldReceive('getAwakeSeconds')->once()->andReturn(33);
-        $this->sleepMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn(44);
+        $this->sleepOutputMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTimeImmutable());
+        $this->sleepOutputMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTimeImmutable());
+        $this->sleepOutputMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn(11);
+        $this->sleepOutputMock->shouldReceive('getLightSleepSeconds')->once()->andReturn(22);
+        $this->sleepOutputMock->shouldReceive('getAwakeSeconds')->once()->andReturn(33);
+        $this->sleepOutputMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn(44);
 
         $this->serializerMock->shouldReceive('serialize')
             ->once()
             ->andReturn('{"startTime":"2017-09-24 22:06:30","endTime":"2017-09-25 07:37:53","deepSleepSeconds":18779}');
 
-        $this->sleepDomainServiceMock->shouldReceive('getSleepByDate')
+        $this->sleepService->shouldReceive('getSleepByDate')
             ->once()
-            ->andReturn($this->sleepMock);
+            ->andReturn($this->sleepOutputMock);
 
         $response = $this->controller->sleepByDateAction(new \DateTime());
 
@@ -59,7 +58,7 @@ class SleepControllerTest extends TestCase
 
     public function testThatExceptionIsThrownWhenSleepNotFound(): void
     {
-        $this->sleepDomainServiceMock->shouldReceive('getSleepByDate')
+        $this->sleepService->shouldReceive('getSleepByDate')
             ->once()
             ->andThrow(SleepByDateNotFoundException::class);
 

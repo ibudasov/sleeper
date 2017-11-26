@@ -3,25 +3,25 @@
 namespace SleeperBundle\Application\Controller;
 
 use JMS\Serializer\Serializer;
+use SleeperBundle\Application\Service\SleepService;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
-use SleeperBundle\Domain\Service\SleepDomainService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class SleepController
 {
-    /** @var  SleepDomainService */
+    /** @var  SleepService */
     private $sleepService;
 
     /** @var  Serializer */
     private $serializer;
 
     /**
-     * @param SleepDomainService $sleepService
+     * @param SleepService $sleepService
      * @param Serializer $serializer
      */
-    public function __construct(SleepDomainService $sleepService, Serializer $serializer)
+    public function __construct(SleepService $sleepService, Serializer $serializer)
     {
         $this->sleepService = $sleepService;
         $this->serializer = $serializer;
