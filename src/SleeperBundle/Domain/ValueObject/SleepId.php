@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Domain\ValueObject;
 
-class SleepId
+class SleepId implements Identity, ValueObject
 {
     /** @var string */
     private $sleepIdValue;
@@ -40,5 +40,14 @@ class SleepId
     public function __toString(): string
     {
         return $this->sleepIdValue;
+    }
+
+    /**
+     * @param ValueObject $that
+     * @return bool
+     */
+    public function isEqualTo(ValueObject $that): bool
+    {
+        return $this->sleepIdValue == (string) $that;
     }
 }

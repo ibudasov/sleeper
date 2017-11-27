@@ -3,12 +3,13 @@
 namespace SleeperBundle\Domain\Model;
 
 use Assert\Assertion;
-use SleeperBundle\Domain\ValueObject\SleepId;
+use SleeperBundle\Domain\ValueObject\Identity;
 
-class Sleep
+class Sleep implements IdentifiableDomainEntity
 {
-    /** @var SleepId */
+    /** @var Identity */
     private $id;
+
     /** @var \DateTimeImmutable */
     private $startTime;
 
@@ -28,7 +29,7 @@ class Sleep
     private $totalSleepSeconds;
 
     /**
-     * @param SleepId $id
+     * @param Identity $id
      * @param \DateTimeImmutable $startTime
      * @param \DateTimeImmutable $endTime
      * @param int $deepSleepInSeconds
@@ -37,7 +38,7 @@ class Sleep
      * @param int $totalSleepSeconds
      */
     public function __construct(
-        SleepId $id,
+        Identity $id,
         \DateTimeImmutable $startTime,
         \DateTimeImmutable $endTime,
         int $deepSleepInSeconds,
@@ -56,6 +57,12 @@ class Sleep
         $this->lightSleepSeconds = $lightSleepInSeconds;
         $this->awakeSeconds = $awakeSeconds;
         $this->totalSleepSeconds = $totalSleepSeconds;
+    }
+
+    /** @return Identity */
+    public function getId(): Identity
+    {
+        return $this->id;
     }
 
     /** @return \DateTimeImmutable */

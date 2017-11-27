@@ -21,4 +21,28 @@ class SleepIdTest extends TestCase
         self::assertInstanceOf(SleepId::class, $sleepId);
         self::assertEquals($id, (string) $sleepId);
     }
+
+    public function testThatTwoIdenticalIdsAreEqual(): void
+    {
+        $id1 = SleepId::createFrom('ok');
+        $id2 = SleepId::createFrom('ok');
+
+        self::assertTrue($id1->isEqualTo($id2));
+    }
+
+    public function testThatNonIdenticalIdsAreNotEqual(): void
+    {
+        $id1 = SleepId::createFrom('ok');
+        $id2 = SleepId::createFrom('no');
+
+        self::assertFalse($id1->isEqualTo($id2));
+    }
+
+    public function testThatTwoGeneratedIdsAreNotEqual(): void
+    {
+        $id1 = SleepId::generate();
+        $id2 = SleepId::generate();
+
+        self::assertFalse($id1->isEqualTo($id2));
+    }
 }

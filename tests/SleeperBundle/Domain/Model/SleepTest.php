@@ -26,6 +26,7 @@ class SleepTest extends TestCase
             $expectedTotalSleep
         );
 
+        self::assertEquals($sleepId, $sleep->getId());
         self::assertEquals($expectedStartTime, $sleep->getStartTime());
         self::assertEquals($expectedEndTime, $sleep->getEndTime());
         self::assertEquals($expectedDeepSleep, $sleep->getDeepSleepSeconds());
