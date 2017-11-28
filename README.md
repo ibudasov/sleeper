@@ -15,6 +15,9 @@ These 2 approaches are intentended to reduce code coupling and make sure depende
 Theory
 -
 
+- [Clean code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+- [DDD in PHP](https://leanpub.com/ddd-in-php) 
+- [Videos regarding subject](http://www.youtube.com/playlist?list=PLviuozY4UHkkLGVVUbUDSyvcnaVox2cXo)
 
 
 What's used?
