@@ -23,10 +23,9 @@ Theory
 What's used?
 -
 
-- DDD approach
-- TDD approach
-- Symfony3 
-
+- Partially DDD and partially Hexagonal approaches
+- TDD
+ 
 
 Commands
 -
@@ -52,3 +51,8 @@ Prerequisites
 - `brew install php71-xdebug` -- XDebug install for OSX
 
 - `brew install fswatch` -- file system watcher for OSX
+
+Dependencies
+-
+
+![Dependencies](src/SleeperBundle/Resources/dependencies.png)
