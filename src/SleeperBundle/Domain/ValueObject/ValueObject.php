@@ -8,6 +8,7 @@ interface ValueObject
      * This method provides an ability to compare two value objects
      *
      * @param ValueObject $that
+     *
      * @return bool
      */
     public function isEqualTo(ValueObject $that): bool;

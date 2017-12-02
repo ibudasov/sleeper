@@ -13,14 +13,14 @@ use PHPUnit\Framework\TestCase;
 /**
  * @codeCoverageIgnore
  */
-class DatabaseSleepRepository extends EntityRepository implements SleepRepositoryInterface
+class DoctrineSleepRepository extends EntityRepository implements SleepRepositoryInterface
 {
     /**
-     * @param \DateTimeImmutable $date
+     * @param \DateTime $date
      * @return Sleep
      * @throws SleepByDateNotFoundException
      */
-    public function getSleepByDate(\DateTimeImmutable $date): Sleep
+    public function getSleepByDate(\DateTime $date): Sleep
     {
         $startTime = $date->modify('midnight');
         $endOfPeriod = clone($date);

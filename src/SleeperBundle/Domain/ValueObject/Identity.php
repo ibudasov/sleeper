@@ -9,7 +9,7 @@ interface Identity
      * For example it's useful right before saving an entity,
      * when you don't really care of returning the Id
      *
-     * @return SleepId
+     * @return Identity
      */
     public static function generate();
 
@@ -19,9 +19,10 @@ interface Identity
      * Command will be executed asynchronously, but you still want to return id to frontend
      *
      * @param string $sleepIdValue
-     * @return SleepId
+     *
+     * @return Identity
      */
-    public static function createFrom(string $sleepIdValue): SleepId;
+    public static function createFrom(string $sleepIdValue): Identity;
 
     /**
      * Id can be converted to string in order to save it to database

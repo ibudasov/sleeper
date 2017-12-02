@@ -55,17 +55,17 @@ class SleepOutput
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return \DateTime
      */
-    public function getStartTime(): \DateTimeImmutable
+    public function getStartTime(): \DateTime
     {
         return $this->startTime;
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return \DateTime
      */
-    public function getEndTime(): \DateTimeImmutable
+    public function getEndTime(): \DateTime
     {
         return $this->endTime;
     }

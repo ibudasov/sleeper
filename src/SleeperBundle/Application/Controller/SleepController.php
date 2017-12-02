@@ -39,9 +39,7 @@ class SleepController
     public function sleepByDateAction(\DateTime $date): JsonResponse
     {
         try {
-            $sleepOutput = $this->sleepService->getSleepByDate(
-                \DateTimeImmutable::createFromMutable($date)
-            );
+            $sleepOutput = $this->sleepService->getSleepByDate($date);
 
             $serializedResponse = $this->serializer->serialize($sleepOutput, 'json');
 

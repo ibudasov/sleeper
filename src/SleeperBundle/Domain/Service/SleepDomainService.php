@@ -18,12 +18,12 @@ class SleepDomainService
     }
 
     /**
-     * @param \DateTimeImmutable $date
+     * @param \DateTime $date
      *
      * @return Sleep
      * @throws SleepByDateNotFoundException
      */
-    public function getSleepByDate(\DateTimeImmutable $date): Sleep
+    public function getSleepByDate(\DateTime $date): Sleep
     {
         return $this->repository->getSleepByDate($date);
     }

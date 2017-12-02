@@ -18,18 +18,19 @@ class SleepId implements Identity, ValueObject
     }
 
     /**
-     * @return SleepId
+     * @return Identity
      */
-    public static function generate(): SleepId
+    public static function generate(): Identity
     {
         return self::createFrom(\uniqid());
     }
 
     /**
      * @param string $sleepIdValue
-     * @return SleepId
+     *
+     * @return Identity
      */
-    public static function createFrom(string $sleepIdValue): SleepId
+    public static function createFrom(string $sleepIdValue): Identity
     {
         return new self($sleepIdValue);
     }
@@ -44,6 +45,7 @@ class SleepId implements Identity, ValueObject
 
     /**
      * @param ValueObject $that
+     *
      * @return bool
      */
     public function isEqualTo(ValueObject $that): bool

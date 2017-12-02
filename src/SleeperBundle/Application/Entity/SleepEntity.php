@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @codeCoverageIgnore
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="SleeperBundle\Infrastructure\Repository\DatabaseSleepRepository")
+ * @ORM\Entity(repositoryClass="SleeperBundle\Infrastructure\Repository\DoctrineSleepRepository")
  */
 class SleepEntity
 {
@@ -25,14 +25,14 @@ class SleepEntity
     /**
      * @ORM\Column(type="datetime")
      *
-     * @var \DateTimeImmutable
+     * @var \DateTime
      */
     private $startTime;
 
     /**
      * @ORM\Column(type="datetime")
      *
-     * @var \DateTimeImmutable
+     * @var \DateTime
      */
     private $endTime;
 
@@ -81,33 +81,33 @@ class SleepEntity
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return \DateTime
      */
-    public function getStartTime(): \DateTimeImmutable
+    public function getStartTime(): \DateTime
     {
-        return \DateTimeImmutable::createFromMutable($this->startTime);
+        return $this->startTime;
     }
 
     /**
-     * @param \DateTimeImmutable $startTime
+     * @param \DateTime $startTime
      */
-    public function setStartTime(\DateTimeImmutable $startTime): void
+    public function setStartTime(\DateTime $startTime): void
     {
         $this->startTime = $startTime;
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return \DateTime
      */
-    public function getEndTime(): \DateTimeImmutable
+    public function getEndTime(): \DateTime
     {
-        return \DateTimeImmutable::createFromMutable($this->endTime);
+        return $this->endTime;
     }
 
     /**
-     * @param \DateTimeImmutable $endTime
+     * @param \DateTime $endTime
      */
-    public function setEndTime(\DateTimeImmutable $endTime): void
+    public function setEndTime(\DateTime $endTime): void
     {
         $this->endTime = $endTime;
     }

@@ -10,10 +10,10 @@ class Sleep implements IdentifiableDomainEntity
     /** @var Identity */
     private $id;
 
-    /** @var \DateTimeImmutable */
+    /** @var \DateTime */
     private $startTime;
 
-    /** @var \DateTimeImmutable */
+    /** @var \DateTime */
     private $endTime;
 
     /** @var int */
@@ -30,8 +30,8 @@ class Sleep implements IdentifiableDomainEntity
 
     /**
      * @param Identity $id
-     * @param \DateTimeImmutable $startTime
-     * @param \DateTimeImmutable $endTime
+     * @param \DateTime $startTime
+     * @param \DateTime $endTime
      * @param int $deepSleepInSeconds
      * @param int $lightSleepInSeconds
      * @param int $awakeSeconds
@@ -39,8 +39,8 @@ class Sleep implements IdentifiableDomainEntity
      */
     public function __construct(
         Identity $id,
-        \DateTimeImmutable $startTime,
-        \DateTimeImmutable $endTime,
+        \DateTime $startTime,
+        \DateTime $endTime,
         int $deepSleepInSeconds,
         int $lightSleepInSeconds,
         int $awakeSeconds,
@@ -65,14 +65,14 @@ class Sleep implements IdentifiableDomainEntity
         return $this->id;
     }
 
-    /** @return \DateTimeImmutable */
-    public function getStartTime(): \DateTimeImmutable
+    /** @return \DateTime */
+    public function getStartTime(): \DateTime
     {
         return $this->startTime;
     }
 
-    /** @return \DateTimeImmutable */
-    public function getEndTime(): \DateTimeImmutable
+    /** @return \DateTime */
+    public function getEndTime(): \DateTime
     {
         return $this->endTime;
     }
