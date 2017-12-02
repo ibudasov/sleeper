@@ -11,6 +11,11 @@ This API suppose to analyze sleep data which has been retrieved by sleep trackin
 the idea behind this project is to master TDD skill and learn modern approaches like DDD & Hexagonal architecture.
 These 2 approaches are intentended to reduce code coupling and make sure dependencies go only in one direction - in direction of domain.
 
+Hexagonal style dependencies explanation
+-
+
+![Dependencies](src/SleeperBundle/Resources/dependencies.png)
+
 
 Theory
 -
@@ -51,8 +56,3 @@ Prerequisites
 - `brew install php71-xdebug` -- XDebug install for OSX
 
 - `brew install fswatch` -- file system watcher for OSX
-
-Dependencies
--
-
-![Dependencies](src/SleeperBundle/Resources/dependencies.png)
