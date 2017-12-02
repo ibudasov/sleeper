@@ -9,8 +9,8 @@ class SleepTest extends TestCase
     public function testThatModelCanBeCreatedWithCorrectInput(): void
     {
         $sleepId = SleepId::generate();
-        $expectedStartTime = new \DateTimeImmutable();
-        $expectedEndTime = new \DateTimeImmutable();
+        $expectedStartTime = new \DateTime();
+        $expectedEndTime = new \DateTime();
         $expectedDeepSleep = 90;
         $expectedLightSleep = 45;
         $expectedAwake = 234;

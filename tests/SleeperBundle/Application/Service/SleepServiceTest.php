@@ -29,8 +29,8 @@ class SleepServiceTest extends TestCase
 
     public function testThatServiceReturnsMappedOutput(): void
     {
-        $startTime = new \DateTimeImmutable();
-        $endTime = new \DateTimeImmutable();
+        $startTime = new \DateTime();
+        $endTime = new \DateTime();
         $deepSleepSeconds = 1;
         $lightSleepSeconds = 2;
         $awakeSeconds = 3;
@@ -45,7 +45,7 @@ class SleepServiceTest extends TestCase
         $this->modelMock->shouldReceive('getAwakeSeconds')->once()->andReturn($awakeSeconds);
         $this->modelMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn($totalSleepSeconds);
 
-        $output = $this->applicationService->getSleepByDate(new \DateTimeImmutable());
+        $output = $this->applicationService->getSleepByDate(new \DateTime());
 
         self::assertInstanceOf(SleepOutput::class, $output);
         self::assertEquals($startTime, $output->getStartTime());

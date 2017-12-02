@@ -21,8 +21,8 @@ class SleepEntityToSleepModelMapperTest extends TestCase
 
     public function testThatSleepEntityCanBeMappedToModel(): void
     {
-        $startTime = new \DateTimeImmutable();
-        $endTime = new \DateTimeImmutable();
+        $startTime = new \DateTime();
+        $endTime = new \DateTime();
         $deepSleepSeconds = 1;
         $lightSleepSeconds = 1;
         $awakeSeconds = 1;

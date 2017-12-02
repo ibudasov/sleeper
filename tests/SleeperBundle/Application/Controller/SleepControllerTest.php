@@ -35,8 +35,8 @@ class SleepControllerTest extends TestCase
     public function testThatCorrectResponseIsReturned(): void
     {
 
-        $this->sleepOutputMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTimeImmutable());
-        $this->sleepOutputMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTimeImmutable());
+        $this->sleepOutputMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTime());
+        $this->sleepOutputMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTime());
         $this->sleepOutputMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn(11);
         $this->sleepOutputMock->shouldReceive('getLightSleepSeconds')->once()->andReturn(22);
         $this->sleepOutputMock->shouldReceive('getAwakeSeconds')->once()->andReturn(33);
