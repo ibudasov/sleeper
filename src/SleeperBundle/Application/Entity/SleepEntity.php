@@ -4,10 +4,8 @@ namespace SleeperBundle\Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use SleeperBundle\Domain\ValueObject\SleepId;
-use PHPUnit\Framework\TestCase;
 
 /**
- * @codeCoverageIgnore
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="SleeperBundle\Infrastructure\Repository\DoctrineSleepRepository")
  */
