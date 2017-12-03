@@ -17,20 +17,24 @@ Hexagonal style dependencies explanation
 ![Dependencies](src/SleeperBundle/Resources/dependencies.png)
 
 
-Theory
--
+Earned experience
+- 
 
-- [Clean code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
-- [DDD in PHP](https://leanpub.com/ddd-in-php) 
-- [Videos regarding subject](http://www.youtube.com/playlist?list=PLviuozY4UHkkLGVVUbUDSyvcnaVox2cXo)
+Application
+- 👌 layered architecture ([DDD](https://leanpub.com/ddd-in-php) or [hexagonal](http://www.youtube.com/playlist?list=PLviuozY4UHkkLGVVUbUDSyvcnaVox2cXo))
+- 👌 setting up whole project from bare framework according to [Clean code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+- 👌 TDD approach -- writing tests first and then production code. When I installed test coverage tool, I found out that all domain and application are covered with tests, with no additional effort
+- 👌 code structures like Value Objects, Models, Services, and where/when to use them
+- Domain services
+- Lightweight bus
+- CQRS
+- FOS REST bundle
 
-
-What's used?
--
-
-- Partially DDD and partially Hexagonal approaches
-- TDD
- 
+Infrastructure  
+- 👌 SQLite 
+- 👌 nice composer aliases for commands
+- 👌 setting up test coverage tool (nothing special, just using PHPUnit + XDebug)
+- Swagger docs
 
 Commands
 -
