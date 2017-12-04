@@ -23,12 +23,14 @@ Earned experience
 Application
 - 👌 layered architecture ([DDD](https://leanpub.com/ddd-in-php) or [hexagonal](http://www.youtube.com/playlist?list=PLviuozY4UHkkLGVVUbUDSyvcnaVox2cXo))
 - 👌 setting up whole project from bare framework according to [Clean code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+- 👌 Dependency Inversion principle
 - 👌 TDD approach -- writing tests first and then production code. When I installed test coverage tool, I found out that all domain and application are covered with tests, with no additional effort
 - 👌 code structures like Value Objects, Models, Services, and where/when to use them
 - Domain services
 - Lightweight bus
 - CQRS
 - FOS REST bundle
+- get rid of namespaces like `.../ValueObject` and etc. According to the book, namespaces should reflect domain, not building blocks
 
 Infrastructure  
 - 👌 SQLite 
