@@ -2,6 +2,8 @@
 
 namespace SleeperBundle\Domain\Service;
 
+use SleeperBundle\Domain\Model\Sleep;
+
 /**
  * Suppose to be stateless
  * ​Interface belongs to domain, implementation belongs to infrastructure
@@ -10,5 +12,5 @@ namespace SleeperBundle\Domain\Service;
  */
 interface DomainService
 {
-    public function execute();
+    public function execute(Sleep $sleep);
 }
