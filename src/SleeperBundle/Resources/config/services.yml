@@ -20,7 +20,7 @@ services:
         resource: '../../../../src/SleeperBundle/Application/Controller'
         tags: ['controller.service_arguments']
 
-    SleeperBundle\Infrastructure\Repository\DatabaseSleepRepository:
+    SleeperBundle\Infrastructure\Repository\DoctrineSleepRepository:
         factory: ["@doctrine", getRepository]
         arguments:
             - "SleeperBundle:SleepEntity"
