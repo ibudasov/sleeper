@@ -47,7 +47,11 @@ Commands
 
 - `composer stop` -- stop the server
 
-- `composer test` -- run the tests
+- `composer test` -- run all the tests
+
+- `composer test:unit` -- run unit tests (fast)
+
+- `composer test:contract` -- run contact test based on Symfony crawler (slow)
 
 - `composer test:coverage` -- test coverage (requires XDebug installed)
 

@@ -12,5 +12,6 @@ web_profiler:
     toolbar: false
     intercept_redirects: false
 
-swiftmailer:
-    disable_delivery: true
+doctrine:
+    dbal:
+        path: '%database_path_test%'

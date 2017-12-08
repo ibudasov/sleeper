@@ -4,6 +4,7 @@
 parameters:
     database_driver: pdo_sqlite
     database_path: '%kernel.project_dir%/var/data/sleeper.db'
+    database_path_test: '%kernel.project_dir%/var/data/sleeper_test.db'
 
     mailer_transport: smtp
     mailer_host: 127.0.0.1

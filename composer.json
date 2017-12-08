@@ -38,8 +38,10 @@
     },
     "scripts": {
         "test": "./vendor/bin/phpunit",
-        "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
+        "test:unit": "./vendor/bin/phpunit tests/SleeperBundle",
+        "test:contract": "./vendor/bin/phpunit tests/contract",
         "test:coverage": "vendor/bin/phpunit --coverage-html var/test-coverage;  echo \"\nReport is located: var/test-coverage/index.html\"",
+        "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
         "run": "bin/console server:start",
         "stop": "bin/console server:stop",
         "symfony-scripts": [
@@ -49,8 +51,13 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
+        "setup-database": [
+            "bin/console doctrine:schema:update --force",
+            "bin/console doctrine:schema:update --env=test --force"
+        ],
         "post-install-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "@setup-database"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
