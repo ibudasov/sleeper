@@ -26,6 +26,7 @@ Application
 - 👌 Dependency Inversion principle
 - 👌 TDD approach -- writing tests first and then production code. When I installed test coverage tool, I found out that all domain and application are covered with tests, with no additional effort
 - 👌 code structures like Value Objects, Models, Services, and where/when to use them
+- 👌 using Assertions in codebase to assert use scenarios 
 - Domain services
 - Lightweight bus
 - CQRS
@@ -36,6 +37,7 @@ Infrastructure
 - 👌 SQLite 
 - 👌 nice composer aliases for commands
 - 👌 setting up test coverage tool (nothing special, just using PHPUnit + XDebug)
+- 👌 setting up contract tests with test database and [fixtures](https://github.com/hautelook/AliceBundle)
 - Swagger docs
 
 Commands
