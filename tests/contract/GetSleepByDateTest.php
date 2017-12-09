@@ -6,18 +6,23 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class GetSleepByDateTest extends WebTestCase
 {
-    /* public function testItReturnsTheSleepIfItExists(): void
+    public function testItReturnsTheSleepIfItExists(): void
     {
         $client = static::createClient();
 
-        $client->request('GET', '/sleep/2017-11-11');
+        $today = (new \DateTime())->format('Y-m-d');
+
+        $crawler = $client->request('GET', '/sleep/' . $today);
+        $errorMessage = (false === $client->getResponse()->isSuccessful())
+            ? $crawler->filter('title')->html()
+            : null;
 
         $this->assertEquals(
-            200,
-            $client->getResponse()->getStatusCode(),
-            \substr($client->getResponse()->getContent(), 0, 1000)
+            200
+            , $client->getResponse()->getStatusCode()
+            , $errorMessage
         );
-    }*/
+    }
 
     public function testThat404IsReturnedWhenSleepIsNotFound(): void
     {
@@ -26,9 +31,8 @@ class GetSleepByDateTest extends WebTestCase
         $client->request('GET', '/sleep/2017-11-12');
 
         $this->assertEquals(
-            404,
-            $client->getResponse()->getStatusCode(),
-            \substr($client->getResponse()->getContent(), 0, 1000)
+            404
+            , $client->getResponse()->getStatusCode()
         );
     }
 }

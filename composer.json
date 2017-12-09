@@ -31,16 +31,19 @@
         "symfony/symfony": "^3"
     },
     "require-dev": {
+        "doctrine/data-fixtures": "^1.3",
+        "hautelook/alice-bundle": "^2.0@rc",
         "mockery/mockery": "^1.0",
-        "sensio/generator-bundle": "^3.0",
         "phpunit/phpunit": "^6.4",
-        "symfony/phpunit-bridge": "^3.0"
+        "sensio/generator-bundle": "^3.0",
+        "symfony/phpunit-bridge": "^3.0",
+        "theofidry/alice-data-fixtures": "^1.0@rc"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit",
         "test:unit": "./vendor/bin/phpunit tests/SleeperBundle",
-        "test:contract": "./vendor/bin/phpunit tests/contract",
-        "test:coverage": "vendor/bin/phpunit --coverage-html var/test-coverage;  echo \"\nReport is located: var/test-coverage/index.html\"",
+        "test:contract": "bin/console hautelook:fixtures:load --no-interaction --env=test  && ./vendor/bin/phpunit tests/contract",
+        "test:coverage": "vendor/bin/phpunit tests/SleeperBundle --coverage-html var/test-coverage;  echo \"\nReport is located: ./var/test-coverage/index.html\"",
         "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
         "run": "bin/console server:start",
         "stop": "bin/console server:stop",
@@ -53,7 +56,8 @@
         ],
         "setup-database": [
             "bin/console doctrine:schema:update --force",
-            "bin/console doctrine:schema:update --env=test --force"
+            "bin/console doctrine:schema:update --env=test --force",
+            "bin/console hautelook:fixtures:load --no-interaction "
         ],
         "post-install-cmd": [
             "@symfony-scripts",

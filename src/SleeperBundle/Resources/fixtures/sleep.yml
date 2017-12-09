@@ -1,0 +1,11 @@
+# For generating values we use https://github.com/fzaninotto/Faker
+
+SleeperBundle\Application\Entity\SleepEntity:
+    sleep_today:
+        id: <randomNumber()>
+        startTime: <dateTimeBetween('-1 day', 'now', 'UTC')>
+        endTime: <dateTimeBetween('now', 'now', 'UTC')>
+        deepSleepSeconds: 3000
+        lightSleepSeconds: 3000
+        awakeSeconds: 1000
+        totalSleepSeconds: 10000
