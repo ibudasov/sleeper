@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Entity\SleepEntity;
-use SleeperBundle\Domain\ValueObject\SleepId;
 
 class SleepEntityTest extends TestCase
 {
     public function testThatEntityCanBeCreatedWithValidValues(): void
     {
-        $idMock = \Mockery::mock(SleepId::class);
+        $id = \uniqid();
         $startTime = new \DateTime();
         $endTime = new \DateTime();
         $lightSleepSeconds = 1;
@@ -20,7 +19,7 @@ class SleepEntityTest extends TestCase
 
         $sleepEntity = new SleepEntity();
 
-        $sleepEntity->setId($idMock);
+        $sleepEntity->setId($id);
         $sleepEntity->setStartTime($startTime);
         $sleepEntity->setEndTime($endTime);
         $sleepEntity->setLightSleepSeconds($lightSleepSeconds);
@@ -28,7 +27,7 @@ class SleepEntityTest extends TestCase
         $sleepEntity->setAwakeSeconds($awakeSeconds);
         $sleepEntity->setTotalSleepSeconds($totalSleepSeconds);
 
-        self::assertEquals($idMock, $sleepEntity->getId());
+        self::assertEquals($id, $sleepEntity->getId());
         self::assertEquals($startTime, $sleepEntity->getStartTime());
         self::assertEquals($endTime, $sleepEntity->getEndTime());
         self::assertEquals($lightSleepSeconds, $sleepEntity->getLightSleepSeconds());

@@ -3,7 +3,6 @@
 namespace SleeperBundle\Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use SleeperBundle\Domain\ValueObject\SleepId;
 
 /**
  * @ORM\Entity
@@ -71,11 +70,11 @@ class SleepEntity
     }
 
     /**
-     * @param SleepId $id
+     * @param string $id
      */
-    public function setId(SleepId $id): void
+    public function setId(string $id): void
     {
-        $this->id = (string) $id;
+        $this->id = $id;
     }
 
     /**
