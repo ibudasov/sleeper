@@ -12,15 +12,11 @@ class GetSleepByDateTest extends WebTestCase
 
         $today = (new \DateTime())->format('Y-m-d');
 
-        $crawler = $client->request('GET', '/sleep/' . $today);
-        $errorMessage = (false === $client->getResponse()->isSuccessful())
-            ? $crawler->filter('title')->html()
-            : null;
+        $client->request('GET', '/sleep/' . $today);
 
         $this->assertEquals(
             200
             , $client->getResponse()->getStatusCode()
-            , $errorMessage
         );
     }
 
