@@ -21,6 +21,7 @@ class SleepEntityToSleepModelMapperTest extends TestCase
 
     public function testThatSleepEntityCanBeMappedToModel(): void
     {
+        $id = 'random-id';
         $startTime = new \DateTime();
         $endTime = new \DateTime();
         $deepSleepSeconds = 1;
@@ -28,6 +29,7 @@ class SleepEntityToSleepModelMapperTest extends TestCase
         $awakeSeconds = 1;
         $totalSleepSeconds = 5;
 
+        $this->sleepEntityMock->shouldReceive('getId')->once()->andReturn($id);
         $this->sleepEntityMock->shouldReceive('getStartTime')->once()->andReturn($startTime);
         $this->sleepEntityMock->shouldReceive('getEndTime')->once()->andReturn($endTime);
         $this->sleepEntityMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn($deepSleepSeconds);
@@ -38,6 +40,7 @@ class SleepEntityToSleepModelMapperTest extends TestCase
         $mappingResult = SleepEntityToSleepModelMapper::map($this->sleepEntityMock);
 
         self::assertInstanceOf(Sleep::class, $mappingResult);
+        self::assertEquals($id, $mappingResult->getId());
         self::assertEquals($startTime, $mappingResult->getStartTime());
         self::assertEquals($endTime, $mappingResult->getEndTime());
         self::assertEquals($deepSleepSeconds, $mappingResult->getDeepSleepSeconds());

@@ -15,7 +15,7 @@ class SleepEntityToSleepModelMapper
     public static function map(SleepEntity $entity): Sleep
     {
         return new Sleep(
-            SleepId::generate(),
+            SleepId::createFrom($entity->getId()),
             $entity->getStartTime(),
             $entity->getEndTime(),
             $entity->getDeepSleepSeconds(),
