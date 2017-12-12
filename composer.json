@@ -1,102 +1,102 @@
 {
-    "name": "ibudasov/sleeper",
-    "license": "proprietary",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "SleeperBundle\\": "src/SleeperBundle"
-        },
-        "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
-        ]
+  "name": "ibudasov/sleeper",
+  "license": "proprietary",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "SleeperBundle\\": "src/SleeperBundle"
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        },
-        "files": [
-            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-        ]
+    "classmap": [
+      "app/AppKernel.php",
+      "app/AppCache.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
     },
-    "require": {
-        "php": ">=7.1",
-        "beberlei/assert": "^2.7",
-        "doctrine/doctrine-bundle": "^1.6",
-        "doctrine/orm": "^2.5",
-        "jms/serializer-bundle": "^2.2",
-        "sensio/distribution-bundle": "^5.0.19",
-        "sensio/framework-extra-bundle": "^3.0.2",
-        "symfony/monolog-bundle": "^3.1.0",
-        "symfony/symfony": "^3"
+    "files": [
+      "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
+    ]
+  },
+  "require": {
+    "php": ">=7.1",
+    "beberlei/assert": "^2.7",
+    "doctrine/doctrine-bundle": "^1.6",
+    "doctrine/orm": "^2.5",
+    "jms/serializer-bundle": "^2.2",
+    "sensio/distribution-bundle": "^5.0.19",
+    "sensio/framework-extra-bundle": "^3.0.2",
+    "symfony/monolog-bundle": "^3.1.0",
+    "symfony/symfony": "^3"
+  },
+  "require-dev": {
+    "doctrine/data-fixtures": "^1.3",
+    "hautelook/alice-bundle": "^2.0@rc",
+    "mockery/mockery": "^1.0",
+    "phpunit/phpunit": "^6.4",
+    "sensio/generator-bundle": "^3.0",
+    "symfony/phpunit-bridge": "^3.0",
+    "theofidry/alice-data-fixtures": "^1.0@rc"
+  },
+  "scripts": {
+    "test": "@run-tests",
+    "test:unit": "@run-unit-tests",
+    "test:contract": "@run-contract-tests",
+    "test:coverage": "vendor/bin/phpunit tests/SleeperBundle --coverage-html var/test-coverage;  echo \"\nReport is located: ./var/test-coverage/index.html\"",
+    "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
+    "run": "bin/console server:start",
+    "stop": "bin/console server:stop",
+    "symfony-scripts": [
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+    ],
+    "setup-database": [
+      "bin/console doctrine:schema:update --force"
+    ],
+    "load-fixtures": [
+      "bin/console hautelook:fixtures:load --no-interaction "
+    ],
+    "prepare-contract-tests": [
+      "bin/console doctrine:schema:update --env=test --force",
+      "bin/console hautelook:fixtures:load --no-interaction --env=test"
+    ],
+    "run-unit-tests": [
+      "./vendor/bin/phpunit tests/SleeperBundle"
+    ],
+    "run-contract-tests": [
+      "@prepare-contract-tests",
+      "./vendor/bin/phpunit tests/contract"
+    ],
+    "run-tests": [
+      "@run-unit-tests",
+      "@run-contract-tests"
+    ],
+    "post-install-cmd": [
+      "@symfony-scripts",
+      "@setup-database",
+      "@load-fixtures"
+    ],
+    "post-update-cmd": [
+      "@symfony-scripts"
+    ]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "symfony-app-dir": "app",
+    "symfony-bin-dir": "bin",
+    "symfony-var-dir": "var",
+    "symfony-web-dir": "web",
+    "symfony-tests-dir": "tests",
+    "symfony-assets-install": "relative",
+    "incenteev-parameters": {
+      "file": "app/config/parameters.yml"
     },
-    "require-dev": {
-        "doctrine/data-fixtures": "^1.3",
-        "hautelook/alice-bundle": "^2.0@rc",
-        "mockery/mockery": "^1.0",
-        "phpunit/phpunit": "^6.4",
-        "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.0",
-        "theofidry/alice-data-fixtures": "^1.0@rc"
-    },
-    "scripts": {
-      "test": "@run-tests",
-      "test:unit": "@run-unit-tests",
-      "test:contract": "@run-contract-tests",
-        "test:coverage": "vendor/bin/phpunit tests/SleeperBundle --coverage-html var/test-coverage;  echo \"\nReport is located: ./var/test-coverage/index.html\"",
-        "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit",
-        "run": "bin/console server:start",
-        "stop": "bin/console server:stop",
-        "symfony-scripts": [
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ],
-        "setup-database": [
-          "bin/console doctrine:schema:update --force"
-        ],
-      "load-fixtures": [
-        "bin/console hautelook:fixtures:load --no-interaction "
-      ],
-      "prepare-contract-tests": [
-        "bin/console doctrine:schema:update --env=test --force",
-        "bin/console hautelook:fixtures:load --no-interaction --env=test"
-      ],
-      "run-unit-tests": [
-        "./vendor/bin/phpunit tests/SleeperBundle"
-      ],
-      "run-contract-tests": [
-        "@prepare-contract-tests",
-        "./vendor/bin/phpunit tests/contract"
-      ],
-      "run-tests": [
-        "@run-unit-tests",
-        "@run-contract-tests"
-      ],
-        "post-install-cmd": [
-            "@symfony-scripts",
-          "@setup-database",
-          "@load-fixtures"
-        ],
-        "post-update-cmd": [
-            "@symfony-scripts"
-        ]
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
-        "branch-alias": null
-    }
+    "branch-alias": null
+  }
 }
