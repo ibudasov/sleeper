@@ -3,6 +3,12 @@
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
 
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: sleeper-prod
+
 defaults: &defaults
   docker:
       # specify the version you desire here
