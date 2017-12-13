@@ -1,4 +1,4 @@
-sleeper
+[sleeper](https://sleeper-prod.herokuapp.com/)
 =======
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/56879f98704275a90180/maintainability)](https://codeclimate.com/github/ibudasov/sleeper/maintainability)
@@ -35,7 +35,8 @@ Application
 - get rid of namespaces like `.../ValueObject` and etc. According to the book, namespaces should reflect domain, not building blocks
 
 Infrastructure  
-- 👌 CI with CircleCI -- it runs my tests and shows nice little badge on main page of repo 
+- 👌 CI with CircleCI -- it runs my tests and shows nice little badge on main page of repo
+- 👌 CD with Heroku 
 - 👌 SQLite - quite nice for development, just perfect for tests
 - 👌 nice composer aliases for commands, so I can run all the tests or install the whole project with one simple command
 - 👌 setting up test coverage tool (nothing special, just using PHPUnit + XDebug)
