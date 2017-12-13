@@ -3,6 +3,7 @@ sleeper
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/56879f98704275a90180/maintainability)](https://codeclimate.com/github/ibudasov/sleeper/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/56879f98704275a90180/test_coverage)](https://codeclimate.com/github/ibudasov/sleeper/test_coverage)
+[![CircleCI](https://circleci.com/gh/ibudasov/sleeper.svg?style=svg)](https://circleci.com/gh/ibudasov/sleeper)
 
 What is it?
 -
