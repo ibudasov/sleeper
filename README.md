@@ -3,7 +3,6 @@ sleeper
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/56879f98704275a90180/maintainability)](https://codeclimate.com/github/ibudasov/sleeper/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/56879f98704275a90180/test_coverage)](https://codeclimate.com/github/ibudasov/sleeper/test_coverage)
-[ ![Codeship Status for ibudasov/sleeper](https://app.codeship.com/projects/b2d775e0-c213-0135-e729-265f517797e2/status?branch=master)](https://app.codeship.com/projects/260467)
 
 What is it?
 -
