@@ -34,38 +34,10 @@ install_composer: &install_composer
         rm composer-setup.php
         exit $RESULT
 
-phpunit: &phpunit
-    <<: *defaults
-    steps:
-      - checkout
-
-      - run:
-          <<: *install_composer
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: composer install -n --prefer-dist
-
-      - save_cache:
-          paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
-
-      # run tests!
-      - run: vendor/bin/phpunit
-
 version: 2
 jobs:
 
-  phpunit-71:
-     <<: *phpunit
-
-  code-fixer:
+  run-tests:
     <<: *defaults
 
     steps:
@@ -95,5 +67,4 @@ workflows:
   version: 2
   test_and_lint:
     jobs:
-      - phpunit-71
-      - code-fixer
+      - run-tests
