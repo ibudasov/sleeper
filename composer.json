@@ -57,8 +57,7 @@
       "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
     ],
     "setup-database": [
-      "bin/console doctrine:schema:update --force",
-      "bin/console hautelook:fixtures:load --no-interaction "
+      "bin/console doctrine:schema:update --force"
     ],
     "setup-database-test": [
       "bin/console doctrine:schema:update --env=test --force",
@@ -69,6 +68,7 @@
     ],
     "run-contract-tests": [
       "@setup-database",
+      "bin/console hautelook:fixtures:load --no-interaction ",
       "@setup-database-test",
       "./vendor/bin/phpunit tests/contract"
     ],
