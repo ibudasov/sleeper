@@ -57,12 +57,10 @@
       "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
     ],
     "setup-database": [
-      "bin/console doctrine:schema:update --force"
-    ],
-    "load-fixtures": [
+      "bin/console doctrine:schema:update --force",
       "bin/console hautelook:fixtures:load --no-interaction "
     ],
-    "prepare-contract-tests": [
+    "setup-database-test": [
       "bin/console doctrine:schema:update --env=test --force",
       "bin/console hautelook:fixtures:load --no-interaction --env=test"
     ],
@@ -70,7 +68,8 @@
       "./vendor/bin/phpunit tests/SleeperBundle"
     ],
     "run-contract-tests": [
-      "@prepare-contract-tests",
+      "@setup-database",
+      "@setup-database-test",
       "./vendor/bin/phpunit tests/contract"
     ],
     "run-tests": [
@@ -79,8 +78,7 @@
     ],
     "post-install-cmd": [
       "@symfony-scripts",
-      "@setup-database",
-      "@load-fixtures"
+      "@setup-database"
     ],
     "post-update-cmd": [
       "@symfony-scripts"
