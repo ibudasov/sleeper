@@ -7,10 +7,10 @@ sleeper
 
 What is it?
 -
-This API suppose to analyze sleep data which has been retrieved by sleep tracking device.
+This API suppose to analyze sleep data and provide some analytics regarding it.
 
-the idea behind this project is to master TDD skill and learn modern approaches like DDD & Hexagonal architecture.
-These 2 approaches are intentended to reduce code coupling and make sure dependencies go only in one direction - in direction of domain.
+The idea behind this project is to master TDD skill and learn modern approaches like DDD & Hexagonal architecture.
+These 2 approaches are intended to reduce code coupling and make sure dependencies go only in one direction - in direction of domain.
 
 Hexagonal style dependencies explanation
 -
@@ -28,17 +28,20 @@ Application
 - 👌 TDD approach -- writing tests first and then production code. When I installed test coverage tool, I found out that all domain and application are covered with tests, with no additional effort
 - 👌 code structures like Value Objects, Models, Services, and where/when to use them
 - 👌 using Assertions in codebase to assert use scenarios 
-- Domain services
-- Lightweight bus
+- 👌 domain services are operations on domain building blocks
+- lightweight bus (?)
 - CQRS
 - FOS REST bundle
 - get rid of namespaces like `.../ValueObject` and etc. According to the book, namespaces should reflect domain, not building blocks
 
 Infrastructure  
-- 👌 SQLite 
-- 👌 nice composer aliases for commands
+- 👌 CI with CircleCI -- it runs my tests and shows nice little badge on main page of repo 
+- 👌 SQLite - quite nice for development, just perfect for tests
+- 👌 nice composer aliases for commands, so I can run all the tests or install the whole project with one simple command
 - 👌 setting up test coverage tool (nothing special, just using PHPUnit + XDebug)
 - 👌 setting up contract tests with test database and [fixtures](https://github.com/hautelook/AliceBundle)
+- Docker (Compose) to wrap codebase in the container and database in separate container
+- Kubernetes to be able to scale
 - Swagger docs
 
 Commands
