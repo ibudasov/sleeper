@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Application\Service;
 
-use SleeperBundle\Application\Output\SleepOutput;
+use SleeperBundle\Application\Output\SleepOutputDTO;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 
@@ -20,13 +20,13 @@ class SleepService
 
     /**
      * @param \DateTime $dateTime
-     * @return SleepOutput
+     * @return SleepOutputDTO
      * @throws SleepByDateNotFoundException
      */
-    public function getSleepByDate(\DateTime $dateTime): SleepOutput
+    public function getSleepByDate(\DateTime $dateTime): SleepOutputDTO
     {
         $sleepModel = $this->repository->getSleepByDate($dateTime);
 
-        return new SleepOutput($sleepModel);
+        return new SleepOutputDTO($sleepModel);
     }
 }

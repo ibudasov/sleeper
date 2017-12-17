@@ -4,7 +4,7 @@ use JMS\Serializer\Serializer;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Controller\SleepController;
-use SleeperBundle\Application\Output\SleepOutput;
+use SleeperBundle\Application\Output\SleepOutputDTO;
 use SleeperBundle\Application\Service\SleepService;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,7 +13,7 @@ class SleepControllerTest extends TestCase
 {
     /** @var  SleepService|MockInterface */
     private $sleepService;
-    /** @var  SleepOutput|MockInterface */
+    /** @var  SleepOutputDTO|MockInterface */
     private $sleepOutputMock;
     /** @var  Serializer|MockInterface */
     private $serializerMock;
@@ -23,7 +23,7 @@ class SleepControllerTest extends TestCase
     protected function setUp()
     {
         $this->sleepService = \Mockery::mock(SleepService::class);
-        $this->sleepOutputMock = \Mockery::mock(SleepOutput::class);
+        $this->sleepOutputMock = \Mockery::mock(SleepOutputDTO::class);
         $this->serializerMock = \Mockery::mock(Serializer::class);
 
         $this->controller = new SleepController(

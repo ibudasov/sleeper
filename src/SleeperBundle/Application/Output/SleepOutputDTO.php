@@ -8,7 +8,7 @@ use SleeperBundle\Domain\Model\Sleep;
 /**
  * @Serializer\ExclusionPolicy("all")
  */
-class SleepOutput
+class SleepOutputDTO
 {
     /**
      * @Serializer\Expose()

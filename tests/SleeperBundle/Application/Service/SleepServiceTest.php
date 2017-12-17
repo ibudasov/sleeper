@@ -6,7 +6,7 @@ namespace SleeperBundle\Application\Service;
 
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use SleeperBundle\Application\Output\SleepOutput;
+use SleeperBundle\Application\Output\SleepOutputDTO;
 use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 
@@ -47,7 +47,7 @@ class SleepServiceTest extends TestCase
 
         $output = $this->applicationService->getSleepByDate(new \DateTime());
 
-        self::assertInstanceOf(SleepOutput::class, $output);
+        self::assertInstanceOf(SleepOutputDTO::class, $output);
         self::assertEquals($startTime, $output->getStartTime());
         self::assertEquals($endTime, $output->getEndTime());
         self::assertEquals($deepSleepSeconds, $output->getDeepSleepSeconds());

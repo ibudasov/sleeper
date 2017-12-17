@@ -2,10 +2,10 @@
 
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use SleeperBundle\Application\Output\SleepOutput;
+use SleeperBundle\Application\Output\SleepOutputDTO;
 use SleeperBundle\Domain\Model\Sleep;
 
-class SleepOutputTest extends TestCase
+class SleepOutputDTOTest extends TestCase
 {
     /** @var  Sleep|MockInterface */
     private $sleepMock;
@@ -24,6 +24,6 @@ class SleepOutputTest extends TestCase
         $this->sleepMock->shouldReceive('getAwakeSeconds')->once()->andReturn(33);
         $this->sleepMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn(44);
 
-        self::assertInstanceOf(SleepOutput::class, new SleepOutput($this->sleepMock));
+        self::assertInstanceOf(SleepOutputDTO::class, new SleepOutputDTO($this->sleepMock));
     }
 }
