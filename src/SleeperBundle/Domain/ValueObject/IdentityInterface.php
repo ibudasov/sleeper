@@ -2,14 +2,14 @@
 
 namespace SleeperBundle\Domain\ValueObject;
 
-interface Identity
+interface IdentityInterface
 {
     /**
      * Id can be auto-generated if needed.
      * For example it's useful right before saving an entity,
      * when you don't really care of returning the Id
      *
-     * @return Identity
+     * @return IdentityInterface
      */
     public static function generate();
 
@@ -20,9 +20,9 @@ interface Identity
      *
      * @param string $sleepIdValue
      *
-     * @return Identity
+     * @return IdentityInterface
      */
-    public static function createFrom(string $sleepIdValue): Identity;
+    public static function createFrom(string $sleepIdValue): IdentityInterface;
 
     /**
      * Id can be converted to string in order to save it to database

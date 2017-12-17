@@ -3,11 +3,11 @@
 namespace SleeperBundle\Domain\Model;
 
 use Assert\Assertion;
-use SleeperBundle\Domain\ValueObject\Identity;
+use SleeperBundle\Domain\ValueObject\IdentityInterface;
 
-class Sleep implements IdentifiableDomainEntity
+class Sleep implements IdentifiableDomainModelInterface
 {
-    /** @var Identity */
+    /** @var IdentityInterface */
     private $id;
 
     /** @var \DateTime */
@@ -29,7 +29,7 @@ class Sleep implements IdentifiableDomainEntity
     private $totalSleepSeconds;
 
     /**
-     * @param Identity $id
+     * @param IdentityInterface $id
      * @param \DateTime $startTime
      * @param \DateTime $endTime
      * @param int $deepSleepInSeconds
@@ -38,7 +38,7 @@ class Sleep implements IdentifiableDomainEntity
      * @param int $totalSleepSeconds
      */
     public function __construct(
-        Identity $id,
+        IdentityInterface $id,
         \DateTime $startTime,
         \DateTime $endTime,
         int $deepSleepInSeconds,
@@ -59,8 +59,8 @@ class Sleep implements IdentifiableDomainEntity
         $this->totalSleepSeconds = $totalSleepSeconds;
     }
 
-    /** @return Identity */
-    public function getId(): Identity
+    /** @return IdentityInterface */
+    public function getId(): IdentityInterface
     {
         return $this->id;
     }

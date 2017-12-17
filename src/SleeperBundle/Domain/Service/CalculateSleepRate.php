@@ -6,7 +6,7 @@ namespace SleeperBundle\Domain\Service;
 
 use SleeperBundle\Domain\Model\Sleep;
 
-class CalculateSleepRate implements DomainService
+class CalculateSleepRate implements DomainServiceInterface
 {
     /**
      * @param Sleep $sleep

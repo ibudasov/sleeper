@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Domain\ValueObject;
 
-class SleepId implements Identity, ValueObject
+class SleepId implements IdentityInterface, ValueObjectInterface
 {
     /** @var string */
     private $sleepIdValue;
@@ -18,9 +18,9 @@ class SleepId implements Identity, ValueObject
     }
 
     /**
-     * @return Identity
+     * @return IdentityInterface
      */
-    public static function generate(): Identity
+    public static function generate(): IdentityInterface
     {
         return self::createFrom(\uniqid());
     }
@@ -28,9 +28,9 @@ class SleepId implements Identity, ValueObject
     /**
      * @param string $sleepIdValue
      *
-     * @return Identity
+     * @return IdentityInterface
      */
-    public static function createFrom(string $sleepIdValue): Identity
+    public static function createFrom(string $sleepIdValue): IdentityInterface
     {
         return new self($sleepIdValue);
     }
@@ -44,11 +44,11 @@ class SleepId implements Identity, ValueObject
     }
 
     /**
-     * @param ValueObject $that
+     * @param ValueObjectInterface $that
      *
      * @return bool
      */
-    public function isEqualTo(ValueObject $that): bool
+    public function isEqualTo(ValueObjectInterface $that): bool
     {
         return $this->sleepIdValue == (string) $that;
     }

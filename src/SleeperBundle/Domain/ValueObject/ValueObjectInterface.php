@@ -2,14 +2,14 @@
 
 namespace SleeperBundle\Domain\ValueObject;
 
-interface ValueObject
+interface ValueObjectInterface
 {
     /**
      * This method provides an ability to compare two value objects
      *
-     * @param ValueObject $that
+     * @param ValueObjectInterface $that
      *
      * @return bool
      */
-    public function isEqualTo(ValueObject $that): bool;
+    public function isEqualTo(ValueObjectInterface $that): bool;
 }

@@ -10,7 +10,7 @@ use SleeperBundle\Domain\Model\Sleep;
  * Generalized DomainService should be named after operation it provides
  * and have at least one public method -- execute(()
  */
-interface DomainService
+interface DomainServiceInterface
 {
     public function execute(Sleep $sleep);
 }
