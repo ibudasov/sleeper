@@ -60,7 +60,7 @@ class SleepControllerTest extends TestCase
     {
         $this->sleepService->shouldReceive('getSleepByDate')
             ->once()
-            ->andThrow(SleepByDateNotFoundException::class);
+            ->andThrow(\Mockery::mock(SleepByDateNotFoundException::class));
 
         $response = $this->controller->sleepByDateAction(new \DateTime());
 

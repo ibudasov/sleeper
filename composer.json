@@ -60,17 +60,10 @@
     "setup-database": [
       "bin/console doctrine:schema:update --force"
     ],
-    "setup-database-test": [
-      "bin/console doctrine:schema:update --env=test --force",
-      "bin/console hautelook:fixtures:load --no-interaction --env=test"
-    ],
     "run-unit-tests": [
       "./vendor/bin/phpunit tests/SleeperBundle"
     ],
     "run-contract-tests": [
-      "@setup-database",
-      "bin/console hautelook:fixtures:load --no-interaction ",
-      "@setup-database-test",
       "./vendor/bin/phpunit tests/contract"
     ],
     "run-tests": [

@@ -36,13 +36,7 @@ class DoctrineSleepRepository extends EntityRepository implements SleepRepositor
             ->getResult());
 
         if (empty($sleepEntity)) {
-            $message = \sprintf(
-                'No sleep found between "%s" and "%s"',
-                $startTime->format('Y-m-d'),
-                $endOfPeriod->format('Y-m-d')
-            );
-
-            throw new SleepByDateNotFoundException($message);
+            throw new SleepByDateNotFoundException($startTime, $endOfPeriod);
         }
 
         return SleepEntityToSleepModelMapper::map($sleepEntity);

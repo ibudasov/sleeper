@@ -20,7 +20,17 @@ services:
         resource: '../../../../src/SleeperBundle/Application/Controller'
         tags: ['controller.service_arguments']
 
-    SleeperBundle\Infrastructure\Repository\DoctrineSleepRepository:
+    repository.doctrine:
+        class: SleeperBundle\Infrastructure\Repository\DoctrineSleepRepository
         factory: ["@doctrine", getRepository]
         arguments:
             - "SleeperBundle:SleepEntity"
+
+    repository.in_memory:
+        class: SleeperBundle\Infrastructure\Repository\InMemorySleepRepository
+
+    # implicit specification of what kind of repo I need here.
+    # for tests it's overwritten with inMemoryRepo
+    SleeperBundle\Application\Service\SleepService:
+        arguments:
+            - '@repository.doctrine'

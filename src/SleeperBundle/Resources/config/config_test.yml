@@ -1,11 +1,7 @@
-hautelook_alice:
-    fixtures_path: 'Resources/fixtures' # Path to which to look for fixtures relative to the project directory or the bundle path.
-    root_dirs:
-        - '%kernel.root_dir%'
-        - '%kernel.project_dir%'
 services:
     # implicit specification of what kind of repo I need here.
     # for tests it's overwritten with inMemoryRepo
     SleeperBundle\Application\Service\SleepService:
         arguments:
             - '@repository.in_memory'
+
