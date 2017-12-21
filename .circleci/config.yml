@@ -74,3 +74,19 @@ workflows:
   test_and_lint:
     jobs:
       - run-tests
+
+machine:
+  environment:
+    CC_TEST_REPORTER_ID: 5fd8da576e326ed749146d3077313a6de80e5b1156cbc5c228276fea1150f693
+
+dependencies:
+  post:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+
+test:
+  pre:
+    - ./cc-test-reporter before-build
+
+  post:
+    - ./cc-test-reporter after-build --exit-code $EXIT_CODE
