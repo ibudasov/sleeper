@@ -45,7 +45,7 @@
     "test": "@run-tests",
     "test:unit": "@run-unit-tests",
     "test:contract": "@run-contract-tests",
-    "test:coverage": "vendor/bin/phpunit tests/SleeperBundle --coverage-html var/test-coverage;  echo \"\nReport is located: ./var/test-coverage/index.html\"",
+    "test:coverage": "@run-test-coverage",
     "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit ./tests/SleeperBundle",
     "run": "bin/console server:start",
     "stop": "bin/console server:stop",
@@ -63,11 +63,15 @@
     "run-unit-tests": [
       "./vendor/bin/phpunit tests/SleeperBundle"
     ],
+    "run-test-coverage": [
+      "vendor/bin/phpunit tests/SleeperBundle --coverage-html=var/test-coverage --coverage-clover=var/test-coverage/phpunit.coverage.xml",
+      "php -r 'include __DIR__ . \"/CoverageGateKeeper.php\"; echo CoverageGateKeeper::check(\"var/test-coverage/phpunit.coverage.xml\");'"
+    ],
     "run-contract-tests": [
       "./vendor/bin/phpunit tests/contract"
     ],
     "run-tests": [
-      "@run-unit-tests",
+      "@run-test-coverage",
       "@run-contract-tests"
     ],
     "post-install-cmd": [

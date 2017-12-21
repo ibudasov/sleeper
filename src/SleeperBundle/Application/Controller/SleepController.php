@@ -2,7 +2,7 @@
 
 namespace SleeperBundle\Application\Controller;
 
-use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerInterface;
 use SleeperBundle\Application\Service\SleepService;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,14 +14,14 @@ class SleepController
     /** @var  SleepService */
     private $sleepService;
 
-    /** @var  Serializer */
+    /** @var  SerializerInterface */
     private $serializer;
 
     /**
      * @param SleepService $sleepService
-     * @param Serializer $serializer
+     * @param SerializerInterface $serializer
      */
-    public function __construct(SleepService $sleepService, Serializer $serializer)
+    public function __construct(SleepService $sleepService, SerializerInterface $serializer)
     {
         $this->sleepService = $sleepService;
         $this->serializer = $serializer;

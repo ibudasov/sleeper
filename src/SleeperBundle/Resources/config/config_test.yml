@@ -1,7 +1,0 @@
-services:
-    # implicit specification of what kind of repo I need here.
-    # for tests it's overwritten with inMemoryRepo
-    SleeperBundle\Application\Service\SleepService:
-        arguments:
-            - '@repository.in_memory'
-
