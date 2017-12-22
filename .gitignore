@@ -18,3 +18,4 @@
 /web/bundles/
 .idea
 .DS_Store
+/clover.xml
