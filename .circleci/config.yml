@@ -2,6 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
+version: 2
 
 deployment:
   production:
@@ -10,6 +11,8 @@ deployment:
       appname: sleeper-prod
 
 defaults: &defaults
+  environment:
+    CC_TEST_REPORTER_ID: 5fd8da576e326ed749146d3077313a6de80e5b1156cbc5c228276fea1150f693
   docker:
       # specify the version you desire here
       - image: circleci/php:7.1
@@ -40,17 +43,23 @@ install_composer: &install_composer
         rm composer-setup.php
         exit $RESULT
 
-version: 2
 jobs:
 
-  run-tests:
+  build:
     <<: *defaults
 
     steps:
       - checkout
 
       - run:
+          name: Install Composer
           <<: *install_composer
+
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
 
       # Download and cache dependencies
       - restore_cache:
@@ -59,34 +68,26 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: composer install -n --prefer-dist
+      - run:
+          name: Installing dependencies
+          command: composer install -n --prefer-dist
 
       - save_cache:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      # run tests!
-      - run: composer test
+      - run:
+          name: Run tests
+          command: |
+            sudo docker-php-ext-enable xdebug
+            ./cc-test-reporter before-build
+            composer test
+            ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
 
 workflows:
   version: 2
   test_and_lint:
     jobs:
-      - run-tests
+      - build
 
-machine:
-  environment:
-    CC_TEST_REPORTER_ID: 5fd8da576e326ed749146d3077313a6de80e5b1156cbc5c228276fea1150f693
-
-dependencies:
-  post:
-    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-    - chmod +x ./cc-test-reporter
-
-test:
-  pre:
-    - ./cc-test-reporter before-build
-
-  post:
-    - ./cc-test-reporter after-build --exit-code $EXIT_CODE
