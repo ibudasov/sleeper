@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SleeperBundle\Domain\Model;
 
@@ -30,12 +32,12 @@ class Sleep implements IdentifiableDomainModelInterface
 
     /**
      * @param IdentityInterface $id
-     * @param \DateTime $startTime
-     * @param \DateTime $endTime
-     * @param int $deepSleepInSeconds
-     * @param int $lightSleepInSeconds
-     * @param int $awakeSeconds
-     * @param int $totalSleepSeconds
+     * @param \DateTime         $startTime
+     * @param \DateTime         $endTime
+     * @param int               $deepSleepInSeconds
+     * @param int               $lightSleepInSeconds
+     * @param int               $awakeSeconds
+     * @param int               $totalSleepSeconds
      */
     public function __construct(
         IdentityInterface $id,

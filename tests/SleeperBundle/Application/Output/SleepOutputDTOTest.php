@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
@@ -7,7 +9,7 @@ use SleeperBundle\Domain\Model\Sleep;
 
 class SleepOutputDTOTest extends TestCase
 {
-    /** @var  Sleep|MockInterface */
+    /** @var Sleep|MockInterface */
     private $sleepMock;
 
     protected function setUp()

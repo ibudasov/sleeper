@@ -19,10 +19,11 @@ class CalculateSleepSuccess implements DomainServiceInterface
 
     /**
      * @param Sleep $sleep
+     *
      * @return bool
      */
     public function execute(Sleep $sleep): bool
     {
-        return ($this->calculateSleepRateService->execute($sleep) >= 50);
+        return $this->calculateSleepRateService->execute($sleep) >= 50;
     }
 }

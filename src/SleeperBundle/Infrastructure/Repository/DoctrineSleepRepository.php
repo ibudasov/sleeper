@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SleeperBundle\Infrastructure\Repository;
 
@@ -18,12 +20,13 @@ class DoctrineSleepRepository extends EntityRepository implements SleepRepositor
      * @param \DateTime $date
      *
      * @return Sleep
+     *
      * @throws SleepByDateNotFoundException
      */
     public function getSleepByDate(\DateTime $date): Sleep
     {
         $startTime = $date->modify('midnight');
-        $endOfPeriod = clone($date);
+        $endOfPeriod = clone $date;
         $endOfPeriod->modify('tomorrow');
 
         /** @var SleepEntity $sleepEntity */

@@ -23,6 +23,7 @@ class SleepService
      * @param \DateTime $dateTime
      *
      * @return SleepOutputDTO
+     *
      * @throws SleepByDateNotFoundException
      */
     public function getSleepByDate(\DateTime $dateTime): SleepOutputDTO

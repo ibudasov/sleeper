@@ -23,7 +23,7 @@ class InMemorySleepRepositoryTest extends TestCase
         $this->repository = new InMemorySleepRepository($stubMock);
     }
 
-   public function testThatMultipleSleepsCanBeAddedAndNeedOneCanBeRetrieved(): void
+    public function testThatMultipleSleepsCanBeAddedAndNeedOneCanBeRetrieved(): void
     {
         $sleep1 = new Sleep(
             SleepId::createFrom('sleep-1'),
@@ -58,7 +58,7 @@ class InMemorySleepRepositoryTest extends TestCase
 
         $retrievedSleep = $this->repository->getSleepByDate(new \DateTime('-3 days'));
 
-        self::assertGreaterThan(new \DateTime('-4 days'), $retrievedSleep->getStartTime(), (string)$retrievedSleep->getId());
+        self::assertGreaterThan(new \DateTime('-4 days'), $retrievedSleep->getStartTime(), (string) $retrievedSleep->getId());
         self::assertLessThan(new \DateTime('-2 days'), $retrievedSleep->getStartTime());
     }
 

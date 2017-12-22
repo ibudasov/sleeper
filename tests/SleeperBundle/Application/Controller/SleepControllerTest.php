@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use JMS\Serializer\Serializer;
 use Mockery\MockInterface;
@@ -11,11 +13,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SleepControllerTest extends TestCase
 {
-    /** @var  SleepService|MockInterface */
+    /** @var SleepService|MockInterface */
     private $sleepService;
-    /** @var  SleepOutputDTO|MockInterface */
+    /** @var SleepOutputDTO|MockInterface */
     private $sleepOutputMock;
-    /** @var  Serializer|MockInterface */
+    /** @var Serializer|MockInterface */
     private $serializerMock;
     /** @var SleepController */
     private $controller;
@@ -34,7 +36,6 @@ class SleepControllerTest extends TestCase
 
     public function testThatCorrectResponseIsReturned(): void
     {
-
         $this->sleepOutputMock->shouldReceive('getStartTime')->once()->andReturn(new \DateTime());
         $this->sleepOutputMock->shouldReceive('getEndTime')->once()->andReturn(new \DateTime());
         $this->sleepOutputMock->shouldReceive('getDeepSleepSeconds')->once()->andReturn(11);

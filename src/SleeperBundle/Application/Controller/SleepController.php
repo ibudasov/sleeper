@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SleeperBundle\Application\Controller;
 
@@ -11,14 +13,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class SleepController
 {
-    /** @var  SleepService */
+    /** @var SleepService */
     private $sleepService;
 
-    /** @var  SerializerInterface */
+    /** @var SerializerInterface */
     private $serializer;
 
     /**
-     * @param SleepService $sleepService
+     * @param SleepService        $sleepService
      * @param SerializerInterface $serializer
      */
     public function __construct(SleepService $sleepService, SerializerInterface $serializer)

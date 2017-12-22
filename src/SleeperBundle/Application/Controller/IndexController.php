@@ -18,7 +18,7 @@ class IndexController
     {
         return new JsonResponse([
             'Sleeper API dummy response.',
-            'For actual response -- look documentation: https://github.com/ibudasov/sleeper'
+            'For actual response -- look documentation: https://github.com/ibudasov/sleeper',
         ]);
     }
 }

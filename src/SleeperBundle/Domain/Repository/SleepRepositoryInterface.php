@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SleeperBundle\Domain\Repository;
 
@@ -16,6 +18,7 @@ interface SleepRepositoryInterface
      * @param \DateTime $date
      *
      * @return Sleep
+     *
      * @throws SleepByDateNotFoundException
      */
     public function getSleepByDate(\DateTime $date): Sleep;

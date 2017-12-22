@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SleeperBundle\Application\Output;
 
@@ -14,6 +16,7 @@ class SleepOutputDTO
      * @Serializer\Expose()
      * @Serializer\Type("DateTime")
      * @Serializer\SerializedName("startTime")
+     *
      * @var \DateTime
      */
     private $startTime;
@@ -22,6 +25,7 @@ class SleepOutputDTO
      * @Serializer\Expose()
      * @Serializer\Type("DateTime")
      * @Serializer\SerializedName("endTime")
+     *
      * @var \DateTime
      */
     private $endTime;
@@ -30,6 +34,7 @@ class SleepOutputDTO
      * @Serializer\Expose()
      * @Serializer\Type("integer")
      * @Serializer\SerializedName("deepSleepSeconds")
+     *
      * @var int
      */
     private $deepSleepSeconds;

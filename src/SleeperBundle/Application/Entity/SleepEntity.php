@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SleeperBundle\Application\Entity;
 
@@ -10,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class SleepEntity
 {
-
     /**
      * @ORM\Id
      * @ORM\Column(type="string")

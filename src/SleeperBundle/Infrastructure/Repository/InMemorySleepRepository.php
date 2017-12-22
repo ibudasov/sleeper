@@ -29,13 +29,14 @@ class InMemorySleepRepository implements SleepRepositoryInterface
      * @param \DateTime $date
      *
      * @return Sleep
+     *
      * @throws SleepByDateNotFoundException
      */
     public function getSleepByDate(\DateTime $date): Sleep
     {
-        $startOfPeriod = clone($date);
+        $startOfPeriod = clone $date;
         $startOfPeriod->modify('-1 day');
-        $endOfPeriod = clone($date);
+        $endOfPeriod = clone $date;
         $endOfPeriod->modify('+1 day');
 
         $result = null;

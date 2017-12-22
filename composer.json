@@ -72,7 +72,8 @@
       "./vendor/bin/phpunit tests/contract"
     ],
     "run-tests": [
-      "vendor/bin/php-cs-fixer fix src",
+      "vendor/bin/php-cs-fixer fix src --rules=@Symfony",
+      "vendor/bin/php-cs-fixer fix tests --rules=@Symfony",
       "@run-test-coverage",
       "@run-contract-tests"
     ],

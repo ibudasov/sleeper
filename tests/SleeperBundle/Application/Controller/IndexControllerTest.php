@@ -17,10 +17,9 @@ class IndexControllerTest extends \PHPUnit\Framework\TestCase
         self::assertEquals(
             \json_encode([
                 'Sleeper API dummy response.',
-                'For actual response -- look documentation: https://github.com/ibudasov/sleeper'
+                'For actual response -- look documentation: https://github.com/ibudasov/sleeper',
             ]),
             $response->getContent()
         );
     }
 }
-
