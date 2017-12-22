@@ -40,12 +40,12 @@ class InMemorySleepRepository implements SleepRepositoryInterface
 
         $result = null;
         foreach ($this->sleeps as $sleep) {
-            if($startOfPeriod <= $sleep->getStartTime() && $sleep->getStartTime() <= $endOfPeriod){
+            if ($startOfPeriod <= $sleep->getStartTime() && $sleep->getStartTime() <= $endOfPeriod) {
                 $result = $sleep;
             }
         }
 
-        if(empty($result)) {
+        if (empty($result)) {
             throw new SleepByDateNotFoundException($startOfPeriod, $endOfPeriod);
         }
 

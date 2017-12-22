@@ -17,4 +17,3 @@ class CalculateSleepRate implements DomainServiceInterface
         return $sleep->getDeepSleepSeconds() / $sleep->getTotalSleepSeconds() * 100;
     }
 }
-
