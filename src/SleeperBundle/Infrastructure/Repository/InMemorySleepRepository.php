@@ -13,6 +13,7 @@ class InMemorySleepRepository implements SleepRepositoryInterface
     /** @var Sleep[] */
     private $sleeps = [];
 
+    /** @param InMemorySleepStub $stubs */
     public function __construct(InMemorySleepStub $stubs)
     {
         $this->sleeps = $stubs->getStubs();

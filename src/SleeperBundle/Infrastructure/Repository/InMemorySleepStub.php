@@ -9,8 +9,8 @@ use SleeperBundle\Domain\ValueObject\SleepId;
 
 class InMemorySleepStub
 {
-    /** @return array */
-    public function getStubs()
+    /** @return Sleep[] */
+    public function getStubs(): array
     {
         return [
             $this->getTodaySleepStub(),

@@ -12,5 +12,10 @@ use SleeperBundle\Domain\Model\Sleep;
  */
 interface DomainServiceInterface
 {
+    /**
+     * @param Sleep $sleep
+     *
+     * @return mixed
+     */
     public function execute(Sleep $sleep);
 }

@@ -11,9 +11,7 @@ class CalculateSleepSuccess implements DomainServiceInterface
     /** @var CalculateSleepRate */
     private $calculateSleepRateService;
 
-    /**
-     * @param CalculateSleepRate $calculateSleepRate
-     */
+    /** @param CalculateSleepRate $calculateSleepRate */
     public function __construct(CalculateSleepRate $calculateSleepRate)
     {
         $this->calculateSleepRateService = $calculateSleepRate;

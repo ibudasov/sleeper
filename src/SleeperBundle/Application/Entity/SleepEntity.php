@@ -61,113 +61,85 @@ class SleepEntity
      */
     private $totalSleepSeconds;
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
+    /** @param string $id */
     public function setId(string $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getStartTime(): \DateTime
     {
         return $this->startTime;
     }
 
-    /**
-     * @param \DateTime $startTime
-     */
+    /** @param \DateTime $startTime */
     public function setStartTime(\DateTime $startTime): void
     {
         $this->startTime = $startTime;
     }
 
-    /**
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getEndTime(): \DateTime
     {
         return $this->endTime;
     }
 
-    /**
-     * @param \DateTime $endTime
-     */
+    /** @param \DateTime $endTime */
     public function setEndTime(\DateTime $endTime): void
     {
         $this->endTime = $endTime;
     }
 
-    /**
-     * @return int
-     */
+    /** @return int */
     public function getDeepSleepSeconds(): int
     {
         return $this->deepSleepSeconds;
     }
 
-    /**
-     * @param int $deepSleepSeconds
-     */
+    /** @param int $deepSleepSeconds */
     public function setDeepSleepSeconds(int $deepSleepSeconds): void
     {
         $this->deepSleepSeconds = $deepSleepSeconds;
     }
 
-    /**
-     * @return int
-     */
+    /** @return int */
     public function getLightSleepSeconds(): int
     {
         return $this->lightSleepSeconds;
     }
 
-    /**
-     * @param int $lightSleepSeconds
-     */
+    /** @param int $lightSleepSeconds */
     public function setLightSleepSeconds(int $lightSleepSeconds): void
     {
         $this->lightSleepSeconds = $lightSleepSeconds;
     }
 
-    /**
-     * @return int
-     */
+    /** @return int */
     public function getAwakeSeconds(): int
     {
         return $this->awakeSeconds;
     }
 
-    /**
-     * @param int $awakeSeconds
-     */
+    /** @param int $awakeSeconds */
     public function setAwakeSeconds(int $awakeSeconds): void
     {
         $this->awakeSeconds = $awakeSeconds;
     }
 
-    /**
-     * @return int
-     */
+    /** @return int */
     public function getTotalSleepSeconds(): int
     {
         return $this->totalSleepSeconds;
     }
 
-    /**
-     * @param int $totalSleepSeconds
-     */
+    /** @param int $totalSleepSeconds */
     public function setTotalSleepSeconds(int $totalSleepSeconds): void
     {
         $this->totalSleepSeconds = $totalSleepSeconds;

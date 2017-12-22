@@ -6,6 +6,7 @@ class CoverageGateKeeper
 {
     /** @var int  */
     private static $threshold = 100;
+    /** @var string  */
     private static $divider = "\n----------------------------\n";
 
     /** @param string $cloverCoverageReport */
@@ -16,7 +17,6 @@ class CoverageGateKeeper
         }
 
         $actualCoverage = self::analyzeClover($cloverCoverageReport);
-
 
         if (self::analyzeClover($cloverCoverageReport) < self::$threshold) {
             echo \sprintf(

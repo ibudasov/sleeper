@@ -10,6 +10,7 @@ class SleepEntityToSleepModelMapper
 {
     /**
      * @param SleepEntity $entity
+     *
      * @return Sleep
      */
     public static function map(SleepEntity $entity): Sleep

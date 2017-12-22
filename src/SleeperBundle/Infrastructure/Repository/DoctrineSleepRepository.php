@@ -10,12 +10,13 @@ use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 
 /**
- * @codeCoverageIgnore
+ * @codeCoverageIgnore because of Doctrine Repos are not intended to be unit-tested. Integration tests are recommended
  */
 class DoctrineSleepRepository extends EntityRepository implements SleepRepositoryInterface
 {
     /**
      * @param \DateTime $date
+     *
      * @return Sleep
      * @throws SleepByDateNotFoundException
      */

@@ -11,7 +11,7 @@ interface IdentityInterface
      *
      * @return IdentityInterface
      */
-    public static function generate();
+    public static function generate(): IdentityInterface;
 
     /**
      * There must be possibility to assign an Id manually.

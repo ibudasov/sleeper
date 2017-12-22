@@ -11,6 +11,7 @@ class IndexController
 {
     /**
      * @Route("/")
+     *
      * @return JsonResponse
      */
     public function indexAction(): JsonResponse

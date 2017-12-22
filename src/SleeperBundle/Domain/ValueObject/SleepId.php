@@ -9,17 +9,13 @@ class SleepId implements IdentityInterface, ValueObjectInterface
     /** @var string */
     private $sleepIdValue;
 
-    /**
-     * @param string $sleepIdValue
-     */
+    /** @param string $sleepIdValue */
     private function __construct(string $sleepIdValue)
     {
         $this->sleepIdValue = $sleepIdValue;
     }
 
-    /**
-     * @return IdentityInterface
-     */
+    /** @return IdentityInterface */
     public static function generate(): IdentityInterface
     {
         return self::createFrom(\uniqid());
@@ -35,9 +31,7 @@ class SleepId implements IdentityInterface, ValueObjectInterface
         return new self($sleepIdValue);
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function __toString(): string
     {
         return $this->sleepIdValue;

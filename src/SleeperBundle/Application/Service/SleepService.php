@@ -13,6 +13,7 @@ class SleepService
     /** @var SleepRepositoryInterface */
     private $repository;
 
+    /** @param SleepRepositoryInterface $repository */
     public function __construct(SleepRepositoryInterface $repository)
     {
         $this->repository = $repository;
@@ -20,6 +21,7 @@ class SleepService
 
     /**
      * @param \DateTime $dateTime
+     *
      * @return SleepOutputDTO
      * @throws SleepByDateNotFoundException
      */

@@ -4,6 +4,10 @@ namespace SleeperBundle\Domain\Exception;
 
 class SleepByDateNotFoundException extends \LogicException
 {
+    /**
+     * @param \DateTime $startOfPeriod
+     * @param \DateTime $endOfPeriod
+     */
     public function __construct(\DateTime $startOfPeriod, \DateTime $endOfPeriod)
     {
         $message = \sprintf(
