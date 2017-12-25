@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Infrastructure\Repository;
 
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
-use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 
 class InMemorySleepRepository implements SleepRepositoryInterface

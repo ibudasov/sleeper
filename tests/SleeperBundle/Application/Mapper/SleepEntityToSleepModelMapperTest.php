@@ -6,7 +6,7 @@ use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Entity\SleepEntity;
 use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 
 class SleepEntityToSleepModelMapperTest extends TestCase
 {

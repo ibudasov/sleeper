@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
-use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\ValueObject\SleepId;
 use SleeperBundle\Infrastructure\Repository\InMemorySleepRepository;
 use SleeperBundle\Infrastructure\Repository\InMemorySleepStub;

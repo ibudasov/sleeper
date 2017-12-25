@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Domain\Repository;
 
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
-use SleeperBundle\Domain\Model\Sleep;
 
 /**
  * Repository's interface belongs to domain, but repository's implementation belongs to infrastructure.

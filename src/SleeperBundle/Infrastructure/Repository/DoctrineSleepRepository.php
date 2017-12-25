@@ -7,8 +7,8 @@ namespace SleeperBundle\Infrastructure\Repository;
 use Doctrine\ORM\EntityRepository;
 use SleeperBundle\Application\Entity\SleepEntity;
 use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
-use SleeperBundle\Domain\Model\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 
 /**

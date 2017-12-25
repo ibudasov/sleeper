@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Service\CalculateSleepRate;
 use SleeperBundle\Domain\Service\CalculateSleepSuccess;
 

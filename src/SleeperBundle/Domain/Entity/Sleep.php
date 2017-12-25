@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SleeperBundle\Domain\Model;
+namespace SleeperBundle\Domain\Entity;
 
 use Assert\Assertion;
 use SleeperBundle\Domain\ValueObject\IdentityInterface;
 
-class Sleep implements IdentifiableDomainModelInterface
+class Sleep implements EntityInterface
 {
     /** @var IdentityInterface */
     private $id;

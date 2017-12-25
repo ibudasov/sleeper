@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SleeperBundle\Domain\Model;
+namespace SleeperBundle\Domain\Entity;
 
 use SleeperBundle\Domain\ValueObject\IdentityInterface;
 
@@ -11,7 +11,7 @@ use SleeperBundle\Domain\ValueObject\IdentityInterface;
  * ​No matter how many changes happened to entity - identity still the same
  * It couples the design of the database to the design of the object system.
  */
-interface IdentifiableDomainModelInterface
+interface EntityInterface
 {
     /** @return IdentityInterface */
     public function getId(): IdentityInterface;

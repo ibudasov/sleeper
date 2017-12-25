@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SleeperBundle\Application\Output;
 
 use JMS\Serializer\Annotation as Serializer;
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 
 /**
  * @Serializer\ExclusionPolicy("all")

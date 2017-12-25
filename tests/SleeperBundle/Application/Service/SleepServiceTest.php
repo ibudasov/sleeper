@@ -7,7 +7,7 @@ namespace SleeperBundle\Application\Service;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Output\SleepOutputDTO;
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 
 class SleepServiceTest extends TestCase

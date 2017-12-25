@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Output\SleepOutputDTO;
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 
 class SleepOutputDTOTest extends TestCase
 {

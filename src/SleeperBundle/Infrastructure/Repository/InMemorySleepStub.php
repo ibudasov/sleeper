@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Infrastructure\Repository;
 
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\ValueObject\SleepId;
 
 class InMemorySleepStub

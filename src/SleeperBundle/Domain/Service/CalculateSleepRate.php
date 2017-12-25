@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Domain\Service;
 
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 
 class CalculateSleepRate implements DomainServiceInterface
 {

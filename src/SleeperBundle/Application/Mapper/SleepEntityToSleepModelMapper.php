@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SleeperBundle\Application\Mapper;
 
 use SleeperBundle\Application\Entity\SleepEntity;
-use SleeperBundle\Domain\Model\Sleep;
+use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\ValueObject\SleepId;
 
 class SleepEntityToSleepModelMapper
