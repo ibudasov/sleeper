@@ -47,6 +47,10 @@
     "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit ./tests/SleeperBundle",
     "run": "bin/console server:start",
     "stop": "bin/console server:stop",
+    "fix": [
+      "vendor/bin/php-cs-fixer fix src --rules=@Symfony",
+      "vendor/bin/php-cs-fixer fix tests --rules=@Symfony"
+    ],
     "symfony-scripts": [
       "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
       "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -69,8 +73,6 @@
       "./vendor/bin/phpunit tests/contract"
     ],
     "run-tests": [
-      "vendor/bin/php-cs-fixer fix src --rules=@Symfony",
-      "vendor/bin/php-cs-fixer fix tests --rules=@Symfony",
       "@run-test-coverage",
       "@run-contract-tests"
     ],
