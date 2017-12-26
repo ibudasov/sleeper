@@ -73,7 +73,7 @@
       "./vendor/bin/phpunit tests/contract"
     ],
     "run-tests": [
-      "@run-test-coverage",
+      "@run-unit-tests",
       "@run-contract-tests"
     ],
     "post-install-cmd": [
