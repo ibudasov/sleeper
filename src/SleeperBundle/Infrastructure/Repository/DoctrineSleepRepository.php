@@ -10,6 +10,8 @@ use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
+use SleeperBundle\Domain\ValueObject\IdentityInterface;
+use SleeperBundle\Domain\ValueObject\SleepId;
 
 /**
  * @codeCoverageIgnore because of Doctrine Repos are not intended to be unit-tested. Integration tests are recommended
@@ -17,11 +19,7 @@ use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 class DoctrineSleepRepository extends EntityRepository implements SleepRepositoryInterface
 {
     /**
-     * @param \DateTime $date
-     *
-     * @return Sleep
-     *
-     * @throws SleepByDateNotFoundException
+     * {@inheritdoc}
      */
     public function getSleepByDate(\DateTime $date): Sleep
     {
@@ -44,5 +42,11 @@ class DoctrineSleepRepository extends EntityRepository implements SleepRepositor
         }
 
         return SleepEntityToSleepModelMapper::map($sleepEntity);
+    }
+
+    /** {@inheritdoc} */
+    public function generateId(): IdentityInterface
+    {
+        return SleepId::generate();
     }
 }

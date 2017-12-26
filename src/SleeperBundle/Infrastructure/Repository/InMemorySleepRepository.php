@@ -7,6 +7,8 @@ namespace SleeperBundle\Infrastructure\Repository;
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
+use SleeperBundle\Domain\ValueObject\IdentityInterface;
+use SleeperBundle\Domain\ValueObject\SleepId;
 
 class InMemorySleepRepository implements SleepRepositoryInterface
 {
@@ -25,13 +27,7 @@ class InMemorySleepRepository implements SleepRepositoryInterface
         array_push($this->sleeps, $sleep);
     }
 
-    /**
-     * @param \DateTime $date
-     *
-     * @return Sleep
-     *
-     * @throws SleepByDateNotFoundException
-     */
+    /** {@inheritdoc} */
     public function getSleepByDate(\DateTime $date): Sleep
     {
         $startOfPeriod = clone $date;
@@ -51,5 +47,11 @@ class InMemorySleepRepository implements SleepRepositoryInterface
         }
 
         return $result;
+    }
+
+    /** {@inheritdoc} */
+    public function generateId(): IdentityInterface
+    {
+        return SleepId::generate();
     }
 }

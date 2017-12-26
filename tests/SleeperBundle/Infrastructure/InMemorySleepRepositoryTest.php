@@ -68,4 +68,9 @@ class InMemorySleepRepositoryTest extends TestCase
 
         $this->repository->getSleepByDate(new \DateTime('-3 days'));
     }
+
+    public function testThatIdCanBeGenerated(): void
+    {
+        self::assertInstanceOf(SleepId::class, $this->repository->generateId());
+    }
 }

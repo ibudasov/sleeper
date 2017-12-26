@@ -6,6 +6,7 @@ namespace SleeperBundle\Domain\Repository;
 
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
+use SleeperBundle\Domain\ValueObject\IdentityInterface;
 
 /**
  * Repository's interface belongs to domain, but repository's implementation belongs to infrastructure.
@@ -14,6 +15,13 @@ use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
  */
 interface SleepRepositoryInterface
 {
+    /**
+     * DDD book says that Repository -- is the best place to generate Identity.
+     *
+     * @return IdentityInterface
+     */
+    public function generateId(): IdentityInterface;
+
     /**
      * @param \DateTime $date
      *
