@@ -5,7 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Entity\SleepDoctrineEntity;
 
-class SleepEntityTest extends TestCase
+class SleepDoctrineEntityTest extends TestCase
 {
     public function testThatEntityCanBeCreatedWithValidValues(): void
     {
