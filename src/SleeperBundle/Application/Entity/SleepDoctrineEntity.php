@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="SleeperBundle\Infrastructure\Repository\DoctrineSleepRepository")
  */
-class SleepEntity
+class SleepDoctrineEntity
 {
     /**
      * @ORM\Id

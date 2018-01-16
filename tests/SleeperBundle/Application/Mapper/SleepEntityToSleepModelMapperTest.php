@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use SleeperBundle\Application\Entity\SleepEntity;
+use SleeperBundle\Application\Entity\SleepDoctrineEntity;
 use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
 use SleeperBundle\Domain\Entity\Sleep;
 
 class SleepEntityToSleepModelMapperTest extends TestCase
 {
-    /** @var SleepEntity|MockInterface */
+    /** @var SleepDoctrineEntity|MockInterface */
     private $sleepEntityMock;
     /** @var Sleep|MockInterface */
     private $sleepMock;
 
     protected function setUp()
     {
-        $this->sleepEntityMock = \Mockery::mock(SleepEntity::class);
+        $this->sleepEntityMock = \Mockery::mock(SleepDoctrineEntity::class);
         $this->sleepMock = \Mockery::mock(Sleep::class);
     }
 

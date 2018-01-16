@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SleeperBundle\Infrastructure\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use SleeperBundle\Application\Entity\SleepEntity;
+use SleeperBundle\Application\Entity\SleepDoctrineEntity;
 use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
@@ -27,7 +27,7 @@ class DoctrineSleepRepository extends EntityRepository implements SleepRepositor
         $endOfPeriod = clone $date;
         $endOfPeriod->modify('tomorrow');
 
-        /** @var SleepEntity $sleepEntity */
+        /** @var SleepDoctrineEntity $sleepEntity */
         $sleepEntity = current($this
             ->createQueryBuilder('sleep')
             ->where('sleep.startTime > :startOfTheDay')

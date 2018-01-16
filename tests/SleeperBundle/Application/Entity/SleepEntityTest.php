@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use SleeperBundle\Application\Entity\SleepEntity;
+use SleeperBundle\Application\Entity\SleepDoctrineEntity;
 
 class SleepEntityTest extends TestCase
 {
@@ -17,7 +17,7 @@ class SleepEntityTest extends TestCase
         $awakeSeconds = 3;
         $totalSleepSeconds = 4;
 
-        $sleepEntity = new SleepEntity();
+        $sleepEntity = new SleepDoctrineEntity();
 
         $sleepEntity->setId($id);
         $sleepEntity->setStartTime($startTime);
