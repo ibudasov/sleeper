@@ -8,7 +8,7 @@ use SleeperBundle\Application\Entity\SleepDoctrineEntity;
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\ValueObject\SleepId;
 
-class SleepEntityToSleepModelMapper
+class SleepDoctrineEntityToDomainEntityMapper
 {
     /**
      * @param SleepDoctrineEntity $entity

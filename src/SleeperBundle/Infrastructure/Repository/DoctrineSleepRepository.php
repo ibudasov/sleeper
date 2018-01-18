@@ -6,7 +6,7 @@ namespace SleeperBundle\Infrastructure\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use SleeperBundle\Application\Entity\SleepDoctrineEntity;
-use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
+use SleeperBundle\Application\Mapper\SleepDoctrineEntityToDomainEntityMapper;
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
@@ -41,7 +41,7 @@ class DoctrineSleepRepository extends EntityRepository implements SleepRepositor
             throw new SleepByDateNotFoundException($startTime, $endOfPeriod);
         }
 
-        return SleepEntityToSleepModelMapper::map($sleepEntity);
+        return SleepDoctrineEntityToDomainEntityMapper::map($sleepEntity);
     }
 
     /** {@inheritdoc} */

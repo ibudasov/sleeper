@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Entity\SleepDoctrineEntity;
-use SleeperBundle\Application\Mapper\SleepEntityToSleepModelMapper;
+use SleeperBundle\Application\Mapper\SleepDoctrineEntityToDomainEntityMapper;
 use SleeperBundle\Domain\Entity\Sleep;
 
 class SleepEntityToSleepModelMapperTest extends TestCase
@@ -39,7 +39,7 @@ class SleepEntityToSleepModelMapperTest extends TestCase
         $this->sleepEntityMock->shouldReceive('getAwakeSeconds')->once()->andReturn($awakeSeconds);
         $this->sleepEntityMock->shouldReceive('getTotalSleepSeconds')->once()->andReturn($totalSleepSeconds);
 
-        $mappingResult = SleepEntityToSleepModelMapper::map($this->sleepEntityMock);
+        $mappingResult = SleepDoctrineEntityToDomainEntityMapper::map($this->sleepEntityMock);
 
         self::assertInstanceOf(Sleep::class, $mappingResult);
         self::assertEquals($id, $mappingResult->getId());
