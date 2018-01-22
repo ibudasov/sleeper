@@ -8,7 +8,7 @@ use SleeperBundle\Application\Entity\SleepDoctrineEntity;
 use SleeperBundle\Application\Mapper\SleepDoctrineEntityToDomainEntityMapper;
 use SleeperBundle\Domain\Entity\Sleep;
 
-class SleepEntityToSleepModelMapperTest extends TestCase
+class SleepDoctrineEntityToDomainModelMapperTest extends TestCase
 {
     /** @var SleepDoctrineEntity|MockInterface */
     private $sleepEntityMock;
