@@ -6,20 +6,21 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/56879f98704275a90180/test_coverage)](https://codeclimate.com/github/ibudasov/sleeper/test_coverage)
 
 What is it?
--
+-----------
+
 This API suppose to analyze sleep data and provide some analytics regarding it.
 
 The idea behind this project is to master TDD skill and learn modern approaches like DDD & Hexagonal architecture.
 These 2 approaches are intended to reduce code coupling and make sure dependencies go only in one direction - in direction of domain.
 
 Hexagonal style dependencies explanation
--
+----------------------------------------
 
 ![Dependencies](src/SleeperBundle/Resources/dependencies.png)
 
 
 Earned experience
-- 
+-----------------
 
 Application
 - 👌 layered architecture ([DDD](https://leanpub.com/ddd-in-php) or [hexagonal](http://www.youtube.com/playlist?list=PLviuozY4UHkkLGVVUbUDSyvcnaVox2cXo))
@@ -46,30 +47,34 @@ Infrastructure
 - Swagger docs
 
 Commands
--
+--------
 
 - `composer install` -- install the API
-
 - `composer run` -- start the server
-
 - `composer stop` -- stop the server
-
 - `composer test` -- run all the tests
-
 - `composer test:unit` -- run unit tests (fast)
-
 - `composer test:contract` -- run contact test based on Symfony crawler (slow)
-
 - `composer test:coverage` -- test coverage (requires XDebug installed)
-
 - `composer test:watch` -- watch unit tests (sorry, OSX + fswatch only)
 
 
 Prerequisites
--
+-------------
 
 - `apt install php7.1-xdebug` -- XDebug needed for test coverage, that's how to install it for Ubuntu
-
 - `brew install php71-xdebug` -- XDebug install for OSX
-
 - `brew install fswatch` -- file system watcher for OSX
+
+
+Docker things
+-------------
+
+- `docker build -t sleeper .`
+- `docker network create --subnet=172.18.0.0/16 sleepernet`
+- `docker run  --net sleepernet --ip 172.18.0.22 -p 8000:8000 -it sleeper`
+
+- `docker exec 5e6097d43c7d curl localhost:8000`
+- `docker run --rm -it -p 8000:8000 --entrypoint=/bin/bash sleeper -i`
+
+- `docker stop $(docker ps -a -q) && docker rmi  $(docker images -q) -f`
