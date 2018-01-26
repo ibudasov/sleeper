@@ -70,11 +70,10 @@ Prerequisites
 Docker things
 -------------
 
-- `docker build -t sleeper .`
-- `docker network create --subnet=172.18.0.0/16 sleepernet`
-- `docker run  --net sleepernet --ip 172.18.0.22 -p 8000:8000 -it sleeper`
-
-- `docker exec 5e6097d43c7d curl localhost:8000`
-- `docker run --rm -it -p 8000:8000 --entrypoint=/bin/bash sleeper -i`
-
-- `docker stop $(docker ps -a -q) && docker rmi  $(docker images -q) -f`
+- `docker build -t sleeper .` -- building image
+- `docker exec 5e6097d43c7d curl localhost:8000` -- checks if server is running inside container, without exposing outside
+- `docker network create --subnet=172.18.0.0/16 sleepernet` -- optional -- adds a subnet
+- `docker run  --net sleepernet --ip 172.18.0.22 -p 8000:8000 -it --rm sleeper`-- optional -- runs with a static IP withing a subnet
+- `docker run -p 8000:8000 --rm sleeper` -- running without subnet
+- `docker run --rm -it -p 8000:8000 --entrypoint=/bin/bash sleeper -i` -- interactive debug
+- `docker stop $(docker ps -a -q) && docker rmi  $(docker images -q) -f` -- stop and remove everything related to docker, not only this project, but globally 
