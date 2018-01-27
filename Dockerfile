@@ -17,7 +17,10 @@ RUN adduser -D -u 1000 application
 RUN chown -R application:application .
 USER application
 RUN composer install
+RUN composer run &
 
+# RUN ps -f
 EXPOSE 8000
 
-ENTRYPOINT ["php", "/home/application/bin/console", "server:run"]
+# https://www.ctl.io/developers/blog/post/dockerfile-entrypoint-vs-cmd/
+CMD ["php", "/home/application/bin/console", "server:run"]
