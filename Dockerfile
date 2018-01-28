@@ -1,6 +1,19 @@
 FROM php:7.1-fpm-alpine
 
-RUN apk update && apk upgrade && apk add git
+RUN apk update \
+    && apk add  --no-cache git curl \
+    && apk add --no-cache --virtual build-dependencies icu-dev g++ make autoconf \
+    && docker-php-source extract \
+    && pecl install xdebug  \
+    && docker-php-ext-enable xdebug  \
+    && docker-php-source delete \
+    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && apk del build-dependencies \
+    && rm -rf /tmp/*
 
 WORKDIR /home/application
 
@@ -26,4 +39,4 @@ EXPOSE 8000
 
 # https://www.ctl.io/developers/blog/post/dockerfile-entrypoint-vs-cmd/
 # https://symfony.com/doc/3.4/setup/built_in_web_server.html
-ENTRYPOINT ["php", "/home/application/bin/console", "server:run", "*:8000"]
+CMD ["php", "/home/application/bin/console", "server:run", "*:8000"]

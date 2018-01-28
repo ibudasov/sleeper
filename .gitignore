@@ -19,3 +19,4 @@
 .idea
 .DS_Store
 /clover.xml
+.php_cs.cache

@@ -41,10 +41,28 @@
     "symfony/phpunit-bridge": "^3.0"
   },
   "scripts": {
-    "test": "@run-tests",
-    "test:unit": "@run-unit-tests",
-    "test:contract": "@run-contract-tests",
-    "test:coverage": "@run-test-coverage",
+    
+    "docker:install": "docker build -t sleeper .",
+    "docker:run": "docker run -p 8000:8000 --rm sleeper",
+    "docker:stop": "docker ps && docker stop <CONTAINER_ID>",
+    "docker:test:unit": "docker run -p 8000:8000 --rm sleeper ./vendor/bin/phpunit tests/SleeperBundle",
+    "docker:test:contract": "docker run -p 8000:8000 --rm sleeper ./vendor/bin/phpunit tests/contract",
+    "docker:test": [
+      "@docker:test:unit",
+      "@docker:test:contract"
+    ],
+
+    
+    "test:unit": "./vendor/bin/phpunit tests/SleeperBundle",
+    "test:contract": "./vendor/bin/phpunit tests/contract",
+    "test": [
+      "@test:unit",
+      "@test:contract"
+    ],
+    "test:coverage": [
+      "vendor/bin/phpunit tests/SleeperBundle --coverage-html=var/test-coverage --coverage-clover=clover.xml",
+      "php -r 'include __DIR__ . \"/CoverageGateKeeper.php\"; echo CoverageGateKeeper::check(\"clover.xml\");'"
+    ],
     "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit ./tests/SleeperBundle",
     "run": "bin/console server:start",
     "stop": "bin/console server:stop",
@@ -62,20 +80,6 @@
     ],
     "setup-database": [
       "bin/console doctrine:schema:update --force"
-    ],
-    "run-unit-tests": [
-      "./vendor/bin/phpunit tests/SleeperBundle"
-    ],
-    "run-test-coverage": [
-      "vendor/bin/phpunit tests/SleeperBundle --coverage-html=var/test-coverage --coverage-clover=clover.xml",
-      "php -r 'include __DIR__ . \"/CoverageGateKeeper.php\"; echo CoverageGateKeeper::check(\"clover.xml\");'"
-    ],
-    "run-contract-tests": [
-      "./vendor/bin/phpunit tests/contract"
-    ],
-    "run-tests": [
-      "@run-unit-tests",
-      "@run-contract-tests"
     ],
     "post-install-cmd": [
       "@symfony-scripts",

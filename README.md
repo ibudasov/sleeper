@@ -49,6 +49,14 @@ Infrastructure
 Commands
 --------
 
+with docker
+- `composer docker:install` -- install the API
+- `composer docker:run` -- start the server
+- `composer docker:test` -- run all the tests
+- `composer docker:test:unit` -- run unit tests (fast)
+- `composer docker:test:contract` -- run contact test based on Symfony crawler (slow)
+
+without docker, with proper local env
 - `composer install` -- install the API
 - `composer run` -- start the server
 - `composer stop` -- stop the server
