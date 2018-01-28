@@ -20,7 +20,10 @@ RUN composer install
 RUN composer run &
 
 # RUN ps -f
+
+# https://github.com/wsargent/docker-cheat-sheet
 EXPOSE 8000
 
 # https://www.ctl.io/developers/blog/post/dockerfile-entrypoint-vs-cmd/
-CMD ["php", "/home/application/bin/console", "server:run"]
+# https://symfony.com/doc/3.4/setup/built_in_web_server.html
+ENTRYPOINT ["php", "/home/application/bin/console", "server:run", "*:8000"]
