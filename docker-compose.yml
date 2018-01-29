@@ -1,0 +1,11 @@
+version: '3'
+services:
+
+  codebase:
+    build: .
+    ports:
+      - "8000:8000"
+
+  # https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch-platinum:6.1.2"

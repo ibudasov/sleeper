@@ -56,6 +56,9 @@ with docker
 - `composer docker:test:unit` -- run unit tests (fast)
 - `composer docker:test:contract` -- run contact test based on Symfony crawler (slow)
 
+docker-compose
+- `docker-compose up` -- run the project with elasticsearch
+
 without docker, with proper local env
 - `composer install` -- install the API
 - `composer run` -- start the server
