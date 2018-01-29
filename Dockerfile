@@ -30,7 +30,6 @@ RUN adduser -D -u 1000 application
 RUN chown -R application:application .
 USER application
 RUN composer install
-RUN composer run &
 
 # RUN ps -f
 
