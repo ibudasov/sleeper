@@ -45,12 +45,14 @@
     "docker:install": "docker build -t sleeper .",
     "docker:run": "docker run -p 8000:8000 --rm sleeper",
     "docker:stop": "docker ps && docker stop <CONTAINER_ID>",
-    "docker:test:unit": "docker run -p 8000:8000 --rm sleeper ./vendor/bin/phpunit tests/SleeperBundle",
-    "docker:test:contract": "docker run -p 8000:8000 --rm sleeper ./vendor/bin/phpunit tests/contract",
+    "docker:test:unit": "docker run -p 8000:8000 --rm sleeper composer test:unit",
+    "docker:test:contract": "docker run -p 8000:8000 --rm sleeper composer test:contract",
     "docker:test": [
       "@docker:test:unit",
       "@docker:test:contract"
     ],
+    "docker:test:coverage": "docker run -p 8000:8000 --rm sleeper composer test:coverage",
+    "docker:fix": "docker run -p 8000:8000 --rm sleeper composer fix",
 
     
     "test:unit": "./vendor/bin/phpunit tests/SleeperBundle",
