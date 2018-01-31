@@ -42,8 +42,6 @@
   },
   "scripts": {
 
-    //    DOCKER COMMANDS
-
     "docker:install": "docker build -t sleeper .",
     "docker:run": "docker run -p 8000:8000 --rm sleeper",
     "docker:stop": "docker stop $(docker ps -a -q)",
@@ -56,8 +54,6 @@
     ],
     "docker:test:coverage": "docker run -p 8000:8000 --rm sleeper composer test:coverage",
     "docker:fix": "docker run --rm sleeper composer fix",
-
-    //    COMPOSER COMMANDS
 
     "test:unit": "./vendor/bin/phpunit tests/SleeperBundle",
     "test:contract": "./vendor/bin/phpunit tests/contract",
@@ -76,8 +72,6 @@
       "vendor/bin/php-cs-fixer fix src --rules=@Symfony",
       "vendor/bin/php-cs-fixer fix tests --rules=@Symfony"
     ],
-
-    //    SYMFONY DEFAULT
 
     "symfony-scripts": [
       "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
