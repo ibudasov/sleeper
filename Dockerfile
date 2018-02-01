@@ -1,12 +1,11 @@
 FROM php:7.1-fpm-alpine
 
+# Install needed software and XDebug support for code coverage tool
 RUN apk update \
     && apk add  --no-cache git curl \
     && apk add --no-cache --virtual build-dependencies icu-dev g++ make autoconf \
-    && docker-php-source extract \
     && pecl install xdebug  \
     && docker-php-ext-enable xdebug  \
-    && docker-php-source delete \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
