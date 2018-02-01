@@ -42,6 +42,11 @@
   },
   "scripts": {
 
+    "compose:install": "docker-compose up --build",
+    "compose:run": "docker-compose up",
+    "compose:stop": "docker-compose down",
+    "compose:destroy": "docker-compose rm",
+
     "docker:install": "docker build -t sleeper .",
     "docker:run": "docker run -p 8000:8000 --rm sleeper",
     "docker:stop": "docker stop $(docker ps -a -q)",

@@ -42,22 +42,25 @@ Infrastructure
 - 👌 nice composer aliases for commands, so I can run all the tests or install the whole project with one simple command
 - 👌 setting up test coverage tool (nothing special, just using PHPUnit + XDebug)
 - 👌 setting up contract tests with test database and [fixtures](https://github.com/hautelook/AliceBundle)
-- Docker (Compose) to wrap codebase in the container and database in separate container
+- 👌 Docker (Compose) to wrap codebase in the container and database in separate container
 - Kubernetes to be able to scale
 - Swagger docs
 
 Commands
 --------
 
-with docker
+docker-compose
+- `composer compose:install` -- install the API and ES (will be running at the end)
+- `composer compose:run` -- run the API and ES
+- `composer compose:stop` -- stop the API and ES
+- `composer compose:destroy` -- destroy the API and ES
+
+docker
 - `composer docker:install` -- install the API
 - `composer docker:run` -- start the server
 - `composer docker:test` -- run all the tests
 - `composer docker:test:unit` -- run unit tests (fast)
 - `composer docker:test:contract` -- run contact test based on Symfony crawler (slow)
-
-docker-compose
-- `docker-compose up` -- run the project with elasticsearch
 
 without docker, with proper local env
 - `composer install` -- install the API
@@ -69,14 +72,12 @@ without docker, with proper local env
 - `composer test:coverage` -- test coverage (requires XDebug installed)
 - `composer test:watch` -- watch unit tests (sorry, OSX + fswatch only)
 
-
 Prerequisites
 -------------
 
 - `apt install php7.1-xdebug` -- XDebug needed for test coverage, that's how to install it for Ubuntu
 - `brew install php71-xdebug` -- XDebug install for OSX
 - `brew install fswatch` -- file system watcher for OSX
-
 
 Docker things
 -------------
