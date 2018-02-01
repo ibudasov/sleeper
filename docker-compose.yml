@@ -9,3 +9,5 @@ services:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
   elasticsearch:
     image: "docker.elastic.co/elasticsearch/elasticsearch-platinum:6.1.2"
+    ports:
+      - "9200:9200"
