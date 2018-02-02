@@ -66,8 +66,8 @@
       "@docker:install",
       "@docker:test",
       "@docker:push",
-      "kubectl run codebase --image=docker.io/ibudasov/sleeper",
-      "kubectl run elasticsearch --image=docker.elastic.co/elasticsearch/elasticsearch-platinum:6.1.2",
+      "kubectl run codebase --image=docker.io/ibudasov/sleeper --port=8000",
+      "kubectl run elasticsearch --image=docker.elastic.co/elasticsearch/elasticsearch-platinum:6.1.2 --port=9200",
       "kubectl get pod"
     ],
     "kube:stop": [
