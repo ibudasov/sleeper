@@ -68,7 +68,8 @@
       "@docker:push",
       "kubectl run codebase --image=docker.io/ibudasov/sleeper --port=8000",
       "kubectl run elasticsearch --image=docker.elastic.co/elasticsearch/elasticsearch-platinum:6.1.2 --port=9200",
-      "kubectl get pod"
+      "kubectl get pod",
+      "minikube dashboard"
     ],
     "kube:stop": [
       "kubectl delete pods,services,deployment --all",
