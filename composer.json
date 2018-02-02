@@ -47,18 +47,33 @@
     "compose:stop": "docker-compose down",
     "compose:destroy": "docker-compose rm",
 
-    "docker:install": "docker build -t sleeper .",
-    "docker:run": "docker run -p 8000:8000 --rm sleeper",
+    "docker:install": "docker build -t ibudasov/sleeper .",
+    "docker:run": "docker run -p 8000:8000 --rm ibudasov/sleeper",
     "docker:stop": "docker stop $(docker ps -a -q)",
     "docker:destroy": "docker stop $(docker ps -a -q) && docker rmi  $(docker images -q) -f",
-    "docker:test:unit": "docker run --rm sleeper composer test:unit",
-    "docker:test:contract": "docker run --rm sleeper composer test:contract",
+    "docker:test:unit": "docker run --rm ibudasov/sleeper composer test:unit",
+    "docker:test:contract": "docker run --rm ibudasov/sleeper composer test:contract",
     "docker:test": [
       "@docker:test:unit",
       "@docker:test:contract"
     ],
-    "docker:test:coverage": "docker run -p 8000:8000 --rm sleeper composer test:coverage",
-    "docker:fix": "docker run --rm sleeper composer fix",
+    "docker:test:coverage": "docker run -p 8000:8000 --rm ibudasov/sleeper composer test:coverage",
+    "docker:fix": "docker run --rm ibudasov/sleeper composer fix",
+    "docker:push": "docker push ibudasov/sleeper",
+
+    "kube:run": [
+      "minikube start",
+      "@docker:install",
+      "@docker:test",
+      "@docker:push",
+      "kubectl run codebase --image=docker.io/ibudasov/sleeper",
+      "kubectl run elasticsearch --image=docker.elastic.co/elasticsearch/elasticsearch-platinum:6.1.2",
+      "kubectl get pod"
+    ],
+    "kube:stop": [
+      "kubectl delete pods,services,deployment --all",
+      "minikube stop"
+    ],
 
     "test:unit": "./vendor/bin/phpunit tests/SleeperBundle",
     "test:contract": "./vendor/bin/phpunit tests/contract",
