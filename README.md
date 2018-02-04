@@ -46,6 +46,16 @@ Infrastructure
 - Kubernetes to be able to scale
 - Swagger docs
 
+Enterprise applicaton patterns
+- https://www.martinfowler.com/eaaCatalog/domainModel.html 
+- https://www.martinfowler.com/eaaCatalog/serviceLayer.html 
+- https://www.martinfowler.com/eaaCatalog/repository.html
+- https://www.martinfowler.com/eaaCatalog/dataTransferObject.html
+- https://www.martinfowler.com/eaaCatalog/gateway.html  
+- https://www.martinfowler.com/eaaCatalog/mapper.html
+- https://www.martinfowler.com/eaaCatalog/valueObject.html
+- https://www.martinfowler.com/eaaCatalog/plugin.html
+
 Commands
 --------
 
