@@ -59,6 +59,10 @@ Enterprise applicaton patterns
 Commands
 --------
 
+kubernetes
+- `composer kube:run` -- installs and runs application and ES
+- `composer kube:stop` -- stops and destroys everything
+
 docker-compose
 - `composer compose:install` -- install the API and ES (will be running at the end)
 - `composer compose:run` -- run the API and ES
