@@ -8,7 +8,7 @@
 What is it?
 -----------
 
-This API suppose to analyze sleep data and provide some analytics regarding it.
+This API suppose to analyse sleep data and provide some analytics regarding it.
 
 The idea behind this project is to master TDD skill and learn modern approaches like DDD & Hexagonal architecture.
 These 2 approaches are intended to reduce code coupling and make sure dependencies go only in one direction - in direction of domain.
@@ -28,7 +28,7 @@ Application
 - 👌 Dependency Inversion principle
 - 👌 TDD approach -- writing tests first and then production code. When I installed test coverage tool, I found out that all domain and application are covered with tests, with no additional effort
 - 👌 code structures like Value Objects, Models, Services, and where/when to use them
-- 👌 using Assertions in codebase to assert use scenarios 
+- 👌 using Assertions in codebase to assert use scenarios
 - 👌 domain services are operations on domain building blocks
 - lightweight bus (?)
 - CQRS
@@ -37,7 +37,7 @@ Application
 
 Infrastructure  
 - 👌 CI with CircleCI -- it runs my tests and shows nice little badge on main page of repo
-- 👌 CD with Heroku 
+- 👌 CD with Heroku
 - 👌 SQLite - quite nice for development, just perfect for tests
 - 👌 nice composer aliases for commands, so I can run all the tests or install the whole project with one simple command
 - 👌 setting up test coverage tool (nothing special, just using PHPUnit + XDebug)
@@ -46,9 +46,9 @@ Infrastructure
 - Kubernetes to be able to scale
 - Swagger docs
 
-Enterprise applicaton patterns
-- https://www.martinfowler.com/eaaCatalog/domainModel.html 
-- https://www.martinfowler.com/eaaCatalog/serviceLayer.html 
+Enterprise application patterns
+- https://www.martinfowler.com/eaaCatalog/domainModel.html
+- https://www.martinfowler.com/eaaCatalog/serviceLayer.html
 - https://www.martinfowler.com/eaaCatalog/repository.html
 - https://www.martinfowler.com/eaaCatalog/dataTransferObject.html
 - https://www.martinfowler.com/eaaCatalog/gateway.html  
@@ -99,4 +99,4 @@ Docker things
 - `docker build -t sleeper .` -- building image
 - `docker run -p 8000:8000 -it --rm sleeper` -- run the app
 - `docker exec 5e6097d43c7d curl localhost:8000` -- checks if server is running inside container
-- `docker stop $(docker ps -a -q) && docker rmi  $(docker images -q) -f` -- stop and remove everything related to docker, not only this project, but globally 
+- `docker stop $(docker ps -a -q) && docker rmi  $(docker images -q) -f` -- stop and remove everything related to docker, not only this project, but globally
