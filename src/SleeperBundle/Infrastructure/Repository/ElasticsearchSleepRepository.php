@@ -4,27 +4,25 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Infrastructure\Repository;
 
-use GuzzleHttp\Client;
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 use SleeperBundle\Domain\ValueObject\IdentityInterface;
 use SleeperBundle\Domain\ValueObject\SleepId;
+use SleeperBundle\Infrastructure\ElasticsearchGateway;
 
 class ElasticsearchSleepRepository implements SleepRepositoryInterface
 {
-    private const ELASTICSEARCH_BASE_PATH = 'localhost:9200/sleep/night';
+    /**
+     * @var ElasticsearchGateway
+     */
+    private $client;
 
     /**
-     * @var Client
+     * @param ElasticsearchGateway $client
      */
-    private $httpClient;
-
-    /**
-     * @param Client $httpClient
-     */
-    public function __construct(Client $httpClient)
+    public function __construct(ElasticsearchGateway $client)
     {
-        $this->httpClient = $httpClient;
+        $this->client = $client;
     }
 
     /** {@inheritdoc} */
@@ -36,7 +34,7 @@ class ElasticsearchSleepRepository implements SleepRepositoryInterface
     /** {@inheritdoc} */
     public function getSleepByDate(\DateTime $date): Sleep
     {
-        $this->httpClient->get(self::ELASTICSEARCH_BASE_PATH);
+        $this->client->getByDate($date);
 
         return new Sleep(
             $this->generateId(),
