@@ -17,15 +17,15 @@ class SleepElasticsearchEntityTest extends TestCase
         $awakeSeconds = 3;
         $totalSleepSeconds = 4;
 
-        $sleepEntity = new SleepElasticsearchEntity();
-
-        $sleepEntity->setId($id);
-        $sleepEntity->setStartTime($startTime);
-        $sleepEntity->setEndTime($endTime);
-        $sleepEntity->setLightSleepSeconds($lightSleepSeconds);
-        $sleepEntity->setDeepSleepSeconds($deepSleepSeconds);
-        $sleepEntity->setAwakeSeconds($awakeSeconds);
-        $sleepEntity->setTotalSleepSeconds($totalSleepSeconds);
+        $sleepEntity = new SleepElasticsearchEntity(
+            $id,
+            $startTime,
+            $endTime,
+            $lightSleepSeconds,
+            $deepSleepSeconds,
+            $awakeSeconds,
+            $totalSleepSeconds
+        );
 
         self::assertEquals($id, $sleepEntity->getId());
         self::assertEquals($startTime, $sleepEntity->getStartTime());

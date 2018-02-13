@@ -64,16 +64,39 @@ class SleepElasticsearchEntity
      */
     private $totalSleepSeconds;
 
+    /**
+     * SleepElasticsearchEntity constructor.
+     *
+     * @param string    $id
+     * @param \DateTime $startTime
+     * @param \DateTime $endTime
+     * @param int       $deepSleepSeconds
+     * @param int       $lightSleepSeconds
+     * @param int       $awakeSeconds
+     * @param int       $totalSleepSeconds
+     */
+    public function __construct(
+        string $id,
+        \DateTime $startTime,
+        \DateTime $endTime,
+        int $lightSleepSeconds,
+        int $deepSleepSeconds,
+        int $awakeSeconds,
+        int $totalSleepSeconds
+    ) {
+        $this->id = $id;
+        $this->startTime = $startTime;
+        $this->endTime = $endTime;
+        $this->deepSleepSeconds = $deepSleepSeconds;
+        $this->lightSleepSeconds = $lightSleepSeconds;
+        $this->awakeSeconds = $awakeSeconds;
+        $this->totalSleepSeconds = $totalSleepSeconds;
+    }
+
     /** @return string */
     public function getId(): string
     {
         return $this->id;
-    }
-
-    /** @param string $id */
-    public function setId(string $id): void
-    {
-        $this->id = $id;
     }
 
     /** @return \DateTime */
@@ -82,22 +105,10 @@ class SleepElasticsearchEntity
         return $this->startTime;
     }
 
-    /** @param \DateTime $startTime */
-    public function setStartTime(\DateTime $startTime): void
-    {
-        $this->startTime = $startTime;
-    }
-
     /** @return \DateTime */
     public function getEndTime(): \DateTime
     {
         return $this->endTime;
-    }
-
-    /** @param \DateTime $endTime */
-    public function setEndTime(\DateTime $endTime): void
-    {
-        $this->endTime = $endTime;
     }
 
     /** @return int */
@@ -106,22 +117,10 @@ class SleepElasticsearchEntity
         return $this->deepSleepSeconds;
     }
 
-    /** @param int $deepSleepSeconds */
-    public function setDeepSleepSeconds(int $deepSleepSeconds): void
-    {
-        $this->deepSleepSeconds = $deepSleepSeconds;
-    }
-
     /** @return int */
     public function getLightSleepSeconds(): int
     {
         return $this->lightSleepSeconds;
-    }
-
-    /** @param int $lightSleepSeconds */
-    public function setLightSleepSeconds(int $lightSleepSeconds): void
-    {
-        $this->lightSleepSeconds = $lightSleepSeconds;
     }
 
     /** @return int */
@@ -130,21 +129,9 @@ class SleepElasticsearchEntity
         return $this->awakeSeconds;
     }
 
-    /** @param int $awakeSeconds */
-    public function setAwakeSeconds(int $awakeSeconds): void
-    {
-        $this->awakeSeconds = $awakeSeconds;
-    }
-
     /** @return int */
     public function getTotalSleepSeconds(): int
     {
         return $this->totalSleepSeconds;
-    }
-
-    /** @param int $totalSleepSeconds */
-    public function setTotalSleepSeconds(int $totalSleepSeconds): void
-    {
-        $this->totalSleepSeconds = $totalSleepSeconds;
     }
 }
