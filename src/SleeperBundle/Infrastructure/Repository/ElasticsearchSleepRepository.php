@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SleeperBundle\Infrastructure\Repository;
 
+use SleeperBundle\Application\Mapper\SleepElasticsearchToDomainEntityMapper;
 use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 use SleeperBundle\Domain\ValueObject\IdentityInterface;
@@ -12,17 +13,19 @@ use SleeperBundle\Infrastructure\ElasticsearchGateway;
 
 class ElasticsearchSleepRepository implements SleepRepositoryInterface
 {
-    /**
-     * @var ElasticsearchGateway
-     */
+    /** @var ElasticsearchGateway */
     private $client;
+    /** @var SleepElasticsearchToDomainEntityMapper */
+    private $mapper;
 
     /**
      * @param ElasticsearchGateway $client
+     * @param SleepElasticsearchToDomainEntityMapper $mapper
      */
-    public function __construct(ElasticsearchGateway $client)
+    public function __construct(ElasticsearchGateway $client, SleepElasticsearchToDomainEntityMapper $mapper)
     {
         $this->client = $client;
+        $this->mapper = $mapper;
     }
 
     /** {@inheritdoc} */
@@ -34,16 +37,8 @@ class ElasticsearchSleepRepository implements SleepRepositoryInterface
     /** {@inheritdoc} */
     public function getSleepByDate(\DateTime $date): Sleep
     {
-        $this->client->getByDate($date);
+        $elasticsearchEntity = $this->client->getByDate($date);
 
-        return new Sleep(
-            $this->generateId(),
-            new \DateTime(),
-            new \DateTime(),
-            1,
-            2,
-            3,
-            4
-        );
+        return $this->mapper->map($elasticsearchEntity);
     }
 }
