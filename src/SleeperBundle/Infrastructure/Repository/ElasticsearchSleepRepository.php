@@ -19,7 +19,7 @@ class ElasticsearchSleepRepository implements SleepRepositoryInterface
     private $mapper;
 
     /**
-     * @param ElasticsearchGateway $client
+     * @param ElasticsearchGateway                   $client
      * @param SleepElasticsearchToDomainEntityMapper $mapper
      */
     public function __construct(ElasticsearchGateway $client, SleepElasticsearchToDomainEntityMapper $mapper)

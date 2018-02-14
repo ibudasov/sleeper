@@ -55,11 +55,11 @@ class ElasticsearchGateway
         );
 
         $decoded = \json_decode($elasticsearchResponse);
-        if($decoded->hits->total == 0) {
+        if (0 == $decoded->hits->total) {
             throw new SleepByDateNotFoundException($startTime, $endOfPeriod);
         }
 
-        $firstHit =  \current($decoded->hits->hits)->_source;
+        $firstHit = \current($decoded->hits->hits)->_source;
 
         return new SleepElasticsearchEntity(
             $firstHit->id,
