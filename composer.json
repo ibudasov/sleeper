@@ -87,7 +87,7 @@
       "php -r 'include __DIR__ . \"/CoverageGateKeeper.php\"; echo CoverageGateKeeper::check(\"clover.xml\");'"
     ],
     "test:watch": "fswatch -o ./tests -o ./src | xargs -n1 -I{} ./vendor/bin/phpunit ./tests/SleeperBundle",
-    "run": "bin/console server:start *:8000",
+    "run": "bin/console server:start *:8000 --env=prod",
     "run:es": "docker run -p 9200:9200 --rm elasticsearch",
     "stop": "bin/console server:stop",
     "fix": [
