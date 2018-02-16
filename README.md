@@ -92,6 +92,8 @@ Prerequisites
 - `apt install php7.1-xdebug` -- XDebug needed for test coverage, that's how to install it for Ubuntu
 - `brew install php71-xdebug` -- XDebug install for OSX
 - `brew install fswatch` -- file system watcher for OSX
+- Docker
+- Docker Compose
 
 Docker things
 -------------
