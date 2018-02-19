@@ -32,7 +32,7 @@ class ElasticsearchGateway
         $endOfPeriod = clone $sleepDate;
         $endOfPeriod->modify('tomorrow');
 
-        $elasticsearchResponse = $this->post(
+        $elasticsearchResponse = $this->httpClient->post(
             self::ELASTICSEARCH_BASE,
             [
                 'query' => [
@@ -67,27 +67,5 @@ class ElasticsearchGateway
         );
     }
 
-    /**
-     * @param string $urlToPost
-     * @param array  $dataToPost
-     *
-     * @return array
-     */
-    public function post(string $urlToPost, array $dataToPost): array
-    {
-        $this->httpClient->open($urlToPost);
 
-        $this->httpClient->setOption(CURLOPT_POST, 1);
-        $this->httpClient->setOption(CURLOPT_POSTFIELDS, http_build_query($dataToPost));
-        $this->httpClient->setOption(CURLOPT_RETURNTRANSFER, true);
-
-        $response = $this->httpClient->execute();
-
-        $code = $this->httpClient->getInfo(CURLINFO_HTTP_CODE);
-        $type = $this->httpClient->getInfo(CURLINFO_CONTENT_TYPE);
-
-        $this->httpClient->close();
-
-        return \json_decode($response, true);
-    }
 }

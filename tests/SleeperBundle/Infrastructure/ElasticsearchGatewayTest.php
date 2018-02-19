@@ -69,13 +69,12 @@ class ElasticsearchGatewayTest extends TestCase
         }';
 
         $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
-        $httpClientMock->shouldReceive('open')->once()->with(self::ELASTICSEARCH_BASE);
-        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POST, 1);
-        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POSTFIELDS, http_build_query($elasticsearchQuery));
-        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_RETURNTRANSFER, 1);
-        $httpClientMock->shouldReceive('execute')->once()->andReturn($elasticsearchResponse);
-        $httpClientMock->shouldReceive('getInfo')->twice();
-        $httpClientMock->shouldReceive('close')->once();
+        $httpClientMock->shouldReceive('post')->once()
+            ->with(
+                self::ELASTICSEARCH_BASE,
+                $elasticsearchQuery
+            )
+            ->andReturn(\json_decode($elasticsearchResponse, true));
 
         $sleep = (new ElasticsearchGateway($httpClientMock))->getByDate($requestedDate);
 
@@ -123,13 +122,12 @@ class ElasticsearchGatewayTest extends TestCase
         }';
 
         $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
-        $httpClientMock->shouldReceive('open')->once()->with(self::ELASTICSEARCH_BASE);
-        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POST, 1);
-        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POSTFIELDS, http_build_query($elasticsearchQuery));
-        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_RETURNTRANSFER, 1);
-        $httpClientMock->shouldReceive('execute')->once()->andReturn($elasticsearchResponse);
-        $httpClientMock->shouldReceive('getInfo')->twice();
-        $httpClientMock->shouldReceive('close')->once();
+        $httpClientMock->shouldReceive('post')->once()
+            ->with(
+                self::ELASTICSEARCH_BASE,
+                $elasticsearchQuery
+            )
+            ->andReturn(\json_decode($elasticsearchResponse, true));
 
         (new ElasticsearchGateway($httpClientMock))->getByDate($requestedDate);
     }
