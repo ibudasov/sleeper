@@ -13,7 +13,7 @@ use SleeperBundle\Infrastructure\HttpRequestInterface;
 class ElasticsearchGatewayTest extends TestCase
 {
     const ELASTICSEARCH_BASE = 'localhost:9200/sleep/_search/';
-    const ELASTICSEARCH_DATE_FORMAT = 'Y-m-d H:i:s';
+    const ELASTICSEARCH_DATE_FORMAT = 'Y/m/d H:i:s';
 
     public function testThatSleepCanBeRetrieved(): void
     {

@@ -10,7 +10,7 @@ use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 class ElasticsearchGateway
 {
     const ELASTICSEARCH_BASE = 'localhost:9200/sleep/_search/';
-    const ELASTICSEARCH_DATE_FORMAT = 'Y-m-d H:i:s';
+    const ELASTICSEARCH_DATE_FORMAT = 'Y/m/d H:i:s';
 
     /** @var HttpRequestInterface */
     private $httpClient;
