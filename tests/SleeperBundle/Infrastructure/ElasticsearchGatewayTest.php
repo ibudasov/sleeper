@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\SleeperBundle\Infrastructure;
 
-use GuzzleHttp;
-use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Entity\SleepElasticsearchEntity;
 use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Infrastructure\ElasticsearchGateway;
+use SleeperBundle\Infrastructure\HttpRequestInterface;
 
 class ElasticsearchGatewayTest extends TestCase
 {
@@ -23,61 +22,60 @@ class ElasticsearchGatewayTest extends TestCase
         $endOfPeriod = clone $requestedDate;
         $endOfPeriod->modify('tomorrow');
 
-        $httpClientMock = \Mockery::mock(Client::class);
-        $httpClientMock->shouldReceive('post')
-            ->once()
-            ->with(
-                self::ELASTICSEARCH_BASE,
-                [
-                    GuzzleHttp\RequestOptions::JSON => [
-                        'query' => [
-                            'constant_score' => [
-                                'filter' => [
-                                    'range' => [
-                                        'startTime' => [
-                                            'gte' => $startOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
-                                            'lte' => $endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
-                                        ],
-                                    ],
-                                ],
+        $elasticsearchQuery = [
+            'query' => [
+                'constant_score' => [
+                    'filter' => [
+                        'range' => [
+                            'startTime' => [
+                                'gte' => $startOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
+                                'lte' => $endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
                             ],
                         ],
                     ],
-                ]
-            )
-            ->andReturn(
-            '{
-                    "took": 10,
-                    "timed_out": false,
-                    "_shards": {
-                        "total": 5,
-                        "successful": 5,
-                        "skipped": 0,
-                        "failed": 0
-                    },
-                    "hits": {
-                        "total": 1,
-                        "max_score": 1,
-                        "hits": [
-                            {
-                                "_index": "sleep",
-                                "_type": "night",
-                                "_id": "1",
-                                "_score": 1,
-                                "_source": {
-                                    "id": "111",
-                                    "startTime": "'.$startOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT).'",
-                                    "endTime": "'.$endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT).'",
-                                    "lightSleepSeconds": 1,
-                                    "deepSleepSeconds": 2,
-                                    "awakeSeconds": 3,
-                                    "totalSleepSeconds": 4
-                                }
-                            }
-                        ]
+                ],
+            ],
+        ];
+        $elasticsearchResponse = '{
+            "took": 10,
+            "timed_out": false,
+            "_shards": {
+                "total": 5,
+                "successful": 5,
+                "skipped": 0,
+                "failed": 0
+            },
+            "hits": {
+                "total": 1,
+                "max_score": 1,
+                "hits": [
+                    {
+                        "_index": "sleep",
+                        "_type": "night",
+                        "_id": "1",
+                        "_score": 1,
+                        "_source": {
+                            "id": "111",
+                            "startTime": "'.$startOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT).'",
+                            "endTime": "'.$endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT).'",
+                            "lightSleepSeconds": 1,
+                            "deepSleepSeconds": 2,
+                            "awakeSeconds": 3,
+                            "totalSleepSeconds": 4
+                        }
                     }
-                }'
-            );
+                ]
+            }
+        }';
+
+        $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
+        $httpClientMock->shouldReceive('open')->once()->with(self::ELASTICSEARCH_BASE);
+        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POST, 1);
+        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POSTFIELDS, http_build_query($elasticsearchQuery));
+        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_RETURNTRANSFER, 1);
+        $httpClientMock->shouldReceive('execute')->once()->andReturn($elasticsearchResponse);
+        $httpClientMock->shouldReceive('getInfo')->twice();
+        $httpClientMock->shouldReceive('close')->once();
 
         $sleep = (new ElasticsearchGateway($httpClientMock))->getByDate($requestedDate);
 
@@ -89,49 +87,49 @@ class ElasticsearchGatewayTest extends TestCase
     {
         $this->expectException(SleepByDateNotFoundException::class);
         $requestedDate = new \DateTime();
-        $startTime = $requestedDate->modify('midnight');
+        $startOfPeriod = $requestedDate->modify('midnight');
         $endOfPeriod = clone $requestedDate;
         $endOfPeriod->modify('tomorrow');
 
-        $httpClientMock = \Mockery::mock(Client::class);
-        $httpClientMock->shouldReceive('post')
-            ->once()
-            ->with(
-                self::ELASTICSEARCH_BASE,
-                [
-                    GuzzleHttp\RequestOptions::JSON => [
-                        'query' => [
-                            'constant_score' => [
-                                'filter' => [
-                                    'range' => [
-                                        'startTime' => [
-                                            'gte' => $startTime->format(self::ELASTICSEARCH_DATE_FORMAT),
-                                            'lte' => $endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
-                                        ],
-                                    ],
-                                ],
+        $elasticsearchQuery = [
+            'query' => [
+                'constant_score' => [
+                    'filter' => [
+                        'range' => [
+                            'startTime' => [
+                                'gte' => $startOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
+                                'lte' => $endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
                             ],
                         ],
                     ],
+                ],
+            ],
+        ];
+        $elasticsearchResponse = '{
+            "took": 10,
+            "timed_out": false,
+            "_shards": {
+                "total": 5,
+                "successful": 5,
+                "skipped": 0,
+                "failed": 0
+            },
+            "hits": {
+                "total": 0,
+                "max_score": null,
+                "hits": [
                 ]
-            )
-            ->andReturn('{
-                    "took": 10,
-                    "timed_out": false,
-                    "_shards": {
-                        "total": 5,
-                        "successful": 5,
-                        "skipped": 0,
-                        "failed": 0
-                    },
-                    "hits": {
-                        "total": 0,
-                        "max_score": null,
-                        "hits": [
-                        ]
-                    }
-                }'
-            );
+            }
+        }';
+
+        $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
+        $httpClientMock->shouldReceive('open')->once()->with(self::ELASTICSEARCH_BASE);
+        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POST, 1);
+        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_POSTFIELDS, http_build_query($elasticsearchQuery));
+        $httpClientMock->shouldReceive('setOption')->once()->with(CURLOPT_RETURNTRANSFER, 1);
+        $httpClientMock->shouldReceive('execute')->once()->andReturn($elasticsearchResponse);
+        $httpClientMock->shouldReceive('getInfo')->twice();
+        $httpClientMock->shouldReceive('close')->once();
 
         (new ElasticsearchGateway($httpClientMock))->getByDate($requestedDate);
     }
