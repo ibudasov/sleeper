@@ -22,6 +22,7 @@
   "require": {
     "php": ">=7.1",
     "ext-pdo_sqlite": "*",
+    "ext-php-curl": "*",
     "beberlei/assert": "^2.7",
     "doctrine/doctrine-bundle": "^1.6",
     "doctrine/orm": "^2.5",
