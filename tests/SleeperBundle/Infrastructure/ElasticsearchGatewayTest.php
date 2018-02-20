@@ -6,7 +6,6 @@ namespace Tests\SleeperBundle\Infrastructure;
 
 use PHPUnit\Framework\TestCase;
 use SleeperBundle\Application\Entity\SleepElasticsearchEntity;
-use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 use SleeperBundle\Infrastructure\ElasticsearchGateway;
 use SleeperBundle\Infrastructure\HttpRequestInterface;
 
@@ -83,22 +82,16 @@ class ElasticsearchGatewayTest extends TestCase
         self::assertAttributeGreaterThanOrEqual($startOfPeriod, 'startTime', $sleep);
     }
 
-    public function testThatExceptionIsThrownWhenSleepNotFoundByDate(): void
+    public function testThatNullIsReturnedWhenSleepNotFoundByDate(): void
     {
-        $this->expectException(SleepByDateNotFoundException::class);
-        $requestedDate = new \DateTime();
-        $startOfPeriod = $requestedDate->modify('midnight');
-        $endOfPeriod = clone $requestedDate;
-        $endOfPeriod->modify('tomorrow');
-
         $elasticsearchQuery = [
             'query' => [
                 'constant_score' => [
                     'filter' => [
                         'range' => [
                             'startTime' => [
-                                'gte' => $startOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
-                                'lte' => $endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
+                                'gte' => (new \DateTime())->format(self::ELASTICSEARCH_DATE_FORMAT),
+                                'lte' => (new \DateTime())->format(self::ELASTICSEARCH_DATE_FORMAT),
                             ],
                         ],
                     ],
@@ -130,6 +123,6 @@ class ElasticsearchGatewayTest extends TestCase
             )
             ->andReturn(\json_decode($elasticsearchResponse, true));
 
-        (new ElasticsearchGateway($httpClientMock))->getByDate($elasticsearchQuery);
+        self::assertNull((new ElasticsearchGateway($httpClientMock))->getByDate($elasticsearchQuery));
     }
 }

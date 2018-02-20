@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SleeperBundle\Infrastructure;
 
 use SleeperBundle\Application\Entity\SleepElasticsearchEntity;
-use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 
 class ElasticsearchGateway
 {
@@ -23,9 +22,9 @@ class ElasticsearchGateway
 
     /**
      * @param array $elasticsearchQuery
-     * @return SleepElasticsearchEntity
+     * @return SleepElasticsearchEntity|null
      */
-    public function getByDate(array $elasticsearchQuery): SleepElasticsearchEntity
+    public function getByDate(array $elasticsearchQuery): ?SleepElasticsearchEntity
     {
         $elasticsearchResponse = $this->httpClient->post(
             self::ELASTICSEARCH_BASE,
@@ -33,7 +32,7 @@ class ElasticsearchGateway
         );
 
         if (0 == $elasticsearchResponse['hits']['total']) {
-            throw new SleepByDateNotFoundException(new \DateTime(), new \DateTime());
+            return null;
         }
 
         $firstHit = \current($elasticsearchResponse['hits']['hits'])['_source'];
