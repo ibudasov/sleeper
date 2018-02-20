@@ -6,5 +6,5 @@ namespace SleeperBundle\Infrastructure;
 
 interface HttpRequestInterface
 {
-    function post(string $toUrl, array $dataToPost): array;
+    public function post(string $toUrl, array $dataToPost): array;
 }

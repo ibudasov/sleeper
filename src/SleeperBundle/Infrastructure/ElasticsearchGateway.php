@@ -66,6 +66,4 @@ class ElasticsearchGateway
             $firstHit['totalSleepSeconds']
         );
     }
-
-
 }

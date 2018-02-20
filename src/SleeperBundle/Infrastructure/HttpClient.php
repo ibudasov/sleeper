@@ -63,6 +63,7 @@ class HttpClient implements HttpRequestInterface
 
     /**
      * @param int $name
+     *
      * @return mixed
      */
     private function getInfo(int $name)

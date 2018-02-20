@@ -14,17 +14,19 @@ use SleeperBundle\Infrastructure\ElasticsearchGateway;
 class ElasticsearchSleepRepository implements SleepRepositoryInterface
 {
     /** @var ElasticsearchGateway */
-    private $client;
+    private $elasticsearchGateway;
     /** @var SleepElasticsearchToDomainEntityMapper */
     private $mapper;
 
     /**
-     * @param ElasticsearchGateway                   $client
+     * @param ElasticsearchGateway                   $elasticsearchGateway
      * @param SleepElasticsearchToDomainEntityMapper $mapper
      */
-    public function __construct(ElasticsearchGateway $client, SleepElasticsearchToDomainEntityMapper $mapper)
-    {
-        $this->client = $client;
+    public function __construct(
+        ElasticsearchGateway $elasticsearchGateway,
+        SleepElasticsearchToDomainEntityMapper $mapper
+    ) {
+        $this->elasticsearchGateway = $elasticsearchGateway;
         $this->mapper = $mapper;
     }
 
@@ -37,7 +39,7 @@ class ElasticsearchSleepRepository implements SleepRepositoryInterface
     /** {@inheritdoc} */
     public function getSleepByDate(\DateTime $date): Sleep
     {
-        $elasticsearchEntity = $this->client->getByDate($date);
+        $elasticsearchEntity = $this->elasticsearchGateway->getByDate($date);
 
         return $this->mapper->map($elasticsearchEntity);
     }
