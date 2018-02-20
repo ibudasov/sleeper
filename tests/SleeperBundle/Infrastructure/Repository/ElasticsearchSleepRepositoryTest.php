@@ -13,6 +13,8 @@ use SleeperBundle\Infrastructure\Repository\ElasticsearchSleepRepository;
 
 class ElasticsearchSleepRepositoryTest extends TestCase
 {
+    const ELASTICSEARCH_BASE = 'localhost:9200/sleep/_search/';
+    const ELASTICSEARCH_DATE_FORMAT = 'Y/m/d H:i:s';
     /** @var ElasticsearchGateway|MockInterface */
     private $gatewayMock;
     /** @var SleepElasticsearchToDomainEntityMapper|MockInterface */
@@ -27,12 +29,30 @@ class ElasticsearchSleepRepositoryTest extends TestCase
     public function testThatSleepCanBeRetrievedByDate(): void
     {
         $requestedDate = new \DateTime();
+        $startOfPeriod = $requestedDate->modify('midnight');
+        $endOfPeriod = clone $requestedDate;
+        $endOfPeriod->modify('tomorrow');
 
         $elasticsearchSleepEntityMock = \Mockery::mock(SleepElasticsearchEntity::class);
 
+        $elasticsearchQuery = [
+            'query' => [
+                'constant_score' => [
+                    'filter' => [
+                        'range' => [
+                            'startTime' => [
+                                'gte' => $startOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
+                                'lte' => $endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
         $this->gatewayMock->shouldReceive('getByDate')
             ->once()
-            ->with($requestedDate)
+            ->with($elasticsearchQuery)
             ->andReturn($elasticsearchSleepEntityMock);
 
         $this->mapperMock->shouldReceive('map')

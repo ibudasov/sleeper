@@ -22,36 +22,18 @@ class ElasticsearchGateway
     }
 
     /**
-     * @param \DateTime $sleepDate
-     *
+     * @param array $elasticsearchQuery
      * @return SleepElasticsearchEntity
      */
-    public function getByDate(\DateTime $sleepDate): SleepElasticsearchEntity
+    public function getByDate(array $elasticsearchQuery): SleepElasticsearchEntity
     {
-        $startTime = $sleepDate->modify('midnight');
-        $endOfPeriod = clone $sleepDate;
-        $endOfPeriod->modify('tomorrow');
-
         $elasticsearchResponse = $this->httpClient->post(
             self::ELASTICSEARCH_BASE,
-            [
-                'query' => [
-                    'constant_score' => [
-                        'filter' => [
-                            'range' => [
-                                'startTime' => [
-                                    'gte' => $startTime->format(self::ELASTICSEARCH_DATE_FORMAT),
-                                    'lte' => $endOfPeriod->format(self::ELASTICSEARCH_DATE_FORMAT),
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ]
+            $elasticsearchQuery
         );
 
         if (0 == $elasticsearchResponse['hits']['total']) {
-            throw new SleepByDateNotFoundException($startTime, $endOfPeriod);
+            throw new SleepByDateNotFoundException(new \DateTime(), new \DateTime());
         }
 
         $firstHit = \current($elasticsearchResponse['hits']['hits'])['_source'];

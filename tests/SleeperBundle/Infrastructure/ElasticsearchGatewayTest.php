@@ -68,6 +68,7 @@ class ElasticsearchGatewayTest extends TestCase
             }
         }';
 
+
         $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
         $httpClientMock->shouldReceive('post')->once()
             ->with(
@@ -76,7 +77,7 @@ class ElasticsearchGatewayTest extends TestCase
             )
             ->andReturn(\json_decode($elasticsearchResponse, true));
 
-        $sleep = (new ElasticsearchGateway($httpClientMock))->getByDate($requestedDate);
+        $sleep = (new ElasticsearchGateway($httpClientMock))->getByDate($elasticsearchQuery);
 
         self::assertInstanceOf(SleepElasticsearchEntity::class, $sleep);
         self::assertAttributeGreaterThanOrEqual($startOfPeriod, 'startTime', $sleep);
@@ -129,6 +130,6 @@ class ElasticsearchGatewayTest extends TestCase
             )
             ->andReturn(\json_decode($elasticsearchResponse, true));
 
-        (new ElasticsearchGateway($httpClientMock))->getByDate($requestedDate);
+        (new ElasticsearchGateway($httpClientMock))->getByDate($elasticsearchQuery);
     }
 }

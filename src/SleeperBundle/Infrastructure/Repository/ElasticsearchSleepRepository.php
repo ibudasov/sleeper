@@ -39,7 +39,26 @@ class ElasticsearchSleepRepository implements SleepRepositoryInterface
     /** {@inheritdoc} */
     public function getSleepByDate(\DateTime $date): Sleep
     {
-        $elasticsearchEntity = $this->elasticsearchGateway->getByDate($date);
+        $startTime = $date->modify('midnight');
+        $endOfPeriod = clone $date;
+        $endOfPeriod->modify('tomorrow');
+
+        $elasticsearchQuery = [
+            'query' => [
+                'constant_score' => [
+                    'filter' => [
+                        'range' => [
+                            'startTime' => [
+                                'gte' => $startTime->format(ElasticsearchGateway::ELASTICSEARCH_DATE_FORMAT),
+                                'lte' => $endOfPeriod->format(ElasticsearchGateway::ELASTICSEARCH_DATE_FORMAT),
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $elasticsearchEntity = $this->elasticsearchGateway->getByDate($elasticsearchQuery);
 
         return $this->mapper->map($elasticsearchEntity);
     }
