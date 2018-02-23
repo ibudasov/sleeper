@@ -1,5 +1,6 @@
 imports:
     - { resource: config_dev.yml }
+    - { resource: "@SleeperBundle/Resources/config/config_test.yml" }
 
 framework:
     test: ~

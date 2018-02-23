@@ -3,4 +3,4 @@ services:
     # for tests it's overwritten with inMemoryRepo
     SleeperBundle\Application\Service\SleepService:
         arguments:
-            - '@repository.in_memory'
+            - '@repository.elasticsearch'
