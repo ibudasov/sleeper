@@ -14,16 +14,17 @@ class HttpClient implements HttpRequestInterface
 
     /**
      * @param string $urlToPost
-     * @param array  $dataToPost
+     * @param array  $jsonStringToPost
      *
      * @return array
      */
-    public function post(string $urlToPost, array $dataToPost): array
+    public function postJson(string $urlToPost, string $jsonStringToPost): array
     {
         $this->open($urlToPost);
 
         $this->setOption(CURLOPT_POST, 1);
-        $this->setOption(CURLOPT_POSTFIELDS, http_build_query($dataToPost));
+        $this->setOption(CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        $this->setOption(CURLOPT_POSTFIELDS, $jsonStringToPost);
         $this->setOption(CURLOPT_RETURNTRANSFER, true);
 
         $response = $this->execute();

@@ -26,9 +26,9 @@ class ElasticsearchGateway
      */
     public function getByDate(array $elasticsearchQuery): ?SleepElasticsearchEntity
     {
-        $elasticsearchResponse = $this->httpClient->post(
+        $elasticsearchResponse = $this->httpClient->postJson(
             self::ELASTICSEARCH_BASE,
-            $elasticsearchQuery
+            \json_encode($elasticsearchQuery)
         );
 
         if (0 == $elasticsearchResponse['hits']['total']) {
@@ -38,7 +38,7 @@ class ElasticsearchGateway
         $firstHit = \current($elasticsearchResponse['hits']['hits'])['_source'];
 
         return new SleepElasticsearchEntity(
-            $firstHit['id'],
+            \current($elasticsearchResponse['hits']['hits'])['_id'],
             \DateTime::createFromFormat(self::ELASTICSEARCH_DATE_FORMAT, $firstHit['startTime']),
             \DateTime::createFromFormat(self::ELASTICSEARCH_DATE_FORMAT, $firstHit['endTime']),
             $firstHit['deepSleepSeconds'],

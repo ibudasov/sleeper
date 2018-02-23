@@ -69,10 +69,10 @@ class ElasticsearchGatewayTest extends TestCase
 
 
         $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
-        $httpClientMock->shouldReceive('post')->once()
+        $httpClientMock->shouldReceive('postJson')->once()
             ->with(
                 self::ELASTICSEARCH_BASE,
-                $elasticsearchQuery
+                \json_encode($elasticsearchQuery)
             )
             ->andReturn(\json_decode($elasticsearchResponse, true));
 
@@ -116,10 +116,10 @@ class ElasticsearchGatewayTest extends TestCase
         }';
 
         $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
-        $httpClientMock->shouldReceive('post')->once()
+        $httpClientMock->shouldReceive('postJson')->once()
             ->with(
                 self::ELASTICSEARCH_BASE,
-                $elasticsearchQuery
+                \json_encode($elasticsearchQuery)
             )
             ->andReturn(\json_decode($elasticsearchResponse, true));
 

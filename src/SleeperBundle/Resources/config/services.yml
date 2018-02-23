@@ -29,6 +29,9 @@ services:
     repository.in_memory:
         class: SleeperBundle\Infrastructure\Repository\InMemorySleepRepository
 
+    repository.elasticsearch:
+        class: SleeperBundle\Infrastructure\Repository\ElasticsearchSleepRepository
+
     # implicit specification of what kind of repo I need here.
     # for tests it's overwritten with inMemoryRepo
     SleeperBundle\Application\Service\SleepService:
