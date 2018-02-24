@@ -9,7 +9,9 @@ What is it?
 -----------
 
 This API suppose to analyse sleep data and provide some analytics regarding it.
+
 But the main thing is not what's done, the main thing is - how it's done.
+
 Check details down below.
 
 Hexagonal style dependencies explanation
