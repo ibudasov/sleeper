@@ -9,42 +9,39 @@ What is it?
 -----------
 
 This API suppose to analyse sleep data and provide some analytics regarding it.
-
-The idea behind this project is to master TDD skill and learn modern approaches like DDD & Hexagonal architecture.
-These 2 approaches are intended to reduce code coupling and make sure dependencies go only in one direction - in direction of domain.
+But the main thing is not what's done, the main thing is - how it's done.
+Check details down below.
 
 Hexagonal style dependencies explanation
 ----------------------------------------
 
 ![Dependencies](src/SleeperBundle/Resources/dependencies.png)
 
-
-Earned experience
+Cool things about this project
 -----------------
 
 Application
-- 👌 layered architecture ([DDD](https://leanpub.com/ddd-in-php) or [hexagonal](http://www.youtube.com/playlist?list=PLviuozY4UHkkLGVVUbUDSyvcnaVox2cXo))
-- 👌 setting up whole project from bare framework according to [Clean code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
-- 👌 Dependency Inversion principle
-- 👌 TDD approach -- writing tests first and then production code. When I installed test coverage tool, I found out that all domain and application are covered with tests, with no additional effort
-- 👌 code structures like Value Objects, Models, Services, and where/when to use them
+- 👌 implemented layered architecture ([DDD](https://leanpub.com/ddd-in-php) or [hexagonal](http://www.youtube.com/playlist?list=PLviuozY4UHkkLGVVUbUDSyvcnaVox2cXo))
+- 👌 built from bare framework according to [Clean code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+- 👌 Dependency Inversion principle in practice
+- 👌 used TDD approach -- not a single line has been written without tests first
+- 👌 used a lot of Enterprise Patterns
 - 👌 using Assertions in codebase to assert use scenarios
-- 👌 domain services are operations on domain building blocks
-- lightweight bus (?)
-- CQRS
-- FOS REST bundle
-- get rid of namespaces like `.../ValueObject` and etc. According to the book, namespaces should reflect domain, not building blocks
+- @todo: FOS REST bundle
+- @todo: get rid of namespaces like `.../ValueObject` and etc. According to the book, namespaces should reflect domain, not building blocks
+- @todo: lightweight bus (?)
+- @todo: CQRS (?)
 
 Infrastructure  
 - 👌 CI with CircleCI -- it runs my tests and shows nice little badge on main page of repo
 - 👌 CD with Heroku
-- 👌 SQLite - quite nice for development, just perfect for tests
+- 👌 Elasticsearch - for storing data in scalable way 
 - 👌 nice composer aliases for commands, so I can run all the tests or install the whole project with one simple command
 - 👌 setting up test coverage tool (nothing special, just using PHPUnit + XDebug)
-- 👌 setting up contract tests with test database and [fixtures](https://github.com/hautelook/AliceBundle)
+- 👌 setting up contract tests with InMemory repo to speed up tests and not depend on infrastructure
 - 👌 Docker (Compose) to wrap codebase in the container and database in separate container
-- Kubernetes to be able to scale
-- Swagger docs
+- 👌 Kubernetes to be able to scale up/down
+- @todo: Swagger docs
 
 Enterprise application patterns
 - https://www.martinfowler.com/eaaCatalog/domainModel.html
