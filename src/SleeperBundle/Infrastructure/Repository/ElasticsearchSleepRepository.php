@@ -61,7 +61,7 @@ class ElasticsearchSleepRepository implements SleepRepositoryInterface
 
         $elasticsearchEntity = $this->elasticsearchGateway->getByDate($elasticsearchQuery);
 
-        if($elasticsearchEntity === null) {
+        if (null === $elasticsearchEntity) {
             throw new SleepByDateNotFoundException($startTime, $endOfPeriod);
         }
 

@@ -67,7 +67,6 @@ class ElasticsearchSleepRepositoryTest extends TestCase
 
         $returnedSleep = $repo->getSleepByDate($requestedDate);
 
-
         self::assertInstanceOf(Sleep::class, $returnedSleep);
         self::assertAttributeLessThanOrEqual($requestedDate, 'startTime', $returnedSleep);
     }

@@ -67,7 +67,6 @@ class ElasticsearchGatewayTest extends TestCase
             }
         }';
 
-
         $httpClientMock = \Mockery::mock(HttpRequestInterface::class);
         $httpClientMock->shouldReceive('postJson')->once()
             ->with(

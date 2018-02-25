@@ -22,6 +22,7 @@ class ElasticsearchGateway
 
     /**
      * @param array $elasticsearchQuery
+     *
      * @return SleepElasticsearchEntity|null
      */
     public function getByDate(array $elasticsearchQuery): ?SleepElasticsearchEntity
