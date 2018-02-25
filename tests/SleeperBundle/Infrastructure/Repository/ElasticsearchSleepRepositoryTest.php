@@ -10,6 +10,7 @@ use SleeperBundle\Domain\Entity\Sleep;
 use SleeperBundle\Domain\ValueObject\IdentityInterface;
 use SleeperBundle\Infrastructure\ElasticsearchGateway;
 use SleeperBundle\Infrastructure\Repository\ElasticsearchSleepRepository;
+use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 
 class ElasticsearchSleepRepositoryTest extends TestCase
 {
@@ -66,6 +67,7 @@ class ElasticsearchSleepRepositoryTest extends TestCase
 
         $returnedSleep = $repo->getSleepByDate($requestedDate);
 
+
         self::assertInstanceOf(Sleep::class, $returnedSleep);
         self::assertAttributeLessThanOrEqual($requestedDate, 'startTime', $returnedSleep);
     }
@@ -78,5 +80,21 @@ class ElasticsearchSleepRepositoryTest extends TestCase
         );
 
         self::assertInstanceOf(IdentityInterface::class, $repo->generateId());
+    }
+
+    public function testThatExceptionIsthrownWhenSleepNotFoundByDate(): void
+    {
+        $this->expectException(SleepByDateNotFoundException::class);
+
+        $this->gatewayMock->shouldReceive('getByDate')
+            ->once()
+            ->andReturnNull();
+
+        $repo = new ElasticsearchSleepRepository(
+            $this->gatewayMock,
+            $this->mapperMock
+        );
+
+        $repo->getSleepByDate(new \DateTime());
     }
 }

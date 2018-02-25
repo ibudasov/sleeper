@@ -10,6 +10,7 @@ use SleeperBundle\Domain\Repository\SleepRepositoryInterface;
 use SleeperBundle\Domain\ValueObject\IdentityInterface;
 use SleeperBundle\Domain\ValueObject\SleepId;
 use SleeperBundle\Infrastructure\ElasticsearchGateway;
+use SleeperBundle\Domain\Exception\SleepByDateNotFoundException;
 
 class ElasticsearchSleepRepository implements SleepRepositoryInterface
 {
@@ -59,6 +60,10 @@ class ElasticsearchSleepRepository implements SleepRepositoryInterface
         ];
 
         $elasticsearchEntity = $this->elasticsearchGateway->getByDate($elasticsearchQuery);
+
+        if($elasticsearchEntity === null) {
+            throw new SleepByDateNotFoundException($startTime, $endOfPeriod);
+        }
 
         return $this->mapper->map($elasticsearchEntity);
     }
