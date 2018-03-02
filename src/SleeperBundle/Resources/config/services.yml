@@ -20,12 +20,6 @@ services:
         resource: '../../../../src/SleeperBundle/Application/Controller'
         tags: ['controller.service_arguments']
 
-    repository.doctrine:
-        class: SleeperBundle\Infrastructure\Repository\DoctrineSleepRepository
-        factory: ["@doctrine", getRepository]
-        arguments:
-            - "SleeperBundle:SleepEntity"
-
     repository.in_memory:
         class: SleeperBundle\Infrastructure\Repository\InMemorySleepRepository
 
@@ -36,4 +30,4 @@ services:
     # for tests it's overwritten with inMemoryRepo
     SleeperBundle\Application\Service\SleepService:
         arguments:
-            - '@repository.doctrine'
+            - '@repository.in_memory'
