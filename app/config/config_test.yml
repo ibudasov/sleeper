@@ -12,7 +12,3 @@ framework:
 web_profiler:
     toolbar: false
     intercept_redirects: false
-
-doctrine:
-    dbal:
-        path: '%database_path_test%'
