@@ -7,7 +7,7 @@ use SleeperBundle\Infrastructure\FakeHttpClient;
 
 class FakeHttpClientTest extends TestCase
 {
-    public function testThatPostCanBeDone()
+    public function testThatPostCanBeDone(): void
     {
         $client = new FakeHttpClient();
         $response = $client->postJson('http://ok.nl', \json_encode(['some' => 'data']));
