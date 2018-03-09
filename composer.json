@@ -63,7 +63,7 @@
       "@docker:test",
       "@docker:push",
       "kubectl run codebase --image=docker.io/ibudasov/sleeper --port=8000",
-      "kubectl run elasticsearch --image=docker.elastic.co/elasticsearch/elasticsearch-platinum:6.1.2 --port=9200",
+      "kubectl run elasticsearch --image=elasticsearch --port=9200",
       "kubectl get pod",
       "minikube dashboard"
     ],
@@ -73,7 +73,7 @@
     ],
 
     "test:unit": "./vendor/bin/phpunit tests/SleeperBundle",
-    "test:contract": "SYMFONY_ENV=test ./vendor/bin/phpunit tests/contract",
+    "test:contract": "./vendor/bin/phpunit tests/contract",
     "test": [
       "@test:unit",
       "@test:contract"
