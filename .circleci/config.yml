@@ -12,7 +12,7 @@ deployment:
 
 defaults: &defaults
   environment:
-    CC_TEST_REPORTER_ID: 5fd8da576e326ed749146d3077313a6de80e5b1156cbc5c228276fea1150f693
+    CC_TEST_REPORTER_ID: d2e9113629d05a976d2992b6fbbb9681e5bf8dfdad4869f9c07a17b6dde1a924
   docker:
       # specify the version you desire here
       - image: circleci/php:7.1
