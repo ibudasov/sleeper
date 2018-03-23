@@ -44,6 +44,7 @@ Infrastructure
 - 👌 Docker (Compose) to wrap codebase in the container and database in separate container
 - 👌 Kubernetes to be able to scale up/down
 - @todo: Swagger docs
+- @todo: Deployments files for k8s
 
 Enterprise application patterns
 - https://www.martinfowler.com/eaaCatalog/domainModel.html
