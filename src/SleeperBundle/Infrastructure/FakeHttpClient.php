@@ -7,6 +7,19 @@ namespace SleeperBundle\Infrastructure;
 class FakeHttpClient implements HttpRequestInterface
 {
     /**
+     * @var Stub
+     */
+    private $stub;
+
+    /**
+     * @param Stub $stub
+     */
+    public function __construct(Stub $stub)
+    {
+        $this->stub = $stub;
+    }
+
+    /**
      * @param string $toUrl
      * @param string $jsonStringToPost
      *
@@ -14,6 +27,6 @@ class FakeHttpClient implements HttpRequestInterface
      */
     public function postJson(string $toUrl, string $jsonStringToPost): array
     {
-        return [];
+        return [$this->stub->getStubMatching($toUrl, $jsonStringToPost)];
     }
 }
