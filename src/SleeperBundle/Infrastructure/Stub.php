@@ -31,6 +31,10 @@ class Stub
      */
     public function getStubMatching(string $url, string $body): string
     {
-        return $this->stubCollection[$url.' -- '.$body];
+        if (isset($this->stubCollection[$url . ' -- ' . $body])) {
+            return $this->stubCollection[$url . ' -- ' . $body];
+        }
+
+        throw new \LogicException('A stub not found for URL "' . $url . '" and body "' . $body . '"');
     }
 }

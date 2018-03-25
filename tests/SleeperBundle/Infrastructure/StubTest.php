@@ -15,4 +15,12 @@ class StubTest extends TestCase
 
         self::assertEquals($expectedResponse, $stubCollection->getStubMatching('url', 'jsonedData'));
     }
+
+    public function testThatExceptionIsThrownWhenStubIsNotFound(): void
+    {
+        $this->expectException(\LogicException::class);
+        $stubCollection = new Stub();
+
+        $stubCollection->getStubMatching('url', 'jsonedData');
+    }
 }
