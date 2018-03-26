@@ -1,6 +1,6 @@
 services:
     # implicit specification of what kind of repo I need here.
-    # for tests it's overwritten with inMemoryRepo
-    SleeperBundle\Application\Service\SleepService:
+    # for tests it's overwritten with fake client
+    SleeperBundle\Infrastructure\ElasticsearchGateway:
         arguments:
-            - '@repository.in_memory'
+            - '@http.fake_client'

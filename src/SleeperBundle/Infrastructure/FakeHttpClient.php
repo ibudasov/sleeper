@@ -27,6 +27,6 @@ class FakeHttpClient implements HttpRequestInterface
      */
     public function postJson(string $toUrl, string $jsonStringToPost): array
     {
-        return [$this->stub->getStubMatching($toUrl, $jsonStringToPost)];
+        return \json_decode($this->stub->getStubMatching($toUrl, $jsonStringToPost), true);
     }
 }

@@ -16,11 +16,27 @@ class StubTest extends TestCase
         self::assertEquals($expectedResponse, $stubCollection->getStubMatching('url', 'jsonedData'));
     }
 
-    public function testThatExceptionIsThrownWhenStubIsNotFound(): void
+    public function testThatEmptyElasticsearchResultIsReturnedWhenStubIsNotFound(): void
     {
-        $this->expectException(\LogicException::class);
         $stubCollection = new Stub();
 
-        $stubCollection->getStubMatching('url', 'jsonedData');
+        $emptyResponse = '{
+            "took": 10,
+            "timed_out": false,
+            "_shards": {
+                "total": 5,
+                "successful": 5,
+                "skipped": 0,
+                "failed": 0
+            },
+            "hits": {
+                "total": 0,
+                "max_score": null,
+                "hits": [
+                ]
+            }
+        }';
+
+        self::assertEquals($emptyResponse, $stubCollection->getStubMatching('url', 'jsonedData'));
     }
 }

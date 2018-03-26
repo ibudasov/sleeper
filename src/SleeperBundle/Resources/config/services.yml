@@ -20,14 +20,17 @@ services:
         resource: '../../../../src/SleeperBundle/Application/Controller'
         tags: ['controller.service_arguments']
 
-    repository.in_memory:
-        class: SleeperBundle\Infrastructure\Repository\InMemorySleepRepository
-
     repository.elasticsearch:
         class: SleeperBundle\Infrastructure\Repository\ElasticsearchSleepRepository
 
+    http.client:
+        class: 'SleeperBundle\Infrastructure\HttpClient'
+
+    http.fake_client:
+        class: 'SleeperBundle\Infrastructure\FakeHttpClient'
+
     # implicit specification of what kind of repo I need here.
-    # for tests it's overwritten with inMemoryRepo
-    SleeperBundle\Application\Service\SleepService:
+    # for tests it's overwritten with fake client
+    SleeperBundle\Infrastructure\ElasticsearchGateway:
         arguments:
-            - '@repository.in_memory'
+            - '@http.client'
